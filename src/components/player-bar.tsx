@@ -34,6 +34,12 @@ export function PlayerBar() {
 
   useEffect(() => {
     if (audioRef.current) {
+        audioRef.current.load();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
         if (isPlaying) {
             audioRef.current.play().catch(e => console.error("Playback error:", e));
         } else {
