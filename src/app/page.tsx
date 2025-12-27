@@ -32,7 +32,7 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
   );
 
   const HeroCarousel = () => {
-    const featuredPlaylists = [...playlists.slice(0, 3), ...madeForYouPlaylists.slice(0, 2)];
+    const featuredPlaylists = [...playlists.slice(0, 4), ...madeForYouPlaylists.slice(0, 3)];
     const plugin = useRef(
         Autoplay({ delay: 3000, stopOnInteraction: true })
     );
