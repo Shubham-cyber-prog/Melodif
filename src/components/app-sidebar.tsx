@@ -19,6 +19,7 @@ import {
   LogIn,
   UserPlus,
   Settings,
+  BarChart,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -34,6 +35,7 @@ const navLinks = [
   { href: '/search', label: 'Search', icon: Search },
   { href: '/library', label: 'Your Library', icon: Library },
   { href: '/upload', label: 'Upload Music', icon: UploadCloud },
+  { href: '/analytics', label: 'Analytics', icon: BarChart },
 ];
 
 const authLinks = [
