@@ -14,7 +14,7 @@ import {
   Search,
   Library,
   Plus,
-  Waves,
+  User,
   UploadCloud,
   LogIn,
   UserPlus,
@@ -41,6 +41,7 @@ const navLinks = [
 const authLinks = [
     { href: '/login', label: 'Login', icon: LogIn },
     { href: '/signup', label: 'Sign Up', icon: UserPlus },
+    { href: '/profile', label: 'Profile', icon: User },
 ]
 
 export function AppSidebar() {
