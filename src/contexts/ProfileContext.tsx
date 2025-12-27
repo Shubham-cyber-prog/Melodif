@@ -7,10 +7,12 @@ interface ProfileState {
   lastName: string;
   avatar: string;
   banner: string;
+  bio: string;
   setFirstName: (name: string) => void;
   setLastName: (name: string) => void;
   setAvatar: (url: string) => void;
   setBanner: (url: string) => void;
+  setBio: (bio: string) => void;
 }
 
 const ProfileContext = createContext<ProfileState | undefined>(undefined);
@@ -20,9 +22,10 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
   const [lastName, setLastName] = useState('User');
   const [avatar, setAvatar] = useState('https://picsum.photos/seed/avatar/200');
   const [banner, setBanner] = useState('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop');
+  const [bio, setBio] = useState('Lover of synthwave, coffee, and rainy days. Discovering the world one track at a time.');
 
   return (
-    <ProfileContext.Provider value={{ firstName, lastName, avatar, banner, setFirstName, setLastName, setAvatar, setBanner }}>
+    <ProfileContext.Provider value={{ firstName, lastName, avatar, banner, bio, setFirstName, setLastName, setAvatar, setBanner, setBio }}>
       {children}
     </ProfileContext.Provider>
   );

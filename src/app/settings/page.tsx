@@ -25,18 +25,20 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 import { useProfile } from '@/contexts/ProfileContext';
+import { Textarea } from '@/components/ui/textarea';
 
 export default function SettingsPage() {
     const { toast } = useToast();
     const { 
-        firstName, lastName, avatar, banner, 
-        setFirstName, setLastName, setAvatar, setBanner 
+        firstName, lastName, avatar, banner, bio,
+        setFirstName, setLastName, setAvatar, setBanner, setBio
     } = useProfile();
 
     const [currentFirstName, setCurrentFirstName] = useState(firstName);
     const [currentLastName, setCurrentLastName] = useState(lastName);
     const [currentAvatar, setCurrentAvatar] = useState(avatar);
     const [currentBanner, setCurrentBanner] = useState(banner);
+    const [currentBio, setCurrentBio] = useState(bio);
 
     const [theme, setTheme] = useState('light');
 
@@ -60,6 +62,7 @@ export default function SettingsPage() {
         setLastName(currentLastName);
         setAvatar(currentAvatar);
         setBanner(currentBanner);
+        setBio(currentBio);
         toast({
             title: 'Profile Updated',
             description: 'Your profile information has been successfully updated.',
@@ -141,6 +144,11 @@ export default function SettingsPage() {
                      <p className="text-xs text-muted-foreground">You can't change your email address.</p>
                 </div>
               </div>
+            </div>
+
+            <div className="space-y-2">
+                <Label htmlFor="bio">Bio</Label>
+                <Textarea id="bio" placeholder="Tell us a little about yourself" value={currentBio} onChange={(e) => setCurrentBio(e.target.value)} />
             </div>
 
             <Separator />
@@ -292,5 +300,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-
-    

@@ -26,7 +26,7 @@ const following = [
 ];
 
 export default function ProfilePage() {
-  const { firstName, lastName, avatar, banner } = useProfile();
+  const { firstName, lastName, avatar, banner, bio } = useProfile();
   const topTracks = songs.slice(0, 5);
 
   return (
@@ -60,6 +60,7 @@ export default function ProfilePage() {
             <div className="flex-1 space-y-1 text-center md:text-left pt-4 md:pt-0">
               <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-shadow-lg">{firstName} {lastName}</h1>
               <p className="text-sm text-muted-foreground">user@melodif.com</p>
+               <p className="text-sm text-foreground max-w-prose">{bio}</p>
             </div>
              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                 <Button variant="outline">
