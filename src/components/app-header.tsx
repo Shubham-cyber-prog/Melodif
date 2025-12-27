@@ -11,8 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import {
-  ChevronLeft,
-  ChevronRight,
+  Home,
   Search,
   User,
   Sun,
@@ -62,20 +61,12 @@ export function AppHeader() {
     <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-8">
       <div className="flex items-center gap-2">
         <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8"
-          onClick={() => router.back()}
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-8 w-8"
-          onClick={() => router.forward()}
-        >
-          <ChevronRight className="h-5 w-5" />
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => router.push('/')}
+            >
+            <Home className="h-5 w-5" />
         </Button>
       </div>
 
