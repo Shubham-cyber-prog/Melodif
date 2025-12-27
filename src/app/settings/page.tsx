@@ -1,6 +1,6 @@
 
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -29,6 +29,22 @@ export default function SettingsPage() {
     const { toast } = useToast();
     const [firstName, setFirstName] = useState('Melodif');
     const [lastName, setLastName] = useState('User');
+    const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        setTheme(isDarkMode ? 'dark' : 'light');
+      }, []);
+    
+      const toggleTheme = () => {
+        if (theme === 'dark') {
+          document.documentElement.classList.remove('dark');
+          setTheme('light');
+        } else {
+          document.documentElement.classList.add('dark');
+          setTheme('dark');
+        }
+      };
 
     const handleProfileUpdate = () => {
         // In a real app, you would send this data to your backend
@@ -177,7 +193,11 @@ export default function SettingsPage() {
                         <Label htmlFor="dark-mode">Dark Mode</Label>
                         <p className="text-sm text-muted-foreground">Enable or disable dark mode.</p>
                     </div>
-                    <Switch id="dark-mode" />
+                    <Switch
+                        id="dark-mode"
+                        checked={theme === 'dark'}
+                        onCheckedChange={toggleTheme}
+                    />
                 </div>
             </AccordionContent>
         </AccordionItem>
