@@ -75,7 +75,7 @@ export default function ProfilePage() {
   return (
     <div className="space-y-8 animate-fade-in">
       <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
-        <div className="relative h-48 md:h-56">
+        <div className="relative h-24 md:h-32">
             <Image 
                 src={banner}
                 alt="Profile banner"
@@ -86,7 +86,7 @@ export default function ProfilePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
         <CardContent className="p-6">
-          <div className="flex flex-col items-center md:flex-row md:items-end gap-4 -mt-24 md:-mt-28">
+          <div className="flex flex-col items-center md:flex-row md:items-end gap-4 -mt-16 md:-mt-20">
             <div className="relative z-10 flex-shrink-0">
               <Avatar className="h-28 w-28 md:h-32 md:w-32 border-4 border-background ring-4 ring-primary">
                 <AvatarImage src={avatar} alt="User Avatar" />
@@ -288,6 +288,8 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
 
