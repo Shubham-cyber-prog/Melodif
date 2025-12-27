@@ -9,6 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 import { AppFooter } from '@/components/app-footer';
 import ClientOnly from '@/components/client-only';
+import { AIChatbot } from '@/components/ai-chatbot';
 
 export const metadata: Metadata = {
   title: 'Melodif',
@@ -51,6 +52,9 @@ export default function RootLayout({
           </ClientOnly>
           <MobileBottomNav />
           <Toaster />
+          <ClientOnly>
+            <AIChatbot />
+          </ClientOnly>
         </SidebarProvider>
       </body>
     </html>
