@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { AppSidebar } from '@/components/app-sidebar';
@@ -5,6 +6,7 @@ import { PlayerBar } from '@/components/player-bar';
 import { AppHeader } from '@/components/app-header';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
+import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 
 export const metadata: Metadata = {
   title: 'Melodif',
@@ -42,6 +44,7 @@ export default function RootLayout({
             </div>
           </div>
           <PlayerBar />
+          <MobileBottomNav />
           <Toaster />
         </SidebarProvider>
       </body>

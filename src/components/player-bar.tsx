@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
@@ -76,7 +77,7 @@ export function PlayerBar() {
 
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm">
+    <div className="fixed bottom-24 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm md:bottom-0">
         <audio 
             ref={audioRef}
             src="https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3"
