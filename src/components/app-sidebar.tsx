@@ -15,6 +15,8 @@ import {
   Plus,
   Music,
   UploadCloud,
+  LogIn,
+  UserPlus
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -29,6 +31,11 @@ const navLinks = [
   { href: '/library', label: 'Your Library', icon: Library },
   { href: '/upload', label: 'Upload Music', icon: UploadCloud },
 ];
+
+const authLinks = [
+    { href: '/login', label: 'Login', icon: LogIn },
+    { href: '/signup', label: 'Sign Up', icon: UserPlus },
+]
 
 export function AppSidebar() {
   const pathname = usePathname();
@@ -59,6 +66,22 @@ export function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
+            <div className="mt-4 border-t border-sidebar-border pt-4">
+                 {authLinks.map((link) => (
+                    <SidebarMenuItem key={link.href}>
+                    <SidebarMenuButton
+                        asChild
+                        isActive={pathname === link.href}
+                        tooltip={link.label}
+                    >
+                        <Link href={link.href}>
+                        <link.icon />
+                        <span>{link.label}</span>
+                        </Link>
+                    </SidebarMenuButton>
+                    </SidebarMenuItem>
+                ))}
+            </div>
         </SidebarMenu>
         
         <div className="mt-4 flex h-full min-h-0 flex-col rounded-lg border bg-card text-card-foreground shadow-sm">

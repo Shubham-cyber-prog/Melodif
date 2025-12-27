@@ -16,11 +16,14 @@ import {
   User,
   Sun,
   Moon,
+  LogIn,
+  UserPlus,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useSidebar } from './ui/sidebar';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // A placeholder for a theme hook
 const useTheme = () => {
@@ -98,7 +101,6 @@ function UserMenu() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-9 w-9">
-            <AvatarImage src="https://picsum.photos/seed/user/100/100" alt="@shadcn" />
             <AvatarFallback>MM</AvatarFallback>
           </Avatar>
         </Button>
@@ -106,25 +108,29 @@ function UserMenu() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Melody Fan</p>
+            <p className="text-sm font-medium leading-none">Guest</p>
             <p className="text-xs leading-none text-muted-foreground">
-              fan@melody.muse
+              Not logged in
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <User className="mr-2 h-4 w-4" />
-          <span>Profile</span>
+        <DropdownMenuItem asChild>
+          <Link href="/login">
+            <LogIn className="mr-2 h-4 w-4" />
+            <span>Login</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/signup">
+            <UserPlus className="mr-2 h-4 w-4" />
+            <span>Sign Up</span>
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
           {theme === 'dark' ? <Sun className="mr-2 h-4 w-4" /> : <Moon className="mr-2 h-4 w-4" />}
           <span>{theme === 'dark' ? 'Light' : 'Dark'} Mode</span>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
