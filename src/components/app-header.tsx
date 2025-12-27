@@ -18,6 +18,7 @@ import {
   Settings,
   Bell,
   Home,
+  Download,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
@@ -34,11 +35,19 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between gap-4 border-b border-border/10 bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex flex-1 items-center gap-4">
-        <Button variant="ghost" size="icon" className="hidden md:inline-flex" asChild>
-            <Link href="/">
-                <Home className="h-6 w-6"/>
-            </Link>
-        </Button>
+        <div className="flex items-center gap-2">
+            <svg
+                className="h-8 w-8 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                d="M4 4.00098H8V16.001L12 12.001L16 16.001V4.00098H20V20.001H16V8.00098L12 12.001L8 8.00098V20.001H4V4.00098Z"
+                fill="currentColor"
+                />
+            </svg>
+        </div>
         <div className="relative w-full max-w-lg">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
@@ -50,6 +59,10 @@ export function AppHeader() {
       </div>
 
       <div className="flex items-center justify-end gap-2">
+         <Button variant="ghost" size="icon" className="rounded-full">
+            <Download className="h-5 w-5" />
+            <span className="sr-only">Install App</span>
+        </Button>
         <Button variant="ghost" className="h-10 w-10 rounded-full" asChild>
           <Link href="/notifications">
             <Bell className="h-5 w-5" />
