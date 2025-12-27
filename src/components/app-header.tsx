@@ -76,7 +76,7 @@ export function AppHeader() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
             placeholder="Search music..."
-            className="h-10 w-full rounded-full bg-muted pl-10"
+            className="h-10 w-full rounded-full bg-muted pl-10 transition-all duration-300 focus:w-[110%] focus:bg-background hover:bg-muted/90"
             onFocus={handleSearchFocus}
           />
         </div>
