@@ -40,7 +40,7 @@ export function AppHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 w-full shrink-0 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
+    <header className="sticky top-0 z-30 flex h-16 w-full shrink-0 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-2">
         {isMobile && <SidebarTrigger />}
         <Link href="/" className="flex items-center gap-2">
@@ -64,7 +64,7 @@ export function AppHeader() {
       <div
         className={cn(
           'flex flex-1 justify-center transition-all duration-200 ease-linear',
-          sidebarState === 'expanded' ? 'md:ml-[calc(var(--sidebar-width-icon)_-_var(--sidebar-width))]' : 'md:ml-0'
+          sidebarState === 'expanded' ? 'md:ml-0' : 'md:ml-0'
         )}
       >
         <div className="w-full max-w-lg relative">
