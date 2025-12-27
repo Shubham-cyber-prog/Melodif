@@ -15,7 +15,7 @@ export default function ProfilePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       <Card className="overflow-hidden">
-        <div className="relative h-48 md:h-64">
+        <div className="relative h-40 md:h-56">
             <Image 
                 src={banner}
                 alt="Profile banner"
