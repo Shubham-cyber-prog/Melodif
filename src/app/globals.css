@@ -45,11 +45,11 @@ body {
   .dark {
     --background: 0 0% 0%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 0%;
     --popover-foreground: 0 0% 98%;
-    --primary: 231 48% 68%;
+    --primary: 265 85% 70%;
     --primary-foreground: 0 0% 10%;
     --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 98%;
@@ -61,7 +61,7 @@ body {
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 231 48% 68%;
+    --ring: 265 85% 70%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -69,12 +69,12 @@ body {
     --chart-5: 340 75% 55%;
     --sidebar-background: 0 0% 0%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 231 48% 68%;
+    --sidebar-primary: 265 85% 70%;
     --sidebar-primary-foreground: 0 0% 10%;
     --sidebar-accent: 0 0% 15%;
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 231 48% 68%;
+    --sidebar-ring: 265 85% 70%;
   }
 }
 
@@ -84,5 +84,8 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  .dark .text-primary {
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.5);
   }
 }
