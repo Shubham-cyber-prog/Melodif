@@ -29,6 +29,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { CreatePlaylistDialog } from '@/components/create-playlist-dialog';
 import { Button } from '@/components/ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
+import ClientOnly from './client-only';
 
 
 const navLinks = [
@@ -121,6 +122,7 @@ export function AppSidebar() {
             </div>
         </SidebarMenu>
         
+        <ClientOnly>
         <div className="mt-4 flex h-full min-h-0 flex-col rounded-lg border bg-card text-card-foreground shadow-sm">
             <div className="flex items-center justify-between p-4 group-data-[collapsible=icon]:justify-center">
                 <h3 className="font-semibold group-data-[collapsible=icon]:hidden">Playlists</h3>
@@ -142,6 +144,7 @@ export function AppSidebar() {
                 </div>
             </ScrollArea>
         </div>
+        </ClientOnly>
 
       </SidebarContent>
     </Sidebar>
