@@ -43,7 +43,7 @@ export default function Home() {
                         className="w-full"
                         aspectRatio="portrait"
                         width={1200}
-                        height={300}
+                        height={400}
                     />
                 </CarouselItem>
                 ))}
