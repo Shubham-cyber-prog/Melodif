@@ -21,6 +21,7 @@ import { getArtworkById } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 
 export function PlayerBar() {
+  const [hasMounted, setHasMounted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -34,6 +35,10 @@ export function PlayerBar() {
   const currentSong = songs[0];
   const artwork = getArtworkById(currentSong.artworkId);
   const artworkUrl = artwork?.imageUrl;
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -84,7 +89,7 @@ export function PlayerBar() {
     return isNaN(minutes) || isNaN(seconds) ? '0:00' : `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
   
-  if (!isVisible) {
+  if (!hasMounted || !isVisible) {
     return null;
   }
 
