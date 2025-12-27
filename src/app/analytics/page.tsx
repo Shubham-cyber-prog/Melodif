@@ -3,7 +3,7 @@
 import { Bar, BarChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell, LineChart, Line, AreaChart, Area, RadialBarChart, RadialBar } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { Activity, Music, Play, TrendingUp, Users, Clock, Calendar } from 'lucide-react';
+import { Activity, Music, Play, TrendingUp, Users, Clock, Calendar, Flame } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const genreData = [
@@ -90,12 +90,13 @@ export default function AnalyticsPage() {
         </Card>
          <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">New Followers</CardTitle>
-                <Users className="h-4 w-4 text-muted-foreground" />
+                <CardTitle className="text-sm font-medium">Listening Streak</CardTitle>
+                <Flame className="h-4 w-4 text-orange-500" />
             </CardHeader>
             <CardContent>
-                <div className="text-3xl font-bold">+54</div>
-                <p className="text-xs text-muted-foreground">+2 since last week</p>
+                <div className="text-3xl font-bold">15 Days</div>
+                <p className="text-xs text-muted-foreground">Longest streak: 30 days</p>
+                <p className="text-xs text-muted-foreground">250 songs in current streak</p>
             </CardContent>
         </Card>
 
