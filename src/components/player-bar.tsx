@@ -84,10 +84,9 @@ export function PlayerBar() {
     const audioElement = audioRef.current;
     if (audioElement) {
       audioElement.src = currentSong.url;
-      audioElement.load(); // Explicitly load the new source
+      audioElement.load(); 
+      setIsLoading(true);
       if (isPlaying) {
-        // The play() request was interrupted by a call to pause()
-        // This is a common browser behavior. We'll try to play again once the audio is ready.
         audioElement.play().catch(e => {
             if (e.name !== 'AbortError') {
                 console.error("Playback error:", e)
@@ -141,7 +140,8 @@ export function PlayerBar() {
 
   return (
     <div className={cn(
-        "fixed bottom-24 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm md:bottom-0",
+        "fixed left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm animate-fade-in",
+        isMobile ? "bottom-24" : "bottom-0"
       )}>
         <audio 
             ref={audioRef}
@@ -156,7 +156,7 @@ export function PlayerBar() {
         
       <div className="h-full grid grid-cols-[1fr_auto_1fr] md:grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 overflow-hidden">
           {artworkUrl && (
             <div className="relative h-12 w-12 md:h-14 md:w-14 flex-shrink-0">
               <Image
@@ -250,7 +250,7 @@ export function PlayerBar() {
            <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8"
+            className="h-10 w-10 rounded-full"
             onClick={() => setIsVisible(false)}
           >
             <X className="h-5 w-5" />
