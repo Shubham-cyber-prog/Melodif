@@ -89,6 +89,54 @@
       "description": "User avatar",
       "imageUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1c2VyJTIwYXZhdGFyfGVufDB8fHx8MTc2Njc3ODc4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "user avatar"
+    },
+    {
+      "id": "artwork-indian-1",
+      "description": "Bollywood movie poster style",
+      "imageUrl": "https://images.unsplash.com/photo-1588998811818-a14a2a1b73e3?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "bollywood movie"
+    },
+    {
+      "id": "artwork-indian-2",
+      "description": "Train on a bridge in India",
+      "imageUrl": "https://images.unsplash.com/photo-1601700600124-9556d0925565?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "india train"
+    },
+    {
+      "id": "artwork-indian-3",
+      "description": "Abstract romantic scene",
+      "imageUrl": "https://images.unsplash.com/photo-1502404679469-1981163f81f1?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "romantic scene"
+    },
+    {
+      "id": "artwork-indian-4",
+      "description": "Colorful crowd celebrating",
+      "imageUrl": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "celebration crowd"
+    },
+    {
+      "id": "artwork-indian-5",
+      "description": "Stylish couple dancing",
+      "imageUrl": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "couple dancing"
+    },
+    {
+      "id": "artwork-indian-6",
+      "description": "Indian flag colors abstract",
+      "imageUrl": "https://images.unsplash.com/photo-1596798603415-38c23c7261a8?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "india abstract"
+    },
+    {
+      "id": "artwork-indian-7",
+      "description": "Urban street art style",
+      "imageUrl": "https://images.unsplash.com/photo-1528459174312-b1e7f33d7589?q=80&w=2070&auto=format&fit=crop",
+      "imageHint": "street art"
+    },
+    {
+      "id": "artwork-indian-8",
+      "description": "Fantasy abstract light",
+      "imageUrl": "https://images.unsplash.com/photo-1531362283833-c5f35a845a70?q=80&w=1974&auto=format&fit=crop",
+      "imageHint": "fantasy light"
     }
   ]
 }

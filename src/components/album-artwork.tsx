@@ -3,11 +3,11 @@ import { Play, Music } from 'lucide-react';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import type { Playlist, RecentlyPlayed } from '@/lib/types';
+import type { Playlist, RecentlyPlayed, Album } from '@/lib/types';
 import { getArtworkById } from '@/lib/placeholder-images';
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  item: Playlist | RecentlyPlayed;
+  item: (Playlist | RecentlyPlayed | Album) & { description?: string };
   aspectRatio?: 'portrait' | 'square';
   width?: number;
   height?: number;
@@ -27,8 +27,8 @@ export function AlbumArtwork({
   
   const isPlaylist = 'songs' in item;
   const link = isPlaylist ? `/playlist/${item.id}` : '#';
-  const description = isPlaylist ? item.description : (item as RecentlyPlayed).artist;
-  const isArtist = !isPlaylist && (item as RecentlyPlayed).type === 'artist';
+  const description = item.description || ('artist' in item ? item.artist : '');
+  const isArtist = ('type' in item && item.type === 'artist') || (item.description === 'Artist');
 
   return (
     <div className={cn('space-y-3', className)} {...props}>
@@ -65,8 +65,8 @@ export function AlbumArtwork({
         </div>
       </Link>
       <div className="space-y-1 text-sm">
-        <h3 className="font-medium leading-none">{item.name}</h3>
-        <p className="text-xs text-muted-foreground">{description}</p>
+        <h3 className="font-medium leading-none truncate">{item.name}</h3>
+        <p className="text-xs text-muted-foreground truncate">{description}</p>
       </div>
     </div>
   );

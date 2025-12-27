@@ -1,4 +1,4 @@
-import type { Playlist, Song, RecentlyPlayed } from '@/lib/types';
+import type { Playlist, Song, RecentlyPlayed, Album } from '@/lib/types';
 
 export const songs: Song[] = [
   { id: 1, title: "Midnight Bloom", artist: "Aura", album: "Neon Dreams", duration: "3:45", artworkId: "artwork1", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
@@ -41,6 +41,15 @@ export const songs: Song[] = [
   { id: 38, title: "Halcyon", artist: "Calm", album: "Serenity", duration: "4:30", artworkId: "artwork8", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
   { id: 39, title: "Glitch", artist: "Static", album: "Corrupt", duration: "1:58", artworkId: "artwork10", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
   { id: 40, title: "Pathfinder", artist: "Trail", album: "Maps", duration: "3:52", artworkId: "artwork9", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  // Indian Songs
+  { id: 41, title: "Tum Hi Ho", artist: "Arijit Singh", album: "Aashiqui 2", duration: "4:22", artworkId: "artwork-indian-1", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 42, title: "Chaiyya Chaiyya", artist: "Sukhwinder Singh, Sapna Awasthi", album: "Dil Se..", duration: "6:54", artworkId: "artwork-indian-2", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 43, title: "Kal Ho Naa Ho", artist: "Sonu Nigam", album: "Kal Ho Naa Ho", duration: "5:21", artworkId: "artwork-indian-3", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 44, title: "Jai Ho", artist: "A. R. Rahman, Sukhwinder Singh", album: "Slumdog Millionaire", duration: "5:19", artworkId: "artwork-indian-4", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 45, title: "Ghungroo", artist: "Arijit Singh, Shilpa Rao", album: "War", duration: "5:02", artworkId: "artwork-indian-5", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 46, title: "Maa Tujhe Salaam", artist: "A. R. Rahman", album: "Vande Mataram", duration: "4:15", artworkId: "artwork-indian-6", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 47, title: "Apna Time Aayega", artist: "Ranveer Singh", album: "Gully Boy", duration: "2:20", artworkId: "artwork-indian-7", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 48, title: "Kesariya", artist: "Arijit Singh", album: "Brahmastra", duration: "4:28", artworkId: "artwork-indian-8", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
 ];
 
 export const playlists: Playlist[] = [
@@ -127,6 +136,20 @@ export const playlists: Playlist[] = [
     description: 'The best of indie rock and pop.',
     coverArtId: 'artwork14',
     songs: songs.filter(s => [4, 13, 17]),
+  },
+  {
+    id: 'indian-1',
+    name: 'Bollywood Hits',
+    description: 'The biggest songs from Bollywood.',
+    coverArtId: 'artwork-indian-1',
+    songs: songs.filter(s => [41, 42, 43, 44, 45, 46, 47, 48]),
+  },
+  {
+    id: 'indian-2',
+    name: 'Arijit Singh Essentials',
+    description: 'The best of Arijit Singh.',
+    coverArtId: 'artwork-indian-8',
+    songs: songs.filter(s => [41, 45, 48]),
   }
 ];
 
@@ -136,53 +159,54 @@ export const madeForYouPlaylists: Playlist[] = [
     name: 'Discover Weekly',
     description: 'Your weekly mixtape of fresh music. Enjoy new discoveries and deep cuts chosen just for you.',
     coverArtId: 'artwork1',
-    songs: songs.filter(s => [1, 4, 7, 11, 23, 28, 35])
+    songs: songs.filter(s => [1, 4, 7, 11, 23, 28, 35, 41])
   },
   {
     id: 'm-2',
     name: 'Daily Mix 1',
     description: 'A mix of your recent favorites and similar vibes.',
     coverArtId: 'artwork2',
-    songs: songs.filter(s => [2, 5, 8, 13, 18, 29, 33])
+    songs: songs.filter(s => [2, 5, 8, 13, 18, 29, 33, 42])
   },
   {
     id: 'm-3',
     name: 'Daily Mix 2',
     description: 'Upbeat and energetic tracks to power your day.',
     coverArtId: 'artwork3',
-    songs: songs.filter(s => [3, 6, 9, 12, 21, 27, 36])
+    songs: songs.filter(s => [3, 6, 9, 12, 21, 27, 36, 45])
   },
   {
     id: 'm-4',
     name: 'Release Radar',
     description: 'Catch all the latest music from artists you follow, plus new singles picked for you.',
     coverArtId: 'artwork10',
-    songs: songs.filter(s => [10, 4, 1, 15, 25, 30, 39])
+    songs: songs.filter(s => [10, 4, 1, 15, 25, 30, 39, 44, 47])
   },
     {
     id: 'm-5',
     name: 'Chill Mix',
     description: 'Kick back with a personalized mix of slow-burners and relaxing tracks.',
     coverArtId: 'artwork9',
-    songs: songs.filter(s => [8, 5, 2, 17, 29, 11, 40])
+    songs: songs.filter(s => [8, 5, 2, 17, 29, 11, 40, 43, 46])
   },
     {
     id: 'm-6',
     name: 'Workout Mix',
     description: 'Energy-boosting music to get you through your workout.',
     coverArtId: 'artwork6',
-    songs: songs.filter(s => [9, 6, 3, 22, 26, 27, 31])
+    songs: songs.filter(s => [9, 6, 3, 22, 26, 27, 31, 48])
   }
 ];
 
 export const recentlyPlayed: RecentlyPlayed[] = [
     { id: 'song-1', name: 'Midnight Bloom', artist: 'Aura', coverArtId: 'artwork1', type: 'song' },
-    { id: 'playlist-2', name: 'Road Trip Anthems', artist: 'Soundtrack for your next adventure.', coverArtId: 'artwork6', type: 'playlist' },
+    { id: 'playlist-2', name: 'Road Trip Anthems', description: 'Soundtrack for your next adventure.', coverArtId: 'artwork6', type: 'playlist' },
     { id: 'song-5', name: 'Vinyl Memories', artist: 'Retrospect', coverArtId: 'artwork4', type: 'song' },
     { id: 'album-3', name: 'Galaxies', artist: 'Celestial', coverArtId: 'artwork3', type: 'album' },
     { id: 'artist-4', name: 'Nomad', artist: 'Artist', coverArtId: 'artwork9', type: 'artist' },
-    { id: 'm-5', name: 'Chill Mix', artist: 'Kick back with a personalized mix of slow-burners and relaxing tracks.', coverArtId: 'artwork9', type: 'playlist' },
-]
+    { id: 'm-5', name: 'Chill Mix', description: 'Kick back with a personalized mix of slow-burners and relaxing tracks.', coverArtId: 'artwork9', type: 'playlist' },
+    { id: 'indian-1', name: 'Bollywood Hits', description: 'The biggest songs from Bollywood.', coverArtId: 'artwork-indian-1', type: 'playlist' },
+];
 
 
 export const getPlaylistById = (id: string) => {
@@ -193,4 +217,40 @@ export const getSongById = (id: number) => {
     return songs.find(s => s.id === id);
 }
 
-    
+export const getAlbums = (): Album[] => {
+    const albumsMap = new Map<string, Album>();
+    songs.forEach(song => {
+        if (!albumsMap.has(song.album)) {
+            albumsMap.set(song.album, {
+                id: `album-${song.album.toLowerCase().replace(/ /g, '-')}`,
+                name: song.album,
+                artist: song.artist,
+                coverArtId: song.artworkId,
+                songs: [song]
+            });
+        } else {
+            albumsMap.get(song.album)?.songs.push(song);
+        }
+    });
+    return Array.from(albumsMap.values());
+}
+
+export const getArtists = () => {
+    const artistsMap = new Map<string, {name: string, coverArtId: string}>();
+    songs.forEach(song => {
+        if (!artistsMap.has(song.artist)) {
+            // Find the first album artwork for the artist. This is a simplification.
+            const artistSong = songs.find(s => s.artist === song.artist);
+            artistsMap.set(song.artist, {
+                name: song.artist,
+                coverArtId: artistSong?.artworkId || "artwork1", // Default artwork
+            });
+        }
+    });
+    return Array.from(artistsMap.values()).map(a => ({
+        id: `artist-${a.name.toLowerCase().replace(/ /g, '-')}`,
+        name: a.name,
+        description: "Artist",
+        coverArtId: a.coverArtId,
+    }));
+}

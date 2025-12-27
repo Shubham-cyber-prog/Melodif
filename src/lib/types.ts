@@ -16,9 +16,18 @@ export interface Playlist {
   songs: Song[];
 }
 
+export interface Album {
+  id: string;
+  name: string;
+  artist: string;
+  coverArtId: string;
+  songs: Song[];
+}
+
 export interface RecentlyPlayed {
     id: string;
     name: string;
+    description: string;
     artist: string;
     coverArtId: string;
     type: 'song' | 'playlist' | 'album' | 'artist';
