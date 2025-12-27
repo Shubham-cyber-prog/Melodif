@@ -4,33 +4,61 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { playlists } from '@/lib/data';
 import { AlbumArtwork } from '@/components/album-artwork';
-import { BarChart, ListMusic, User } from 'lucide-react';
+import { BarChart, ListMusic, Users, Pen } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ProfilePage() {
   return (
-    <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col items-center gap-6 md:flex-row">
-        <Avatar className="h-32 w-32 border-4 border-primary">
-          <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
-          <AvatarFallback>M</AvatarFallback>
-        </Avatar>
-        <div className="space-y-1 text-center md:text-left">
-          <p className="text-sm font-medium text-muted-foreground">Profile</p>
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">Melodif User</h1>
-          <p className="text-lg text-muted-foreground">user@melodif.com</p>
-        </div>
-      </div>
+    <div className="space-y-12 animate-fade-in">
+      <Card className="overflow-hidden">
+        <div className="bg-muted h-32 md:h-40" />
+        <CardContent className="p-6">
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20">
+            <div className="relative">
+              <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
+                <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
+                <AvatarFallback>M</AvatarFallback>
+              </Avatar>
+              <Button size="icon" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full">
+                <Pen className="h-4 w-4" />
+                <span className="sr-only">Edit Profile</span>
+              </Button>
+            </div>
+            <div className="flex-1 space-y-1 text-center md:text-left">
+              <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Melodif User</h1>
+              <p className="text-muted-foreground">user@melodif.com</p>
+            </div>
+             <div className="flex gap-2">
+                <Button variant="outline" asChild>
+                    <Link href="/settings">Account Settings</Link>
+                </Button>
+                <Button asChild>
+                    <Link href="/analytics">View Analytics</Link>
+                </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Followers</CardTitle>
-                <User className="h-4 w-4 text-muted-foreground" />
+                <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
                 <div className="text-2xl font-bold">1,250</div>
                 <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+            </CardContent>
+        </Card>
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">Following</CardTitle>
+                <Users className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">150</div>
+                <p className="text-xs text-muted-foreground">+10 from last month</p>
             </CardContent>
         </Card>
         <Card>
@@ -45,7 +73,7 @@ export default function ProfilePage() {
         </Card>
         <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Listening Hours</CardTitle>
+                <CardTitle className="text-sm font-medium">Monthly Hours</CardTitle>
                 <BarChart className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -55,14 +83,14 @@ export default function ProfilePage() {
         </Card>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold tracking-tight">Public Playlists</h2>
             <Button variant="link" asChild>
                 <Link href="/library">View All</Link>
             </Button>
         </div>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {playlists.slice(0, 6).map((playlist) => (
             <AlbumArtwork
               key={playlist.id}
@@ -76,24 +104,50 @@ export default function ProfilePage() {
         </div>
       </div>
       
-       <div className="space-y-4">
+       <div className="space-y-6">
         <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold tracking-tight">Listening Stats</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">Recent Activity</h2>
             <Button variant="link" asChild>
                 <Link href="/analytics">View Full Report</Link>
             </Button>
         </div>
         <Card>
             <CardHeader>
-                <CardTitle>Top Genres</CardTitle>
-                <CardDescription>Your most played genres this month.</CardDescription>
+                <CardTitle>Top Artists</CardTitle>
+                <CardDescription>Your most played artists this month.</CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="flex flex-wrap gap-2">
-                    <div className="rounded-full bg-primary px-3 py-1 text-sm font-medium text-primary-foreground">Pop</div>
-                    <div className="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">Lofi</div>
-                    <div className="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">Chillwave</div>
-                    <div className="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">Indie Rock</div>
+                <div className="space-y-4">
+                    <div className="flex items-center">
+                        <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/aura/100" /><AvatarFallback>AU</AvatarFallback></Avatar>
+                        <div className="flex-1">
+                            <p className="font-semibold">Aura</p>
+                            <p className="text-sm text-muted-foreground">120 plays</p>
+                        </div>
+                        <div className="w-1/3 h-2 bg-muted rounded-full">
+                            <div className="h-2 bg-primary rounded-full" style={{width: '90%'}}></div>
+                        </div>
+                    </div>
+                     <div className="flex items-center">
+                        <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/celestial/100" /><AvatarFallback>CE</AvatarFallback></Avatar>
+                        <div className="flex-1">
+                            <p className="font-semibold">Celestial</p>
+                            <p className="text-sm text-muted-foreground">98 plays</p>
+                        </div>
+                        <div className="w-1/3 h-2 bg-muted rounded-full">
+                            <div className="h-2 bg-primary rounded-full" style={{width: '75%'}}></div>
+                        </div>
+                    </div>
+                     <div className="flex items-center">
+                        <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/nomad/100" /><AvatarFallback>NO</AvatarFallback></Avatar>
+                        <div className="flex-1">
+                            <p className="font-semibold">Nomad</p>
+                            <p className="text-sm text-muted-foreground">86 plays</p>
+                        </div>
+                        <div className="w-1/3 h-2 bg-muted rounded-full">
+                            <div className="h-2 bg-primary rounded-full" style={{width: '60%'}}></div>
+                        </div>
+                    </div>
                 </div>
             </CardContent>
         </Card>
