@@ -139,17 +139,6 @@ export function PlayerBar() {
               <Repeat className="h-4 w-4" />
             </Button>
           </div>
-          <div className="flex w-full max-w-sm items-center gap-2 text-xs">
-            <span>{formatTime(currentTime)}</span>
-            <Slider
-              value={[progress]}
-              onValueChange={handleProgressChange}
-              max={100}
-              step={1}
-              className="w-full"
-            />
-            <span>{formatTime(duration)}</span>
-          </div>
         </div>
 
         {/* Volume Control */}
