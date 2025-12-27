@@ -32,8 +32,8 @@ export function AlbumArtwork({
 
   return (
     <div className={cn('space-y-3', className)} {...props}>
-      <Link href={link} className="block">
-        <div className="group relative overflow-hidden rounded-lg">
+      <Link href={link} className="block group" style={{ perspective: '1000px' }}>
+        <div className="relative overflow-hidden rounded-lg transition-all duration-300 transform-style-3d group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:rotate-y-4">
           {artworkUrl ? (
             <Image
               src={artworkUrl}
@@ -42,7 +42,7 @@ export function AlbumArtwork({
               height={height}
               data-ai-hint={imageHint}
               className={cn(
-                'h-auto w-full object-cover transition-all group-hover:scale-105',
+                'h-auto w-full object-cover transition-all',
                 aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
                 isArtist ? 'rounded-full' : 'rounded-lg'
               )}
