@@ -3,11 +3,11 @@ import { Play, Music } from 'lucide-react';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import type { Playlist, RecentlyPlayed, Album } from '@/lib/types';
+import type { Playlist, RecentlyPlayed, Album, Artist } from '@/lib/types';
 import { getArtworkById } from '@/lib/placeholder-images';
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  item: (Playlist | RecentlyPlayed | Album) & { description?: string };
+  item: (Playlist | RecentlyPlayed | Album | Artist) & { description?: string };
   aspectRatio?: 'portrait' | 'square';
   width?: number;
   height?: number;
@@ -31,14 +31,16 @@ export function AlbumArtwork({
   if (item.type === 'playlist' || ('songs' in item && item.type !== 'album')) {
     link = `/playlist/${item.id}`;
   } else if (item.type === 'song') {
-    link = `/song/${item.id}`;
+    link = `/song/${'id' in item ? item.id : ''}`;
   } else if (item.type === 'album') {
     link = `/playlist/${item.id}`; // Assuming albums link to a playlist-like view
+  } else if (item.type === 'artist') {
+      link = `/profile`; // Mock link, should go to artist page
   }
 
 
   const description = item.description || ('artist' in item ? item.artist : '');
-  const isArtist = ('type' in item && item.type === 'artist') || (item.description === 'Artist');
+  const isArtist = item.type === 'artist';
 
   const ArtworkContent = () => (
     <div className="relative overflow-hidden transition-all duration-300 transform-style-3d group-hover/artwork-cover:-translate-y-2 group-hover/artwork-cover:shadow-2xl group-hover/artwork-cover:rotate-y-4">
@@ -73,21 +75,29 @@ export function AlbumArtwork({
     </div>
   );
 
-  return (
-    <div className={cn('space-y-3 group/artwork', className)} {...props}>
-      {isLink ? (
-        <Link href={link} className="block group/artwork-cover" style={{ perspective: '1000px' }}>
+  const MainContent = () => (
+    <>
+      <div className="group/artwork-cover" style={{ perspective: '1000px' }}>
           <ArtworkContent />
-        </Link>
-      ) : (
-        <div className="group/artwork-cover" style={{ perspective: '1000px' }}>
-          <ArtworkContent />
-        </div>
-      )}
+      </div>
       <div className="space-y-1 text-sm">
         <h3 className="font-medium leading-none truncate">{item.name}</h3>
         <p className="text-xs text-muted-foreground truncate">{description}</p>
       </div>
+    </>
+  )
+
+  return (
+    <div className={cn('space-y-3 group/artwork', className)} {...props}>
+      {isLink ? (
+        <Link href={link} className="block space-y-3">
+          <MainContent/>
+        </Link>
+      ) : (
+        <div className="space-y-3">
+            <MainContent/>
+        </div>
+      )}
     </div>
   );
 }

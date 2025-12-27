@@ -14,6 +14,7 @@ export interface Playlist {
   description: string;
   coverArtId: string;
   songs: Song[];
+  type?: 'playlist';
 }
 
 export interface Album {
@@ -22,13 +23,22 @@ export interface Album {
   artist: string;
   coverArtId: string;
   songs: Song[];
+  type: 'album';
+}
+
+export interface Artist {
+    id: string;
+    name: string;
+    description: string;
+    coverArtId: string;
+    type: 'artist';
 }
 
 export interface RecentlyPlayed {
     id: string;
     name: string;
-    description: string;
-    artist: string;
+    description?: string;
+    artist?: string;
     coverArtId: string;
     type: 'song' | 'playlist' | 'album' | 'artist';
 }

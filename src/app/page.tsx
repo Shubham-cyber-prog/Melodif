@@ -79,23 +79,25 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent className="-ml-4">
-                        {recentlyPlayed.map((item, index) => (
-                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
-                                <AlbumArtwork
-                                    item={item}
-                                    className="w-full"
-                                    aspectRatio="square"
-                                    width={250}
-                                    height={250}
-                                />
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
-                </Carousel>
+                <div className="mx-[-1rem] px-4">
+                    <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
+                        <CarouselContent>
+                            {recentlyPlayed.map((item, index) => (
+                                <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                                    <AlbumArtwork
+                                        item={item}
+                                        className="w-full"
+                                        aspectRatio="square"
+                                        width={250}
+                                        height={250}
+                                    />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="left-8" />
+                        <CarouselNext className="right-8" />
+                    </Carousel>
+                </div>
             </div>
         </section>
 
@@ -112,8 +114,8 @@ export default function Home() {
             </div>
              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {madeForYouPlaylists.slice(0, 6).map((playlist) => (
-                    <Link href={`/playlist/${playlist.id}`} key={playlist.id} className="group">
-                        <Card className="flex items-center gap-4 overflow-hidden transition-colors hover:bg-accent">
+                     <Card key={playlist.id} className="flex items-center gap-4 overflow-hidden transition-colors hover:bg-accent group">
+                        <Link href={`/playlist/${playlist.id}`} className="flex items-center gap-4 w-full">
                             <AlbumArtwork
                                 item={playlist}
                                 className="w-20 flex-shrink-0"
@@ -122,9 +124,9 @@ export default function Home() {
                                 height={80}
                                 isLink={false}
                             />
-                            <p className="flex-1 font-semibold truncate pr-4">{playlist.name}</p>
-                        </Card>
-                    </Link>
+                            <p className="flex-1 font-semibold truncate pr-4 group-hover:text-primary">{playlist.name}</p>
+                        </Link>
+                    </Card>
                 ))}
             </div>
       </section>
@@ -138,23 +140,25 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent className="-ml-4">
-                        {playlists.map((playlist) => (
-                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
-                                <AlbumArtwork
-                                    item={playlist}
-                                    className="w-full"
-                                    aspectRatio="square"
-                                    width={250}
-                                    height={250}
-                                />
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
-                </Carousel>
+                <div className="mx-[-1rem] px-4">
+                    <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
+                        <CarouselContent>
+                            {playlists.map((playlist) => (
+                                <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                                    <AlbumArtwork
+                                        item={playlist}
+                                        className="w-full"
+                                        aspectRatio="square"
+                                        width={250}
+                                        height={250}
+                                    />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="left-8" />
+                        <CarouselNext className="right-8" />
+                    </Carousel>
+                </div>
             </div>
         </section>
 
