@@ -40,8 +40,8 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
               item={mainItem}
               className="w-full h-full"
               aspectRatio="square"
-              width={400}
-              height={400}
+              width={250}
+              height={250}
             />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-4">
@@ -51,8 +51,8 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
                 item={playlist}
                 className="w-full"
                 aspectRatio="square"
-                width={200}
-                height={200}
+                width={150}
+                height={150}
               />
             ))}
           </div>
@@ -91,8 +91,8 @@ export default function Home() {
                                     item={item}
                                     className="w-full"
                                     aspectRatio="square"
-                                    width={250}
-                                    height={250}
+                                    width={150}
+                                    height={150}
                                 />
                             </CarouselItem>
                         ))}
@@ -150,8 +150,8 @@ export default function Home() {
                                     item={playlist}
                                     className="w-full"
                                     aspectRatio="square"
-                                    width={250}
-                                    height={250}
+                                    width={150}
+                                    height={150}
                                 />
                             </CarouselItem>
                         ))}
