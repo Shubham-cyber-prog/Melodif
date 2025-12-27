@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export function AppFooter() {
   return (
-    <footer className="border-t bg-background/95 p-8 md:p-12 backdrop-blur-sm">
+    <footer className="border-t bg-background/95 p-8 md:p-12 backdrop-blur-sm mt-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">

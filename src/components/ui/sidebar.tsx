@@ -24,7 +24,7 @@ const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = "16rem"
 const SIDEBAR_WIDTH_MOBILE = "18rem"
-const SIDEBAR_WIDTH_ICON = "3rem"
+const SIDEBAR_WIDTH_ICON = "4rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
 type SidebarContext = {
@@ -217,7 +217,7 @@ const Sidebar = React.forwardRef<
       <aside
         ref={ref}
         className={cn(
-          'hidden md:flex flex-col shrink-0 bg-sidebar text-sidebar-foreground transition-[width] duration-200 ease-linear',
+          'hidden h-screen md:flex flex-col shrink-0 bg-sidebar text-sidebar-foreground transition-[width] duration-200 ease-linear sticky top-0',
           state === 'expanded' && 'w-[--sidebar-width]',
           state === 'collapsed' && 'w-[--sidebar-width-icon]',
           side === 'right' && 'border-l',
@@ -225,6 +225,7 @@ const Sidebar = React.forwardRef<
           className
         )}
         data-state={state}
+        data-collapsible={collapsible}
         {...props}
       >
         <div data-sidebar="sidebar" className="flex h-full w-full flex-col">
@@ -335,7 +336,7 @@ const SidebarHeader = React.forwardRef<
     <div
       ref={ref}
       data-sidebar="header"
-      className={cn("flex flex-col gap-2 p-2", className)}
+      className={cn("flex flex-col gap-2 p-4", className)}
       {...props}
     />
   )
@@ -556,7 +557,7 @@ const SidebarMenuButton = React.forwardRef<
         data-active={isActive}
         className={cn(
             sidebarMenuButtonVariants({ variant, size }), 
-            state === 'collapsed' && 'md:w-8 md:h-8 md:p-2',
+            state === 'collapsed' && 'md:w-10 md:h-10 md:p-2 md:justify-center',
             className
         )}
         {...props}
