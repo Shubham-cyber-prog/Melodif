@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table"
 import { Clock, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export default function PlaylistPage({ params }: { params: { id: string } }) {
   const playlist = getPlaylistById(params.id);
@@ -69,7 +70,7 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                     <TableRow key={song.id} className="group">
                         <TableCell className="font-medium text-muted-foreground">{index + 1}</TableCell>
                         <TableCell>
-                            <div className="flex items-center gap-4">
+                            <Link href={`/song/${song.id}`} className="flex items-center gap-4">
                                 {songArtwork && 
                                     <Image 
                                         src={songArtwork.imageUrl} 
@@ -81,10 +82,10 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                                     />
                                 }
                                 <div>
-                                    <p className="font-medium">{song.title}</p>
+                                    <p className="font-medium group-hover:text-primary">{song.title}</p>
                                     <p className="text-sm text-muted-foreground">{song.artist}</p>
                                 </div>
-                            </div>
+                            </Link>
                         </TableCell>
                         <TableCell className="text-muted-foreground">{song.album}</TableCell>
                         <TableCell className="text-right text-muted-foreground">{song.duration}</TableCell>

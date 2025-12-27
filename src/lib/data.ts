@@ -188,3 +188,7 @@ export const recentlyPlayed: RecentlyPlayed[] = [
 export const getPlaylistById = (id: string) => {
     return [...playlists, ...madeForYouPlaylists].find(p => p.id === id);
 }
+
+export const getSongById = (id: number) => {
+    return songs.find(s => s.id === id);
+}
