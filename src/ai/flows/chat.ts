@@ -13,13 +13,13 @@ import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
 const ChatInputSchema = z.object({
-  message: z.string().describe('The user\'s message.'),
+  message: z.string().describe("The user's message."),
   history: z.string().describe('The conversation history.'),
 });
 export type ChatInput = z.infer<typeof ChatInputSchema>;
 
 const ChatOutputSchema = z.object({
-  response: z.string().describe('The AI\'s response.'),
+  response: z.string().describe("The AI's response."),
 });
 export type ChatOutput = z.infer<typeof ChatOutputSchema>;
 
@@ -36,7 +36,9 @@ const prompt = ai.definePrompt({
   Keep your responses concise and conversational.
 
   Conversation History:
+  {{#if history}}
   {{{history}}}
+  {{/if}}
   
   User Message:
   {{{message}}}
