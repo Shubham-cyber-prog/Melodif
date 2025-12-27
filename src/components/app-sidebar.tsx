@@ -57,24 +57,6 @@ export function AppSidebar() {
 
   return (
     <Sidebar variant="sidebar" collapsible="icon">
-      <SidebarHeader className="border-b">
-        <div className="flex items-center gap-2 p-2">
-          <svg
-            className="h-8 w-8 text-primary"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4 4.00098H8V16.001L12 12.001L16 16.001V4.00098H20V20.001H16V8.00098L12 12.001L8 8.00098V20.001H4V4.00098Z"
-              fill="currentColor"
-            />
-          </svg>
-          <span className="text-xl font-semibold text-primary group-data-[collapsible=icon]:hidden">
-            Melodif
-          </span>
-        </div>
-      </SidebarHeader>
       <SidebarContent className="flex flex-col p-2">
         <SidebarMenu className="flex-1">
           {navLinks.map((link) => (

@@ -35,19 +35,15 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <ProfileProvider>
           <SidebarProvider>
-            <div className="flex min-h-screen w-full">
+            <div className="relative flex min-h-screen w-full">
               <AppSidebar />
-              <SidebarInset>
-                <div className="flex w-full flex-col">
-                    <div className="flex h-full flex-col pb-24 md:bg-transparent bg-background">
-                      <AppHeader />
-                      <main className="flex-1 overflow-y-auto p-4 pt-6 md:p-8 transition-all duration-300">
-                        {children}
-                      </main>
-                      <AppFooter />
-                    </div>
-                </div>
-              </SidebarInset>
+              <div className="flex h-full w-full flex-col">
+                <AppHeader />
+                <main className="flex-1 overflow-y-auto p-4 pt-6 md:p-8">
+                  {children}
+                </main>
+                <AppFooter />
+              </div>
             </div>
             <ClientOnly>
               <PlayerBar />

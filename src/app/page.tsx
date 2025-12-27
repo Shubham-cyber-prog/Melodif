@@ -47,7 +47,7 @@ export default function Home() {
             </p>
         </header>
       
-        <div className="relative">
+        <div className="relative overflow-hidden">
             <Carousel
                 plugins={[plugin.current]}
                 opts={{ align: 'start', loop: true }}
@@ -63,7 +63,7 @@ export default function Home() {
                             className="w-full"
                             aspectRatio="portrait"
                             width={1200}
-                            height={180}
+                            height={300}
                         />
                     </CarouselItem>
                     ))}
@@ -80,11 +80,11 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden">
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent>
+                    <CarouselContent className="-ml-4">
                         {recentlyPlayed.map((item, index) => (
-                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
                                 <AlbumArtwork
                                     item={item}
                                     className="w-full"
@@ -139,11 +139,11 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden">
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent>
+                    <CarouselContent className="-ml-4">
                         {playlists.map((playlist) => (
-                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
                                 <AlbumArtwork
                                     item={playlist}
                                     className="w-full"

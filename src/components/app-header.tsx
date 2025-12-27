@@ -26,34 +26,47 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useProfile } from '@/contexts/ProfileContext';
-import { SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarTrigger, useSidebar } from '@/components/ui/sidebar';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { cn } from '@/lib/utils';
 
 export function AppHeader() {
   const router = useRouter();
   const isMobile = useIsMobile();
+  const { state: sidebarState } = useSidebar();
 
   const handleSearchFocus = () => {
     router.push('/search');
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 w-full items-center gap-4 border-b border-border/10 bg-background/80 px-4 backdrop-blur-sm md:px-6">
+    <header className="sticky top-0 z-10 flex h-16 w-full shrink-0 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-2">
         {isMobile && <SidebarTrigger />}
-        <svg
-          className="h-8 w-8 text-primary"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 4.00098H8V16.001L12 12.001L16 16.001V4.00098H20V20.001H16V8.00098L12 12.001L8 8.00098V20.001H4V4.00098Z"
-            fill="currentColor"
-          />
-        </svg>
+        <Link href="/" className="flex items-center gap-2">
+            <svg
+                className="h-8 w-8 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                d="M4 4.00098H8V16.001L12 12.001L16 16.001V4.00098H20V20.001H16V8.00098L12 12.001L8 8.00098V20.001H4V4.00098Z"
+                fill="currentColor"
+                />
+            </svg>
+            <span className="hidden text-xl font-semibold text-primary md:block">
+                Melodif
+            </span>
+        </Link>
       </div>
-      <div className="flex flex-1 items-center justify-center">
+      
+      <div
+        className={cn(
+          'flex flex-1 justify-center transition-all duration-200 ease-linear',
+          sidebarState === 'expanded' ? 'md:ml-[calc(var(--sidebar-width-icon)_-_var(--sidebar-width))]' : 'md:ml-0'
+        )}
+      >
         <div className="w-full max-w-lg relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
