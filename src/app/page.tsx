@@ -79,25 +79,23 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                <div className="mx-[-1rem] px-4">
-                    <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                        <CarouselContent>
-                            {recentlyPlayed.map((item, index) => (
-                                <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                                    <AlbumArtwork
-                                        item={item}
-                                        className="w-full"
-                                        aspectRatio="square"
-                                        width={250}
-                                        height={250}
-                                    />
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="left-8" />
-                        <CarouselNext className="right-8" />
-                    </Carousel>
-                </div>
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
+                    <CarouselContent>
+                        {recentlyPlayed.map((item, index) => (
+                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                                <AlbumArtwork
+                                    item={item}
+                                    className="w-full"
+                                    aspectRatio="square"
+                                    width={250}
+                                    height={250}
+                                />
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
             </div>
         </section>
 
@@ -140,25 +138,23 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                <div className="mx-[-1rem] px-4">
-                    <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                        <CarouselContent>
-                            {playlists.map((playlist) => (
-                                <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                                    <AlbumArtwork
-                                        item={playlist}
-                                        className="w-full"
-                                        aspectRatio="square"
-                                        width={250}
-                                        height={250}
-                                    />
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="left-8" />
-                        <CarouselNext className="right-8" />
-                    </Carousel>
-                </div>
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
+                    <CarouselContent>
+                        {playlists.map((playlist) => (
+                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                                <AlbumArtwork
+                                    item={playlist}
+                                    className="w-full"
+                                    aspectRatio="square"
+                                    width={250}
+                                    height={250}
+                                />
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
             </div>
         </section>
 
