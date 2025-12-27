@@ -42,15 +42,15 @@ export function AlbumArtwork({
               height={height}
               data-ai-hint={imageHint}
               className={cn(
-                'h-auto w-auto object-cover transition-all group-hover:scale-105',
-                aspectRatio === 'portrait' ? 'aspect-[3/4]' : 'aspect-square',
+                'h-auto w-full object-cover transition-all group-hover:scale-105',
+                aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
                 isArtist ? 'rounded-full' : 'rounded-lg'
               )}
             />
           ) : (
             <div className={cn(
                 'flex items-center justify-center bg-muted',
-                aspectRatio === 'portrait' ? 'aspect-[3/4]' : 'aspect-square',
+                aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
                 isArtist ? 'rounded-full' : 'rounded-lg'
               )}>
                 <Music className="h-10 w-10 text-muted-foreground" />
