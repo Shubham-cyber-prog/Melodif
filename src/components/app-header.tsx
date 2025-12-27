@@ -22,7 +22,6 @@ import {
   Bell,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useSidebar } from './ui/sidebar';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -51,7 +50,6 @@ const useTheme = () => {
 
 
 export function AppHeader() {
-  const { toggleSidebar } = useSidebar();
   const router = useRouter();
 
   const handleSearchFocus = () => {
