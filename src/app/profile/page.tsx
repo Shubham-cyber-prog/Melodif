@@ -23,6 +23,7 @@ export default function ProfilePage() {
                 className="object-cover"
                 data-ai-hint="nature forest"
             />
+            <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
         <CardContent className="p-6">
