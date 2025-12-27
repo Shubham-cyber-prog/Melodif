@@ -88,6 +88,17 @@ export function PlayerBar() {
             onPlaying={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
         />
+        <div className="absolute top-0 left-0 right-0 h-1">
+            <Slider 
+                value={[progress]}
+                onValueChange={handleProgressChange}
+                max={100}
+                step={0.1}
+                className="w-full h-1"
+                thumbClassName="h-3 w-3"
+                disabled={isLoading}
+            />
+        </div>
       <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
         <div className="flex items-center gap-3">
@@ -139,6 +150,18 @@ export function PlayerBar() {
               <Repeat className="h-4 w-4" />
             </Button>
           </div>
+           <div className="flex w-full max-w-xs items-center gap-2 text-xs">
+                <span className="min-w-[40px] text-right text-muted-foreground">{formatTime(currentTime)}</span>
+                 <Slider
+                    value={[progress]}
+                    onValueChange={handleProgressChange}
+                    max={100}
+                    step={0.1}
+                    className="w-full"
+                    disabled={isLoading}
+                />
+                <span className="min-w-[40px] text-muted-foreground">{formatTime(duration)}</span>
+            </div>
         </div>
 
         {/* Volume Control */}
