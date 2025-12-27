@@ -42,7 +42,7 @@ export default function Home() {
                         item={playlist}
                         className="w-full"
                         aspectRatio="portrait"
-                        width={400}
+                        width={300}
                         height={400}
                     />
                 </CarouselItem>
