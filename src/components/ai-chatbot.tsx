@@ -65,19 +65,19 @@ export function AIChatbot() {
 
   return (
     <>
-      <div className="fixed bottom-28 right-8 z-50 md:bottom-8">
+      <div className="fixed bottom-32 right-8 z-50 md:bottom-12">
         <Button
           size="icon"
-          className="h-14 w-14 rounded-full shadow-lg"
+          className="h-12 w-12 rounded-full shadow-lg dark:bg-white/20 dark:hover:bg-white/30 dark:text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X className="h-7 w-7" /> : <MessageSquare className="h-7 w-7" />}
+          {isOpen ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
         </Button>
       </div>
 
       {isOpen && (
         <Card className={cn(
-            "fixed bottom-44 right-8 z-50 flex flex-col shadow-2xl animate-fade-in md:bottom-28",
+            "fixed bottom-48 right-8 z-50 flex flex-col shadow-2xl animate-fade-in md:bottom-28",
             isMobile ? "w-[calc(100vw-4rem)] h-[70vh]" : "w-80 h-[28rem]"
         )}>
           <CardHeader className="flex flex-row items-center justify-between">
