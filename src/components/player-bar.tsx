@@ -62,7 +62,7 @@ export function PlayerBar() {
   };
 
   const handleProgressChange = (value: number[]) => {
-    if (audioRef.current) {
+    if (audioRef.current && duration > 0) {
         const newTime = (value[0] / 100) * duration;
         audioRef.current.currentTime = newTime;
         setProgress(value[0]);
@@ -87,6 +87,7 @@ export function PlayerBar() {
             onWaiting={() => setIsLoading(true)}
             onPlaying={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
+            preload="metadata"
         />
         
       <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
@@ -148,7 +149,8 @@ export function PlayerBar() {
                     max={100}
                     step={0.1}
                     className="w-full"
-                    disabled={isLoading}
+                    disabled={isLoading || duration === 0}
+                    thumbClassName={isPlaying ? 'opacity-100' : ''}
                 />
                 <span className="min-w-[40px] text-muted-foreground">{formatTime(duration)}</span>
             </div>
@@ -177,6 +179,7 @@ export function PlayerBar() {
             max={100}
             step={1}
             className="w-24"
+            thumbClassName="opacity-100"
           />
         </div>
       </div>
