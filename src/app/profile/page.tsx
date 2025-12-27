@@ -12,11 +12,11 @@ export default function ProfilePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       <Card className="overflow-hidden">
-        <div className="relative h-40 md:h-56">
+        <div className="relative h-48 md:h-64">
             <Image 
                 src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop"
                 alt="Profile banner"
-                layout="fill"
+                fill
                 objectFit="cover"
                 className="object-cover"
                 data-ai-hint="nature forest"
@@ -35,7 +35,7 @@ export default function ProfilePage() {
                 <span className="sr-only">Edit Profile</span>
               </Button>
             </div>
-            <div className="flex-1 space-y-1 text-center md:text-left">
+            <div className="flex-1 space-y-1 text-center md:text-left mt-4 md:mt-0 md:ml-4">
               <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Melodif User</h1>
               <p className="text-muted-foreground">user@melodif.com</p>
             </div>
