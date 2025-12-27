@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "artwork1",
+      "description": "Abstract colorful shapes",
+      "imageUrl": "https://images.unsplash.com/photo-1723283126735-f24688fcfcc2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMGNvbG9yZnVsfGVufDB8fHx8MTc2NjgwOTI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract colorful"
+    },
+    {
+      "id": "artwork2",
+      "description": "Serene mountain landscape",
+      "imageUrl": "https://images.unsplash.com/photo-1610552050890-fe99536c2615?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb3VudGFpbiUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjY3NjI5NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain landscape"
+    },
+    {
+      "id": "artwork3",
+      "description": "City skyline at night",
+      "imageUrl": "https://images.unsplash.com/photo-1531819177115-428566ccfb50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjaXR5JTIwbmlnaHR8ZW58MHx8fHwxNzY2Nzg3MjMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city night"
+    },
+    {
+      "id": "artwork4",
+      "description": "Close-up of a vintage record player",
+      "imageUrl": "https://images.unsplash.com/photo-1594328082755-9365d580df8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx2aW50YWdlJTIwcmVjb3JkfGVufDB8fHx8MTc2Njc2NDc2OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vintage record"
+    },
+    {
+      "id": "artwork5",
+      "description": "A person listening to music with headphones",
+      "imageUrl": "https://images.unsplash.com/photo-1747494750675-d1aecb8672b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoZWFkcGhvbmVzJTIwbXVzaWN8ZW58MHx8fHwxNzY2NzM5MzQ5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "headphones music"
+    },
+    {
+      "id": "artwork6",
+      "description": "A vibrant concert crowd",
+      "imageUrl": "https://images.unsplash.com/photo-1573152958734-1922c188fba3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjb25jZXJ0JTIwY3Jvd2R8ZW58MHx8fHwxNzY2NzE2NTEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert crowd"
+    },
+    {
+      "id": "artwork7",
+      "description": "Minimalist geometric pattern",
+      "imageUrl": "https://images.unsplash.com/photo-1640610716374-565003b0dfde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtaW5pbWFsaXN0JTIwcGF0dGVybnxlbnwwfHx8fDE3NjY4MDkwNzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist pattern"
+    },
+    {
+      "id": "artwork8",
+      "description": "Ocean waves crashing on a shore",
+      "imageUrl": "https://images.unsplash.com/photo-1611794501034-13369f948303?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b2NlYW4lMjB3YXZlc3xlbnwwfHx8fDE3NjY3MDMyMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ocean waves"
+    },
+    {
+      "id": "artwork9",
+      "description": "A quiet forest path",
+      "imageUrl": "https://images.unsplash.com/photo-1579551049826-7c13b6bc241c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmb3Jlc3QlMjBwYXRofGVufDB8fHx8MTc2Njc1MzQ2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "forest path"
+    },
+    {
+      "id": "artwork10",
+      "description": "Neon lights in a city",
+      "imageUrl": "https://images.unsplash.com/photo-1506994011460-5482746d30a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxuZW9uJTIwbGlnaHRzfGVufDB8fHx8MTc2NjgwOTI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "neon lights"
+    }
+  ]
 }
