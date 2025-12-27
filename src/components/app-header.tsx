@@ -71,16 +71,7 @@ export function AppHeader() {
         </Button>
       </div>
 
-      <div className="relative flex-1 max-w-md">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-        <Input
-          placeholder="What do you want to play?"
-          className="h-9 w-full rounded-full bg-secondary pl-10"
-          onFocus={handleSearchFocus}
-        />
-      </div>
-
-      <div className="flex items-center gap-2">
+      <div className="flex flex-1 items-center justify-end gap-2">
         <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110">
             <Bell className="h-5 w-5" />
         </Button>
