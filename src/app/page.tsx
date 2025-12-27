@@ -47,29 +47,31 @@ export default function Home() {
             </p>
         </header>
       
-        <Carousel
-            plugins={[plugin.current]}
-            opts={{ align: 'start', loop: true }}
-            className="w-full"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
-        >
-            <CarouselContent>
-                {featuredPlaylists.map((playlist) => (
-                <CarouselItem key={playlist.id}>
-                    <AlbumArtwork
-                        item={playlist}
-                        className="w-full"
-                        aspectRatio="portrait"
-                        width={1200}
-                        height={250}
-                    />
-                </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-4" />
-            <CarouselNext className="right-4" />
-        </Carousel>
+        <div className="relative">
+            <Carousel
+                plugins={[plugin.current]}
+                opts={{ align: 'start', loop: true }}
+                className="w-full"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
+            >
+                <CarouselContent>
+                    {featuredPlaylists.map((playlist) => (
+                    <CarouselItem key={playlist.id}>
+                        <AlbumArtwork
+                            item={playlist}
+                            className="w-full"
+                            aspectRatio="portrait"
+                            width={1200}
+                            height={180}
+                        />
+                    </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+            </Carousel>
+        </div>
       
        <section className="space-y-4">
             <div className="flex items-center justify-between">
@@ -93,8 +95,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
+                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
                 </Carousel>
             </div>
         </section>
@@ -152,8 +154,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
+                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
                 </Carousel>
             </div>
         </section>
