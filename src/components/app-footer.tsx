@@ -29,10 +29,14 @@ export function AppFooter() {
           <div className="space-y-4">
             <h4 className="font-semibold text-foreground">Connect</h4>
             <div className="flex items-center gap-4">
-                <Link href="https://github.com/Shubham-cyber-prog" passHref legacyBehavior>
-                    <a target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="rounded-full bg-secondary p-2 hover:bg-primary hover:text-primary-foreground">
+                <Link 
+                    href="https://github.com/Shubham-cyber-prog" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label="GitHub" 
+                    className="rounded-full bg-secondary p-2 hover:bg-primary hover:text-primary-foreground"
+                >
                     <Github className="h-5 w-5" />
-                    </a>
                 </Link>
                  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="rounded-full bg-secondary p-2 hover:bg-primary hover:text-primary-foreground">
                     <Twitter className="h-5 w-5" />
