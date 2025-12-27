@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useProfile } from '@/contexts/ProfileContext';
 import { getArtworkById } from '@/lib/placeholder-images';
+import { useToast } from '@/hooks/use-toast';
 
 // Mock data for followers/following
 const followers = [
@@ -28,11 +29,53 @@ const following = [
 export default function ProfilePage() {
   const { firstName, lastName, avatar, banner, bio } = useProfile();
   const topTracks = songs.slice(0, 5);
+  const { toast } = useToast();
+
+  const handleShare = async () => {
+    const shareData = {
+      title: `${firstName} ${lastName}'s Profile on Melodif`,
+      text: `Check out ${firstName}'s profile on Melodif and listen to their top tracks!`,
+      url: window.location.href,
+    };
+
+    if (navigator.share && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        toast({
+          title: 'Profile Shared!',
+          description: 'Your profile has been shared successfully.',
+        });
+      } catch (error) {
+        console.error('Error sharing profile:', error);
+        toast({
+          title: 'Sharing Failed',
+          description: 'Could not share the profile at this time.',
+          variant: 'destructive',
+        });
+      }
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        toast({
+          title: 'Link Copied!',
+          description: 'Profile link copied to your clipboard.',
+        });
+      } catch (err) {
+        console.error('Failed to copy URL:', err);
+        toast({
+          title: 'Copying Failed',
+          description: 'Could not copy the link to your clipboard.',
+          variant: 'destructive',
+        });
+      }
+    }
+  };
 
   return (
     <div className="space-y-8 animate-fade-in">
       <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
-        <div className="relative h-32 md:h-48">
+        <div className="relative h-48 md:h-64">
             <Image 
                 src={banner}
                 alt="Profile banner"
@@ -44,7 +87,7 @@ export default function ProfilePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         </div>
         <CardContent className="p-6">
-          <div className="flex flex-col items-center md:flex-row md:items-end gap-4 -mt-20 md:-mt-24">
+          <div className="flex flex-col items-center md:flex-row md:items-end gap-4 -mt-24 md:-mt-28">
             <div className="relative z-10 flex-shrink-0">
               <Avatar className="h-28 w-28 md:h-32 md:w-32 border-4 border-background ring-4 ring-primary">
                 <AvatarImage src={avatar} alt="User Avatar" />
@@ -63,7 +106,7 @@ export default function ProfilePage() {
                <p className="text-sm text-foreground max-w-prose">{bio}</p>
             </div>
              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                <Button variant="outline">
+                <Button variant="outline" onClick={handleShare}>
                     <Share2 className="mr-2 h-4 w-4" />
                     Share
                 </Button>
@@ -246,3 +289,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
