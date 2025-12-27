@@ -1,5 +1,5 @@
 import { AlbumArtwork } from '@/components/album-artwork';
-import { playlists, madeForYouPlaylists } from '@/lib/data';
+import { playlists, madeForYouPlaylists, recentlyPlayed } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AIRecommendations from '@/components/ai-recommendations';
 import { Button } from '@/components/ui/button';
@@ -16,13 +16,29 @@ export default function Home() {
         </p>
       </div>
 
+       <div className="space-y-4">
+        <h2 className="text-2xl font-semibold tracking-tight">Recently Played</h2>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+          {recentlyPlayed.map((item) => (
+            <AlbumArtwork
+              key={item.id}
+              item={item}
+              className="w-full"
+              aspectRatio="square"
+              width={250}
+              height={250}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {madeForYouPlaylists.map((playlist) => (
             <AlbumArtwork
               key={playlist.id}
-              playlist={playlist}
+              item={playlist}
               className="w-full"
               aspectRatio="square"
               width={250}
@@ -66,7 +82,7 @@ export default function Home() {
           {playlists.slice(0, 6).map((playlist) => (
             <AlbumArtwork
               key={playlist.id}
-              playlist={playlist}
+              item={playlist}
               className="w-full"
               aspectRatio="square"
               width={250}

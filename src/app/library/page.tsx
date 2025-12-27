@@ -18,7 +18,7 @@ export default function LibraryPage() {
           {allPlaylists.map((playlist) => (
             <AlbumArtwork
               key={playlist.id}
-              playlist={playlist}
+              item={playlist}
               className="w-full"
               aspectRatio="square"
               width={250}

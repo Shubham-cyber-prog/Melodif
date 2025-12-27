@@ -15,3 +15,11 @@ export interface Playlist {
   coverArtId: string;
   songs: Song[];
 }
+
+export interface RecentlyPlayed {
+    id: string;
+    name: string;
+    artist: string;
+    coverArtId: string;
+    type: 'song' | 'playlist' | 'album' | 'artist';
+}

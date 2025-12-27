@@ -1,4 +1,4 @@
-import type { Playlist, Song } from '@/lib/types';
+import type { Playlist, Song, RecentlyPlayed } from '@/lib/types';
 
 export const songs: Song[] = [
   { id: 1, title: "Midnight Bloom", artist: "Aura", album: "Neon Dreams", duration: "3:45", artworkId: "artwork1", url: "#" },
@@ -88,6 +88,16 @@ export const madeForYouPlaylists: Playlist[] = [
     songs: songs.filter(s => [9, 6, 3])
   }
 ];
+
+export const recentlyPlayed: RecentlyPlayed[] = [
+    { id: 'song-1', name: 'Midnight Bloom', artist: 'Aura', coverArtId: 'artwork1', type: 'song' },
+    { id: 'playlist-2', name: 'Road Trip Anthems', artist: 'Soundtrack for your next adventure.', coverArtId: 'artwork6', type: 'playlist' },
+    { id: 'song-5', name: 'Vinyl Memories', artist: 'Retrospect', coverArtId: 'artwork4', type: 'song' },
+    { id: 'album-3', name: 'Galaxies', artist: 'Celestial', coverArtId: 'artwork3', type: 'album' },
+    { id: 'artist-4', name: 'Nomad', artist: 'Artist', coverArtId: 'artwork9', type: 'artist' },
+    { id: 'm-5', name: 'Chill Mix', artist: 'Kick back with a personalized mix of slow-burners and relaxing tracks.', coverArtId: 'artwork9', type: 'playlist' },
+]
+
 
 export const getPlaylistById = (id: string) => {
     return [...playlists, ...madeForYouPlaylists].find(p => p.id === id);
