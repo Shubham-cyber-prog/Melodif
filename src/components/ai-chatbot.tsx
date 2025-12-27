@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -21,17 +21,32 @@ export function AIChatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+        // A slight delay to allow the new message to render before scrolling
+        setTimeout(() => {
+            const viewport = scrollAreaRef.current?.querySelector('[data-radix-scroll-area-viewport]');
+            if (viewport) {
+                viewport.scrollTop = viewport.scrollHeight;
+            }
+        }, 100);
+    }
+  }, [messages]);
 
   const handleSend = async () => {
     if (input.trim() === '') return;
 
     const userMessage: Message = { sender: 'user', text: input };
-    setMessages((prev) => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    const messageHistory = newMessages.map(m => `${m.sender}: ${m.text}`).join('\n');
     setInput('');
     setIsLoading(true);
 
     try {
-      const response = await chat({ message: input, history: messages.map(m => `${m.sender}: ${m.text}`).join('\n') });
+      const response = await chat({ message: input, history: messageHistory });
       const aiMessage: Message = { sender: 'ai', text: response.response };
       setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
@@ -64,7 +79,7 @@ export function AIChatbot() {
             <CardTitle>AI Music Assistant</CardTitle>
           </CardHeader>
           <CardContent className="flex-1 p-0">
-            <ScrollArea className="h-full px-4">
+            <ScrollArea className="h-full px-4" ref={scrollAreaRef}>
               <div className="space-y-4 py-4">
                 {messages.map((message, index) => (
                   <div
