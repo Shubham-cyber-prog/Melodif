@@ -7,7 +7,7 @@ import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Melody Muse',
+  title: 'Melodif',
   description: 'Your next favorite music destination.',
 };
 

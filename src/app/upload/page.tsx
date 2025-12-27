@@ -55,7 +55,7 @@ export default function UploadPage() {
           Upload Music
         </h1>
         <p className="text-lg text-muted-foreground">
-          Share your sound with the world. Host your music on Melody Muse.
+          Share your sound with the world. Host your music on Melodif.
         </p>
       </div>
 

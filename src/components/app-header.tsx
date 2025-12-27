@@ -101,7 +101,7 @@ function UserMenu() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-9 w-9">
-            <AvatarFallback>MM</AvatarFallback>
+            <AvatarFallback>M</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

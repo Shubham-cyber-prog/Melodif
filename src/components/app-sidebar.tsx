@@ -13,7 +13,7 @@ import {
   Search,
   Library,
   Plus,
-  Music,
+  Waves,
   UploadCloud,
   LogIn,
   UserPlus
@@ -44,9 +44,9 @@ export function AppSidebar() {
     <Sidebar variant="sidebar" collapsible="icon">
       <SidebarHeader className="border-b">
         <div className="flex items-center gap-2 p-2">
-          <Music className="h-8 w-8 text-primary" />
+          <Waves className="h-8 w-8 text-primary" />
           <span className="text-xl font-semibold text-primary group-data-[collapsible=icon]:hidden">
-            Melody Muse
+            Melodif
           </span>
         </div>
       </SidebarHeader>
