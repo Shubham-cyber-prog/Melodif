@@ -83,10 +83,10 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent>
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full overflow-hidden">
+                    <CarouselContent className="-ml-4">
                         {recentlyPlayed.map((item, index) => (
-                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
                                 <AlbumArtwork
                                     item={item}
                                     className="w-full"
@@ -97,8 +97,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-[-1rem] top-1/2 -translate-y-1/2 z-10" />
-                    <CarouselNext className="absolute right-[-1rem] top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
                 </Carousel>
             </div>
         </section>
@@ -142,10 +142,10 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent>
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full overflow-hidden">
+                    <CarouselContent className="-ml-4">
                         {playlists.map((playlist) => (
-                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
                                 <AlbumArtwork
                                     item={playlist}
                                     className="w-full"
@@ -156,8 +156,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-[-1rem] top-1/2 -translate-y-1/2 z-10" />
-                    <CarouselNext className="absolute right-[-1rem] top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10" />
                 </Carousel>
             </div>
         </section>
