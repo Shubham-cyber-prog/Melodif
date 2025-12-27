@@ -39,7 +39,7 @@ export default function RootLayout({
               <AppSidebar />
               <div className="flex w-full flex-col">
                 <SidebarInset>
-                  <div className="flex h-full flex-col pb-24">
+                  <div className="flex h-full flex-col pb-24 md:bg-transparent bg-background">
                     <AppHeader />
                     <main className="flex-1 overflow-y-auto p-4 pt-6 md:p-8 transition-all duration-300">
                       {children}
