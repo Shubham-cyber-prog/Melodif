@@ -46,9 +46,6 @@ export function AppHeader() {
               fill="currentColor"
             />
           </svg>
-           <span className="text-xl font-semibold text-primary hidden sm:inline">
-            Melodif
-          </span>
         </Link>
       </div>
 
