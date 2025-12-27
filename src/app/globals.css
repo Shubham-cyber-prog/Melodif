@@ -92,3 +92,9 @@ body {
     text-shadow: 0 0 10px hsl(var(--primary) / 0.6);
   }
 }
+
+@layer utilities {
+    .animate-button-press {
+      @apply transition-transform duration-150 active:scale-95;
+    }
+}

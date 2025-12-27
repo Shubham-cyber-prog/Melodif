@@ -69,7 +69,7 @@ export function AlbumArtwork({
       )}
       <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity group-hover/artwork-cover:opacity-100" />
       <div className="absolute bottom-4 right-4 translate-y-4 transform-gpu opacity-0 transition-all group-hover/artwork:translate-y-0 group-hover/artwork:opacity-100">
-        <button className="flex h-12 w-12 items-center justify-center rounded-full bg-primary shadow-lg">
+        <button className="flex h-12 w-12 items-center justify-center rounded-full bg-primary shadow-lg animate-button-press">
           <Play className="h-6 w-6 fill-primary-foreground text-primary-foreground" />
         </button>
       </div>
@@ -89,7 +89,7 @@ export function AlbumArtwork({
   )
 
   return (
-    <div className={cn('space-y-3 group/artwork', className)} {...props}>
+    <div className={cn('space-y-3 group/artwork animate-button-press', className)} {...props}>
       {isLink ? (
         <Link href={link} className="block space-y-3">
           <MainContent/>
