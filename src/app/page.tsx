@@ -16,6 +16,9 @@ import {
   } from '@/components/ui/carousel';
 import { Youtube, Link as LinkIcon } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import Autoplay from "embla-carousel-autoplay";
+import { getArtworkById } from '@/lib/placeholder-images';
 
 const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -28,39 +31,49 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
   );
 
-  const HeroSection = () => {
-    const featuredPlaylists = [...playlists.slice(0, 2), ...madeForYouPlaylists.slice(0, 3)];
-    const mainItem = featuredPlaylists[0];
-    const sideItems = featuredPlaylists.slice(1, 5);
-  
-    return (
-      <section className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-          <div className="lg:col-span-2 md:col-span-2 rounded-lg overflow-hidden">
-            <AlbumArtwork
-              item={mainItem}
-              className="w-full h-full"
-              aspectRatio="square"
-              width={60}
-              height={60}
-            />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-2">
-            {sideItems.map((playlist) => (
-              <AlbumArtwork
-                key={playlist.id}
-                item={playlist}
-                className="w-full"
-                aspectRatio="square"
-                width={30}
-                height={30}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+  const HeroCarousel = () => {
+    const featuredPlaylists = [...playlists.slice(0, 3), ...madeForYouPlaylists.slice(0, 2)];
+    const plugin = useRef(
+        Autoplay({ delay: 3000, stopOnInteraction: true })
     );
-  };
+
+    return (
+        <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+        >
+            <CarouselContent>
+                {featuredPlaylists.map((playlist) => {
+                    const artwork = getArtworkById(playlist.coverArtId);
+                    return (
+                        <CarouselItem key={playlist.id}>
+                            <div className="relative aspect-[3/1] w-full overflow-hidden rounded-lg">
+                                {artwork?.imageUrl && (
+                                    <Image
+                                        src={artwork.imageUrl}
+                                        alt={playlist.name}
+                                        fill
+                                        className="object-cover"
+                                        data-ai-hint={artwork.imageHint}
+                                    />
+                                )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
+                                    <h2 className="text-3xl font-bold text-white text-shadow">{playlist.name}</h2>
+                                    <p className="text-white/80 text-shadow-sm">{playlist.description}</p>
+                                </div>
+                            </div>
+                        </CarouselItem>
+                    );
+                })}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+        </Carousel>
+    );
+};
+
 
 export default function Home() {
   return (
@@ -74,7 +87,7 @@ export default function Home() {
             </p>
         </header>
       
-        <HeroSection />
+        <HeroCarousel />
       
        <section className="space-y-4">
             <div className="flex items-center justify-between">
