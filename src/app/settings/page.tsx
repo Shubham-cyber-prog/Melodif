@@ -24,14 +24,21 @@ import {
 } from "@/components/ui/alert-dialog"
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import { useProfile } from '@/contexts/ProfileContext';
 
 export default function SettingsPage() {
     const { toast } = useToast();
-    const [firstName, setFirstName] = useState('Melodif');
-    const [lastName, setLastName] = useState('User');
+    const { 
+        firstName, lastName, avatar, banner, 
+        setFirstName, setLastName, setAvatar, setBanner 
+    } = useProfile();
+
+    const [currentFirstName, setCurrentFirstName] = useState(firstName);
+    const [currentLastName, setCurrentLastName] = useState(lastName);
+    const [currentAvatar, setCurrentAvatar] = useState(avatar);
+    const [currentBanner, setCurrentBanner] = useState(banner);
+
     const [theme, setTheme] = useState('light');
-    const [avatar, setAvatar] = useState('https://picsum.photos/seed/avatar/200');
-    const [banner, setBanner] = useState('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop');
 
     useEffect(() => {
         const isDarkMode = document.documentElement.classList.contains('dark');
@@ -49,8 +56,10 @@ export default function SettingsPage() {
       };
 
     const handleProfileUpdate = () => {
-        // In a real app, you would send this data to your backend
-        console.log('Updating profile:', { firstName, lastName, avatar, banner });
+        setFirstName(currentFirstName);
+        setLastName(currentLastName);
+        setAvatar(currentAvatar);
+        setBanner(currentBanner);
         toast({
             title: 'Profile Updated',
             description: 'Your profile information has been successfully updated.',
@@ -59,13 +68,13 @@ export default function SettingsPage() {
 
     const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setAvatar(URL.createObjectURL(e.target.files[0]));
+            setCurrentAvatar(URL.createObjectURL(e.target.files[0]));
         }
     }
 
     const handleBannerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setBanner(URL.createObjectURL(e.target.files[0]));
+            setCurrentBanner(URL.createObjectURL(e.target.files[0]));
         }
     }
 
@@ -90,7 +99,7 @@ export default function SettingsPage() {
                 <Label>Banner Image</Label>
                 <div className="relative group aspect-[16/5] w-full rounded-lg bg-muted overflow-hidden">
                     <Image 
-                        src={banner}
+                        src={currentBanner}
                         alt="Profile banner"
                         fill
                         className="object-cover"
@@ -99,31 +108,31 @@ export default function SettingsPage() {
                         <Camera className="h-8 w-8 text-white" />
                         <span className="sr-only">Change Banner</span>
                     </Label>
-                    <Input id="banner-file" type="file" className="sr-only" onChange={handleBannerChange} />
+                    <Input id="banner-file" type="file" className="sr-only" onChange={handleBannerChange} accept="image/*" />
                 </div>
             </div>
 
             <div className="flex flex-col items-start gap-6 md:flex-row">
               <div className="relative group">
                 <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
-                  <AvatarImage src={avatar} alt="User Avatar" />
-                  <AvatarFallback>MU</AvatarFallback>
+                  <AvatarImage src={currentAvatar} alt="User Avatar" />
+                  <AvatarFallback>{currentFirstName.charAt(0)}{currentLastName.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <Label htmlFor="avatar-file" className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-full bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
                     <Camera className="h-8 w-8 text-white" />
                     <span className="sr-only">Change Avatar</span>
                 </Label>
-                <Input id="avatar-file" type="file" className="sr-only" onChange={handleAvatarChange} />
+                <Input id="avatar-file" type="file" className="sr-only" onChange={handleAvatarChange} accept="image/*" />
               </div>
               <div className="flex-1 w-full space-y-4">
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className="space-y-2">
                         <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                        <Input id="firstName" value={currentFirstName} onChange={(e) => setCurrentFirstName(e.target.value)} />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                        <Input id="lastName" value={currentLastName} onChange={(e) => setCurrentLastName(e.target.value)} />
                     </div>
                 </div>
                  <div className="space-y-2">

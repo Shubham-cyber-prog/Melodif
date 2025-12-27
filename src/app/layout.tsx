@@ -10,6 +10,7 @@ import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 import { AppFooter } from '@/components/app-footer';
 import ClientOnly from '@/components/client-only';
 import { AIChatbot } from '@/components/ai-chatbot';
+import { ProfileProvider } from '@/contexts/ProfileContext';
 
 export const metadata: Metadata = {
   title: 'Melodif',
@@ -32,30 +33,32 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <SidebarProvider>
-          <div className="flex min-h-screen w-full">
-            <AppSidebar />
-            <div className="flex w-full flex-col">
-              <SidebarInset>
-                <div className="flex h-full flex-col pb-24">
-                  <AppHeader />
-                  <main className="flex-1 overflow-y-auto p-4 pt-6 md:p-8 transition-all duration-300">
-                    {children}
-                  </main>
-                  <AppFooter />
-                </div>
-              </SidebarInset>
+        <ProfileProvider>
+          <SidebarProvider>
+            <div className="flex min-h-screen w-full">
+              <AppSidebar />
+              <div className="flex w-full flex-col">
+                <SidebarInset>
+                  <div className="flex h-full flex-col pb-24">
+                    <AppHeader />
+                    <main className="flex-1 overflow-y-auto p-4 pt-6 md:p-8 transition-all duration-300">
+                      {children}
+                    </main>
+                    <AppFooter />
+                  </div>
+                </SidebarInset>
+              </div>
             </div>
-          </div>
-          <ClientOnly>
-            <PlayerBar />
-          </ClientOnly>
-          <MobileBottomNav />
-          <Toaster />
-          <ClientOnly>
-            <AIChatbot />
-          </ClientOnly>
-        </SidebarProvider>
+            <ClientOnly>
+              <PlayerBar />
+            </ClientOnly>
+            <MobileBottomNav />
+            <Toaster />
+            <ClientOnly>
+              <AIChatbot />
+            </ClientOnly>
+          </SidebarProvider>
+        </ProfileProvider>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 
+'use client';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,14 +8,16 @@ import { AlbumArtwork } from '@/components/album-artwork';
 import { BarChart, ListMusic, Users, Pen } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useProfile } from '@/contexts/ProfileContext';
 
 export default function ProfilePage() {
+  const { firstName, lastName, avatar, banner } = useProfile();
   return (
     <div className="space-y-12 animate-fade-in">
       <Card className="overflow-hidden">
-        <div className="relative h-36 md:h-48">
+        <div className="relative h-48">
             <Image 
-                src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop"
+                src={banner}
                 alt="Profile banner"
                 fill
                 objectFit="cover"
@@ -24,19 +27,21 @@ export default function ProfilePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
         <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20">
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-24">
             <div className="relative z-10">
               <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
-                <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
-                <AvatarFallback>M</AvatarFallback>
+                <AvatarImage src={avatar} alt="User Avatar" />
+                <AvatarFallback>{firstName.charAt(0)}{lastName.charAt(0)}</AvatarFallback>
               </Avatar>
-              <Button size="icon" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full">
-                <Pen className="h-4 w-4" />
-                <span className="sr-only">Edit Profile</span>
+              <Button size="icon" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full" asChild>
+                <Link href="/settings">
+                    <Pen className="h-4 w-4" />
+                    <span className="sr-only">Edit Profile</span>
+                </Link>
               </Button>
             </div>
-            <div className="flex-1 space-y-1 text-center md:text-left mt-4 md:mt-0 md:ml-4">
-              <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Melodif User</h1>
+            <div className="flex-1 space-y-1 text-center md:text-left">
+              <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">{firstName} {lastName}</h1>
               <p className="text-muted-foreground">user@melodif.com</p>
             </div>
              <div className="flex gap-2">
