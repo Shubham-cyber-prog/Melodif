@@ -1,5 +1,5 @@
 
-import { Github, Twitter, Instagram } from 'lucide-react';
+import { Github, Twitter, Instagram, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 
 export function AppFooter() {
@@ -56,6 +56,9 @@ export function AppFooter() {
                  </a>
                  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full bg-secondary p-2 hover:bg-primary hover:text-primary-foreground">
                     <Instagram className="h-5 w-5" />
+                 </a>
+                 <a href="https://linkedin.com/in/subham-nayak-00276930b" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="rounded-full bg-secondary p-2 hover:bg-primary hover:text-primary-foreground">
+                    <Linkedin className="h-5 w-5" />
                  </a>
             </div>
           </div>
