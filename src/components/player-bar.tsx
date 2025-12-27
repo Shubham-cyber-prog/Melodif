@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -31,16 +31,43 @@ export function PlayerBar() {
   const [currentTime, setCurrentTime] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(true);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [isShuffling, setIsShuffling] = useState(false);
+  const [isRepeating, setIsRepeating] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const isMobile = useIsMobile();
-  const currentSong = songs[0];
+  
+  const currentSong = songs[currentSongIndex];
   const artwork = getArtworkById(currentSong.artworkId);
   const artworkUrl = artwork?.imageUrl;
 
   useEffect(() => {
     setHasMounted(true);
   }, []);
+
+  const handleNextSong = useCallback(() => {
+    if (isShuffling) {
+      setCurrentSongIndex(Math.floor(Math.random() * songs.length));
+    } else {
+      setCurrentSongIndex((prevIndex) => (prevIndex + 1) % songs.length);
+    }
+  }, [isShuffling]);
+
+  const handlePrevSong = () => {
+    setCurrentSongIndex((prevIndex) => (prevIndex - 1 + songs.length) % songs.length);
+  };
+  
+  const handleSongEnd = useCallback(() => {
+    if (isRepeating) {
+      if(audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
+      }
+    } else {
+      handleNextSong();
+    }
+  }, [isRepeating, handleNextSong]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -52,6 +79,18 @@ export function PlayerBar() {
         }
     }
   }, [isPlaying]);
+
+   useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      audioElement.src = currentSong.url;
+      audioElement.load();
+      if (isPlaying) {
+        audioElement.play().catch(e => console.error("Playback error:", e));
+      }
+    }
+  }, [currentSong, isPlaying]);
+
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -100,17 +139,20 @@ export function PlayerBar() {
       )}>
         <audio 
             ref={audioRef}
-            src="https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3"
+            src={currentSong.url}
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleLoadedMetadata}
-            onEnded={() => setIsPlaying(false)}
+            onEnded={handleSongEnd}
             onWaiting={() => setIsLoading(true)}
             onPlaying={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
             preload="metadata"
         />
         
-      <div className="grid h-full grid-cols-3 items-center px-4 md:grid-cols-10 md:px-8">
+      <div className={cn(
+          "grid h-full items-center px-4 md:px-8",
+          isMobile ? "grid-cols-3" : "grid-cols-10"
+        )}>
         {/* Song Info */}
         <div className="col-span-1 flex items-center gap-3 md:col-span-3">
           {artworkUrl && (
@@ -134,10 +176,10 @@ export function PlayerBar() {
         {/* Player Controls */}
         <div className="col-span-1 flex flex-col items-center justify-center gap-2 md:col-span-4">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="hidden h-8 w-8 md:flex">
+            <Button variant="ghost" size="icon" className={cn("hidden h-8 w-8 md:flex", isShuffling && "text-primary")} onClick={() => setIsShuffling(!isShuffling)}>
               <Shuffle className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handlePrevSong}>
               <SkipBack />
             </Button>
             <Button
@@ -154,10 +196,10 @@ export function PlayerBar() {
                 <Play className="h-6 w-6 fill-current" />
               )}
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleNextSong}>
               <SkipForward />
             </Button>
-            <Button variant="ghost" size="icon" className="hidden h-8 w-8 md:flex">
+            <Button variant="ghost" size="icon" className={cn("hidden h-8 w-8 md:flex", isRepeating && "text-primary")} onClick={() => setIsRepeating(!isRepeating)}>
               <Repeat className="h-4 w-4" />
             </Button>
           </div>
@@ -216,3 +258,5 @@ export function PlayerBar() {
     </div>
   );
 }
+
+    
