@@ -25,7 +25,7 @@ export default function ProfilePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
-        <CardContent className="p-6 pt-0">
+        <CardContent className="p-6">
           <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20 md:-mt-24">
             <div className="relative z-10 flex-shrink-0">
               <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
