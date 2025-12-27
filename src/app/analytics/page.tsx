@@ -3,7 +3,7 @@
 import { Bar, BarChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell, LineChart, Line, AreaChart, Area, RadialBarChart, RadialBar } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-import { Activity, Music, Play, TrendingUp, Users, Clock } from 'lucide-react';
+import { Activity, Music, Play, TrendingUp, Users, Clock, Calendar } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const genreData = [
@@ -20,6 +20,8 @@ const topArtistsData = [
     { artist: 'Nomad', plays: 86 },
     { artist: 'Horizon', plays: 74 },
     { artist: 'Retrospect', plays: 65 },
+    { artist: 'Etherea', plays: 55 },
+    { artist: 'Solstice', plays: 48 },
 ]
 
 const listeningActivityData = [
@@ -31,6 +33,11 @@ const listeningActivityData = [
   { day: 'Sat', hours: 6 },
   { day: 'Sun', hours: 4.5 },
 ];
+
+const monthlyActivityData = Array.from({ length: 30 }, (_, i) => ({
+  date: `Day ${i + 1}`,
+  plays: 50 + Math.floor(Math.random() * 50) + i * 2,
+}));
 
 const playsByTimeData = [
     { name: 'Morning', value: 30, fill: 'hsl(var(--chart-1))' },
@@ -50,8 +57,8 @@ export default function AnalyticsPage() {
         </p>
       </header>
 
-      <main className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="lg:col-span-1">
+      <main className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Total Listening Hours</CardTitle>
                 <Activity className="h-4 w-4 text-muted-foreground" />
@@ -61,7 +68,7 @@ export default function AnalyticsPage() {
                 <p className="text-xs text-muted-foreground">+12% from last month</p>
             </CardContent>
         </Card>
-        <Card className="lg:col-span-1">
+        <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Total Plays</CardTitle>
                 <Play className="h-4 w-4 text-muted-foreground" />
@@ -71,7 +78,7 @@ export default function AnalyticsPage() {
                 <p className="text-xs text-muted-foreground">+8.5% from last month</p>
             </CardContent>
         </Card>
-        <Card className="lg:col-span-1">
+        <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Top Genre</CardTitle>
                 <Music className="h-4 w-4 text-muted-foreground" />
@@ -81,7 +88,7 @@ export default function AnalyticsPage() {
                 <p className="text-xs text-muted-foreground">40% of your listening time</p>
             </CardContent>
         </Card>
-         <Card className="lg:col-span-1">
+         <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">New Followers</CardTitle>
                 <Users className="h-4 w-4 text-muted-foreground" />
@@ -92,9 +99,9 @@ export default function AnalyticsPage() {
             </CardContent>
         </Card>
 
-        <Card className="lg:col-span-4">
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-4">
             <CardHeader>
-                <CardTitle>Listening Activity</CardTitle>
+                <CardTitle>Weekly Listening Activity</CardTitle>
                 <CardDescription>Your listening hours trend for the past week.</CardDescription>
             </CardHeader>
             <CardContent>
@@ -108,7 +115,7 @@ export default function AnalyticsPage() {
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis dataKey="day" axisLine={false} tickLine={false} />
-                        <YAxis axisLine={false} tickLine={false} />
+                        <YAxis axisLine={false} tickLine={false} unit="h" />
                         <Tooltip content={<ChartTooltipContent indicator="dot" />} />
                         <Area type="monotone" dataKey="hours" stroke="hsl(var(--primary))" strokeWidth={2} fill="url(#colorHours)" />
                     </AreaChart>
@@ -116,7 +123,7 @@ export default function AnalyticsPage() {
             </CardContent>
         </Card>
         
-        <Card className="lg:col-span-2">
+        <Card className="col-span-1 sm:col-span-2">
           <CardHeader>
             <CardTitle>Genre Distribution</CardTitle>
             <CardDescription>How your listening time is split across genres.</CardDescription>
@@ -132,7 +139,7 @@ export default function AnalyticsPage() {
                         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
                         return (
-                        <text x={x} y={y} fill="hsl(var(--foreground))" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+                        <text x={x} y={y} fill="hsl(var(--foreground))" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" className="text-xs">
                             {`${genreData[index].name} (${(percent * 100).toFixed(0)}%)`}
                         </text>
                         );
@@ -146,27 +153,47 @@ export default function AnalyticsPage() {
           </CardContent>
         </Card>
 
-        <Card className="lg:col-span-2">
+        <Card className="col-span-1 sm:col-span-2">
           <CardHeader>
-            <CardTitle>Top Artists</CardTitle>
-            <CardDescription>Your most frequently played artists this month.</CardDescription>
+            <CardTitle>Top Artists This Month</CardTitle>
+            <CardDescription>Your most frequently played artists.</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-                {topArtistsData.slice(0, 5).map(artist => (
-                    <div key={artist.artist} className="flex items-center">
-                        <p className="flex-1 font-medium">{artist.artist}</p>
-                        <p className="text-sm text-muted-foreground">{artist.plays} plays</p>
-                        <div className="w-1/3 h-2 bg-muted rounded-full ml-4">
-                            <div className="h-2 bg-primary rounded-full" style={{width: `${(artist.plays / topArtistsData[0].plays) * 100}%`}}></div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <ChartContainer config={{}} className="h-64 w-full">
+                <BarChart data={topArtistsData} layout="vertical" margin={{ left: 10 }}>
+                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                    <XAxis type="number" hide />
+                    <YAxis dataKey="artist" type="category" tickLine={false} axisLine={false} width={80} />
+                    <Tooltip content={<ChartTooltipContent />} cursor={{fill: 'hsl(var(--muted))'}} />
+                    <Bar dataKey="plays" layout="vertical" radius={5}>
+                        {topArtistsData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={`hsl(var(--chart-${(index % 5) + 1}))`} />
+                        ))}
+                    </Bar>
+                </BarChart>
+            </ChartContainer>
           </CardContent>
         </Card>
+        
+        <Card className="col-span-1 sm:col-span-2 lg:col-span-4">
+            <CardHeader>
+                <CardTitle>Monthly Activity</CardTitle>
+                <CardDescription>Your total plays over the last 30 days.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={{}} className="h-80 w-full">
+                    <LineChart data={monthlyActivityData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="date" tickFormatter={(value, index) => (index % 5 === 0 ? value : '')} />
+                        <YAxis />
+                        <Tooltip content={<ChartTooltipContent indicator="line" />} />
+                        <Line type="monotone" dataKey="plays" stroke="hsl(var(--primary))" strokeWidth={2} dot={false} />
+                    </LineChart>
+                </ChartContainer>
+            </CardContent>
+        </Card>
 
-        <Card className="lg:col-span-2">
+        <Card className="col-span-1 sm:col-span-2">
             <CardHeader>
                 <CardTitle>Activity by Time of Day</CardTitle>
                 <CardDescription>When you listen to music the most.</CardDescription>
@@ -196,10 +223,10 @@ export default function AnalyticsPage() {
             </CardContent>
         </Card>
 
-         <Card className="lg:col-span-2">
+         <Card className="col-span-1 sm:col-span-2">
             <CardHeader>
                 <CardTitle>Recent Milestones</CardTitle>
-                <CardDescription>Your latest achievements on Mia.</CardDescription>
+                <CardDescription>Your latest achievements on Melodif.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="flex items-center gap-4">
@@ -235,7 +262,3 @@ export default function AnalyticsPage() {
     </div>
   );
 }
-
-    
-
-    
