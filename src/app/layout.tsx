@@ -7,6 +7,7 @@ import { AppHeader } from '@/components/app-header';
 import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
 import { MobileBottomNav } from '@/components/mobile-bottom-nav';
+import { AppFooter } from '@/components/app-footer';
 
 export const metadata: Metadata = {
   title: 'Melodif',
@@ -39,6 +40,7 @@ export default function RootLayout({
                   <main className="flex-1 overflow-y-auto p-4 pt-6 md:p-8 transition-all duration-300">
                     {children}
                   </main>
+                  <AppFooter />
                 </div>
               </SidebarInset>
             </div>
