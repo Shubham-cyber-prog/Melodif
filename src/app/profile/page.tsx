@@ -75,7 +75,7 @@ export default function ProfilePage() {
   return (
     <div className="space-y-8 animate-fade-in">
       <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
-        <div className="relative h-24 md:h-32">
+        <div className="relative h-20 md:h-28">
             <Image 
                 src={banner}
                 alt="Profile banner"
@@ -288,6 +288,8 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
 
