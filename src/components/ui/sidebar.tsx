@@ -218,8 +218,8 @@ const Sidebar = React.forwardRef<
         ref={ref}
         className={cn(
           'hidden h-screen md:flex flex-col shrink-0 bg-sidebar text-sidebar-foreground transition-[width] duration-200 ease-linear sticky top-0',
-          state === 'expanded' && 'w-[--sidebar-width]',
-          state === 'collapsed' && 'w-[--sidebar-width-icon]',
+          state === 'expanded' && 'w-[var(--sidebar-width)]',
+          state === 'collapsed' && 'w-[var(--sidebar-width-icon)]',
           side === 'right' && 'border-l',
           side === 'left' && 'border-r',
           className
