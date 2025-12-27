@@ -1,7 +1,8 @@
 import { AlbumArtwork } from '@/components/album-artwork';
-import { playlists, madeForYouPlaylists, youtubePlaylists, spotifyPlaylists } from '@/lib/data';
+import { playlists, madeForYouPlaylists } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AIRecommendations from '@/components/ai-recommendations';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
@@ -36,34 +37,26 @@ export default function Home() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">From YouTube</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {youtubePlaylists.map((playlist) => (
-            <AlbumArtwork
-              key={playlist.id}
-              playlist={playlist}
-              className="w-full"
-              aspectRatio="square"
-              width={250}
-              height={250}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">From Spotify</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {spotifyPlaylists.map((playlist) => (
-            <AlbumArtwork
-              key={playlist.id}
-              playlist={playlist}
-              className="w-full"
-              aspectRatio="square"
-              width={250}
-              height={250}
-            />
-          ))}
+        <h2 className="text-2xl font-semibold tracking-tight">Connect Your Accounts</h2>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Card>
+                <CardHeader>
+                    <CardTitle>YouTube</CardTitle>
+                    <CardDescription>Connect your YouTube account to import your playlists and listen to your favorite music videos.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Button>Connect to YouTube</Button>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Spotify</CardTitle>
+                    <CardDescription>Connect your Spotify account to bring in all your playlists and liked songs.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Button>Connect to Spotify</Button>
+                </CardContent>
+            </Card>
         </div>
       </div>
 

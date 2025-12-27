@@ -89,40 +89,6 @@ export const madeForYouPlaylists: Playlist[] = [
   }
 ];
 
-export const youtubePlaylists: Playlist[] = [
-    {
-      id: 'yt-1',
-      name: 'YouTube Lo-Fi Gems',
-      description: 'The best lo-fi beats from YouTube creators.',
-      coverArtId: 'artwork11',
-      songs: songs.filter(s => [1, 5, 8])
-    },
-    {
-      id: 'yt-2',
-      name: 'YouTube Gaming Mix',
-      description: 'High-energy tracks for gaming sessions.',
-      coverArtId: 'artwork12',
-      songs: songs.filter(s => [9, 3, 6])
-    }
-  ];
-  
-  export const spotifyPlaylists: Playlist[] = [
-    {
-      id: 'sp-1',
-      name: 'Spotify Top Hits',
-      description: 'The most popular tracks on Spotify right now.',
-      coverArtId: 'artwork13',
-      songs: songs.filter(s => [10, 4, 2])
-    },
-    {
-      id: 'sp-2',
-      name: 'Spotify Viral 50',
-      description: 'The tracks that are currently going viral.',
-      coverArtId: 'artwork14',
-      songs: songs.filter(s => [7, 3, 1])
-    }
-  ];
-
 export const getPlaylistById = (id: string) => {
-    return [...playlists, ...madeForYouPlaylists, ...youtubePlaylists, ...spotifyPlaylists].find(p => p.id === id);
+    return [...playlists, ...madeForYouPlaylists].find(p => p.id === id);
 }
