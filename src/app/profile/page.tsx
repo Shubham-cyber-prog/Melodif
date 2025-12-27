@@ -3,15 +3,32 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { playlists } from '@/lib/data';
+import { playlists, songs } from '@/lib/data';
 import { AlbumArtwork } from '@/components/album-artwork';
-import { BarChart, ListMusic, Users, Pen } from 'lucide-react';
+import { BarChart, ListMusic, Users, Pen, Share2, Music } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useProfile } from '@/contexts/ProfileContext';
+import { getArtworkById } from '@/lib/placeholder-images';
+
+// Mock data for followers/following
+const followers = [
+  { name: 'Alex', avatar: 'https://picsum.photos/seed/alex/100' },
+  { name: 'Maria', avatar: 'https://picsum.photos/seed/maria/100' },
+  { name: 'David', avatar: 'https://picsum.photos/seed/david/100' },
+  { name: 'Sophia', avatar: 'https://picsum.photos/seed/sophia/100' },
+];
+
+const following = [
+  { name: 'Aura', avatar: 'https://picsum.photos/seed/aura/100' },
+  { name: 'Celestial', avatar: 'https://picsum.photos/seed/celestial/100' },
+  { name: 'Nomad', avatar: 'https://picsum.photos/seed/nomad/100' },
+];
 
 export default function ProfilePage() {
   const { firstName, lastName, avatar, banner } = useProfile();
+  const topTracks = songs.slice(0, 5);
+
   return (
     <div className="space-y-8 animate-fade-in">
       <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
@@ -45,8 +62,9 @@ export default function ProfilePage() {
               <p className="text-sm text-muted-foreground">user@melodif.com</p>
             </div>
              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-                <Button variant="outline" asChild className="w-full sm:w-auto">
-                    <Link href="/settings">Account Settings</Link>
+                <Button variant="outline">
+                    <Share2 className="mr-2 h-4 w-4" />
+                    Share
                 </Button>
                 <Button asChild className="w-full sm:w-auto">
                     <Link href="/analytics">View Analytics</Link>
@@ -98,6 +116,79 @@ export default function ProfilePage() {
             </CardContent>
         </Card>
       </div>
+      
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+                 <div className="flex items-center justify-between">
+                    <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Top Tracks</h2>
+                    <Button variant="link" asChild>
+                        <Link href="/analytics">View All</Link>
+                    </Button>
+                </div>
+                 <Card>
+                    <CardContent className="p-4 space-y-2">
+                        {topTracks.map((song, index) => {
+                            const artwork = getArtworkById(song.artworkId);
+                            return (
+                                <div key={song.id} className="flex items-center gap-4 p-2 rounded-md hover:bg-muted">
+                                    <span className="text-sm font-medium text-muted-foreground">{index + 1}</span>
+                                    <Image src={artwork?.imageUrl ?? `https://picsum.photos/seed/${song.id}/40/40`} alt={song.title} width={40} height={40} className="rounded" />
+                                    <div className="flex-1">
+                                        <p className="font-semibold truncate">{song.title}</p>
+                                        <p className="text-sm text-muted-foreground">{song.artist}</p>
+                                    </div>
+                                    <p className="text-sm text-muted-foreground">{song.duration}</p>
+                                </div>
+                            )
+                        })}
+                    </CardContent>
+                </Card>
+            </div>
+             <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                    <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Top Artists</h2>
+                    <Button variant="link" asChild>
+                        <Link href="/analytics">View All</Link>
+                    </Button>
+                </div>
+                <Card>
+                    <CardContent className="p-4">
+                        <div className="space-y-4">
+                            <div className="flex items-center">
+                                <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/aura/100" /><AvatarFallback>AU</AvatarFallback></Avatar>
+                                <div className="flex-1">
+                                    <p className="font-semibold">Aura</p>
+                                    <p className="text-sm text-muted-foreground">120 plays</p>
+                                </div>
+                                <div className="w-1/3 h-2 bg-muted rounded-full">
+                                    <div className="h-2 bg-primary rounded-full" style={{width: '90%'}}></div>
+                                </div>
+                            </div>
+                             <div className="flex items-center">
+                                <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/celestial/100" /><AvatarFallback>CE</AvatarFallback></Avatar>
+                                <div className="flex-1">
+                                    <p className="font-semibold">Celestial</p>
+                                    <p className="text-sm text-muted-foreground">98 plays</p>
+                                </div>
+                                <div className="w-1/3 h-2 bg-muted rounded-full">
+                                    <div className="h-2 bg-primary rounded-full" style={{width: '75%'}}></div>
+                                </div>
+                            </div>
+                             <div className="flex items-center">
+                                <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/nomad/100" /><AvatarFallback>NO</AvatarFallback></Avatar>
+                                <div className="flex-1">
+                                    <p className="font-semibold">Nomad</p>
+                                    <p className="text-sm text-muted-foreground">86 plays</p>
+                                </div>
+                                <div className="w-1/3 h-2 bg-muted rounded-full">
+                                    <div className="h-2 bg-primary rounded-full" style={{width: '60%'}}></div>
+                                </div>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+       </div>
 
       <div className="space-y-6">
         <div className="flex items-center justify-between">
@@ -120,54 +211,37 @@ export default function ProfilePage() {
         </div>
       </div>
       
-       <div className="space-y-6">
-        <div className="flex items-center justify-between">
-            <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Recent Activity</h2>
-            <Button variant="link" asChild>
-                <Link href="/analytics">View Full Report</Link>
-            </Button>
-        </div>
-        <Card>
-            <CardHeader>
-                <CardTitle>Top Artists</CardTitle>
-                <CardDescription>Your most played artists this month.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="space-y-4">
-                    <div className="flex items-center">
-                        <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/aura/100" /><AvatarFallback>AU</AvatarFallback></Avatar>
-                        <div className="flex-1">
-                            <p className="font-semibold">Aura</p>
-                            <p className="text-sm text-muted-foreground">120 plays</p>
-                        </div>
-                        <div className="w-1/3 h-2 bg-muted rounded-full">
-                            <div className="h-2 bg-primary rounded-full" style={{width: '90%'}}></div>
-                        </div>
-                    </div>
-                     <div className="flex items-center">
-                        <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/celestial/100" /><AvatarFallback>CE</AvatarFallback></Avatar>
-                        <div className="flex-1">
-                            <p className="font-semibold">Celestial</p>
-                            <p className="text-sm text-muted-foreground">98 plays</p>
-                        </div>
-                        <div className="w-1/3 h-2 bg-muted rounded-full">
-                            <div className="h-2 bg-primary rounded-full" style={{width: '75%'}}></div>
-                        </div>
-                    </div>
-                     <div className="flex items-center">
-                        <Avatar className="h-12 w-12 mr-4"><AvatarImage src="https://picsum.photos/seed/nomad/100" /><AvatarFallback>NO</AvatarFallback></Avatar>
-                        <div className="flex-1">
-                            <p className="font-semibold">Nomad</p>
-                            <p className="text-sm text-muted-foreground">86 plays</p>
-                        </div>
-                        <div className="w-1/3 h-2 bg-muted rounded-full">
-                            <div className="h-2 bg-primary rounded-full" style={{width: '60%'}}></div>
-                        </div>
-                    </div>
-                </div>
-            </CardContent>
-        </Card>
-      </div>
+       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+                <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Following</h2>
+                <Card>
+                    <CardContent className="p-4 space-y-4">
+                        {following.map(user => (
+                            <div key={user.name} className="flex items-center gap-4 p-2 rounded-md hover:bg-muted">
+                                <Avatar><AvatarImage src={user.avatar} /><AvatarFallback>{user.name.charAt(0)}</AvatarFallback></Avatar>
+                                <p className="font-semibold flex-1">{user.name}</p>
+                                <Button variant="outline" size="sm">Unfollow</Button>
+                            </div>
+                        ))}
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="space-y-6">
+                <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Followers</h2>
+                <Card>
+                    <CardContent className="p-4 space-y-4">
+                        {followers.map(user => (
+                            <div key={user.name} className="flex items-center gap-4 p-2 rounded-md hover:bg-muted">
+                                <Avatar><AvatarImage src={user.avatar} /><AvatarFallback>{user.name.charAt(0)}</AvatarFallback></Avatar>
+                                <p className="font-semibold flex-1">{user.name}</p>
+                                <Button variant="secondary" size="sm">Follow Back</Button>
+                            </div>
+                        ))}
+                    </CardContent>
+                </Card>
+            </div>
+       </div>
+
     </div>
   );
 }
