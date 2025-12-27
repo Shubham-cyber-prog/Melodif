@@ -80,7 +80,6 @@ export function PlayerBar() {
     <div className="fixed bottom-24 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm md:bottom-0">
         <audio 
             ref={audioRef}
-            src="https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3"
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleLoadedMetadata}
             onEnded={() => setIsPlaying(false)}
@@ -88,7 +87,10 @@ export function PlayerBar() {
             onPlaying={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
             preload="metadata"
-        />
+        >
+          <source src="https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
         
       <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
