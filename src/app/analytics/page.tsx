@@ -150,7 +150,7 @@ export default function AnalyticsPage() {
           <CardHeader>
             <CardTitle>Top Artists</CardTitle>
             <CardDescription>Your most frequently played artists this month.</CardDescription>
-          </Header>
+          </CardHeader>
           <CardContent>
             <div className="space-y-4">
                 {topArtistsData.slice(0, 5).map(artist => (
@@ -235,5 +235,7 @@ export default function AnalyticsPage() {
     </div>
   );
 }
+
+    
 
     
