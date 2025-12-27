@@ -1,10 +1,19 @@
 import { AlbumArtwork } from '@/components/album-artwork';
-import { playlists, madeForYouPlaylists, recentlyPlayed } from '@/lib/data';
+import { playlists, madeForYouPlaylists, recentlyPlayed, getPlaylistById } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AIRecommendations from '@/components/ai-recommendations';
 import { Button } from '@/components/ui/button';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+  } from '@/components/ui/carousel';
 
 export default function Home() {
+    const youtubePlaylist = getPlaylistById('yt-1');
+    const spotifyPlaylist = getPlaylistById('sp-1');
   return (
     <div className="space-y-8">
       <div>
@@ -34,18 +43,29 @@ export default function Home() {
 
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {madeForYouPlaylists.map((playlist) => (
-            <AlbumArtwork
-              key={playlist.id}
-              item={playlist}
-              className="w-full"
-              aspectRatio="square"
-              width={250}
-              height={250}
-            />
-          ))}
-        </div>
+        <Carousel
+          opts={{
+            align: 'start',
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {madeForYouPlaylists.map((playlist) => (
+              <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                <AlbumArtwork
+                  item={playlist}
+                  className="w-full"
+                  aspectRatio="square"
+                  width={250}
+                  height={250}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
 
       <div className="space-y-4">
@@ -55,24 +75,36 @@ export default function Home() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold tracking-tight">Connect Your Accounts</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Card>
+            {youtubePlaylist && <Card>
                 <CardHeader>
                     <CardTitle>YouTube</CardTitle>
                     <CardDescription>Connect your YouTube account to import your playlists and listen to your favorite music videos.</CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <Button>Connect to YouTube</Button>
+                 <CardContent>
+                    <AlbumArtwork
+                        item={youtubePlaylist}
+                        className="w-full"
+                        aspectRatio="square"
+                        width={150}
+                        height={150}
+                    />
                 </CardContent>
-            </Card>
-            <Card>
+            </Card>}
+            {spotifyPlaylist && <Card>
                 <CardHeader>
                     <CardTitle>Spotify</CardTitle>
                     <CardDescription>Connect your Spotify account to bring in all your playlists and liked songs.</CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <Button>Connect to Spotify</Button>
+                 <CardContent>
+                    <AlbumArtwork
+                        item={spotifyPlaylist}
+                        className="w-full"
+                        aspectRatio="square"
+                        width={150}
+                        height={150}
+                    />
                 </CardContent>
-            </Card>
+            </Card>}
         </div>
       </div>
 

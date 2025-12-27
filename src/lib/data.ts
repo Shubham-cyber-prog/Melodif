@@ -69,6 +69,34 @@ export const playlists: Playlist[] = [
     coverArtId: "artwork9",
     songs: songs.filter(s => [8, 13, 17, 29]),
   },
+  {
+    id: "yt-1",
+    name: "YouTube Imports",
+    description: "Your favorite tracks from YouTube.",
+    coverArtId: "artwork12",
+    songs: songs.slice(0, 8),
+  },
+  {
+    id: "yt-2",
+    name: 'Gaming Mix',
+    description: 'High-energy tracks for gaming.',
+    coverArtId: 'artwork12',
+    songs: songs.filter(s => [9, 27, 12]),
+  },
+  {
+    id: 'sp-1',
+    name: 'Spotify Imports',
+    description: 'Your playlists from Spotify.',
+    coverArtId: 'artwork13',
+    songs: songs.slice(10, 18),
+  },
+  {
+    id: 'sp-2',
+    name: 'Indie Vibes',
+    description: 'The best of indie rock and pop.',
+    coverArtId: 'artwork14',
+    songs: songs.filter(s => [4, 13, 17]),
+  }
 ];
 
 export const madeForYouPlaylists: Playlist[] = [
