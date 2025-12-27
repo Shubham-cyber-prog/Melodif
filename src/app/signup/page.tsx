@@ -43,12 +43,12 @@ export default function SignupPage() {
     <div className="w-full lg:grid lg:min-h-[80vh] lg:grid-cols-2 xl:min-h-[85vh]">
         <div className="hidden bg-muted lg:block relative">
             <Image
-            src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=1974&auto=format&fit=crop"
             alt="Image"
             width="1920"
             height="1080"
             className="h-full w-full object-cover dark:brightness-[0.3] dark:grayscale"
-            data-ai-hint="concert music"
+            data-ai-hint="concert crowd"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
             <div className="absolute bottom-8 left-8 text-white">
