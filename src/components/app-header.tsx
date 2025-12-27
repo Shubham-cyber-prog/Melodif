@@ -19,6 +19,7 @@ import {
   LogIn,
   UserPlus,
   Settings,
+  Bell,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useSidebar } from './ui/sidebar';
@@ -80,6 +81,9 @@ export function AppHeader() {
       </div>
 
       <div className="flex items-center gap-2">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110">
+            <Bell className="h-5 w-5" />
+        </Button>
         <UserMenu />
       </div>
     </header>
