@@ -1,5 +1,6 @@
 
 'use client';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -21,8 +22,22 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { useToast } from '@/hooks/use-toast';
 
 export default function SettingsPage() {
+    const { toast } = useToast();
+    const [firstName, setFirstName] = useState('Melodif');
+    const [lastName, setLastName] = useState('User');
+
+    const handleProfileUpdate = () => {
+        // In a real app, you would send this data to your backend
+        console.log('Updating profile:', { firstName, lastName });
+        toast({
+            title: 'Profile Updated',
+            description: 'Your profile information has been successfully updated.',
+        });
+    }
+
   return (
     <div className="space-y-8 animate-fade-in">
       <div>
@@ -63,11 +78,11 @@ export default function SettingsPage() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" defaultValue="Melodif" />
+                    <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" defaultValue="User" />
+                    <Input id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 </div>
             </div>
             <div className="space-y-2">
@@ -75,7 +90,7 @@ export default function SettingsPage() {
                 <Input id="email" type="email" defaultValue="user@melodif.com" disabled />
                  <p className="text-xs text-muted-foreground">You can't change your email address.</p>
             </div>
-            <Button>Update Profile</Button>
+            <Button onClick={handleProfileUpdate}>Update Profile</Button>
         </CardContent>
       </Card>
 
