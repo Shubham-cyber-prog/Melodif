@@ -21,6 +21,7 @@ import {
   Download,
   Sun,
   Moon,
+  Home,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
@@ -43,22 +44,12 @@ export function AppHeader() {
     <header className="sticky top-0 z-30 flex h-16 w-full shrink-0 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-2">
         {isMobile && <SidebarTrigger />}
-        <Link href="/" className="flex items-center gap-2">
-            <svg
-                className="h-8 w-8 text-primary"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                d="M4 4.00098H8V16.001L12 12.001L16 16.001V4.00098H20V20.001H16V8.00098L12 12.001L8 8.00098V20.001H4V4.00098Z"
-                fill="currentColor"
-                />
-            </svg>
-            <span className="hidden text-xl font-semibold text-primary md:block">
-                Melodif
-            </span>
-        </Link>
+        <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0" asChild>
+            <Link href="/">
+                <Home className="h-5 w-5" />
+                <span className="sr-only">Home</span>
+            </Link>
+        </Button>
       </div>
       
       <div
