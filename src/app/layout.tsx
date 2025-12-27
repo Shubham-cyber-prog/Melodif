@@ -8,6 +8,7 @@ import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
 import { Toaster } from '@/components/ui/toaster';
 import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 import { AppFooter } from '@/components/app-footer';
+import ClientOnly from '@/components/client-only';
 
 export const metadata: Metadata = {
   title: 'Melodif',
@@ -45,7 +46,9 @@ export default function RootLayout({
               </SidebarInset>
             </div>
           </div>
-          <PlayerBar />
+          <ClientOnly>
+            <PlayerBar />
+          </ClientOnly>
           <MobileBottomNav />
           <Toaster />
         </SidebarProvider>
