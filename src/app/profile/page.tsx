@@ -14,12 +14,12 @@ export default function ProfilePage() {
       <Card className="overflow-hidden">
         <div className="relative h-40 md:h-56">
             <Image 
-                src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop"
                 alt="Profile banner"
                 layout="fill"
                 objectFit="cover"
                 className="object-cover"
-                data-ai-hint="abstract gradient"
+                data-ai-hint="nature forest"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
