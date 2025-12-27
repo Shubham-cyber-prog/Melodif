@@ -1,7 +1,6 @@
-
 'use client';
 
-import { Home, Search, Library, UploadCloud, BarChart, Bell } from 'lucide-react';
+import { Home, Search, Library, Download, BarChart, Bell } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -11,7 +10,8 @@ const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/search', label: 'Search', icon: Search },
   { href: '/library', label: 'Library', icon: Library },
-  { href: '/notifications', label: 'Alerts', icon: Bell },
+  { href: '/analytics', label: 'Analytics', icon: BarChart },
+  { href: '/download', label: 'Download', icon: Download },
 ];
 
 export function MobileBottomNav() {
@@ -24,7 +24,7 @@ export function MobileBottomNav() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm md:hidden">
-      <div className="grid h-full grid-cols-4 items-center">
+      <div className="grid h-full grid-cols-5 items-center">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
           return (
