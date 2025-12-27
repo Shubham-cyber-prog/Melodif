@@ -15,20 +15,19 @@ export default function ProfilePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       <Card className="overflow-hidden">
-        <div className="relative h-48">
+        <div className="relative h-48 md:h-64">
             <Image 
                 src={banner}
                 alt="Profile banner"
                 fill
-                objectFit="cover"
                 className="object-cover"
                 data-ai-hint="nature forest"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
-        <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-24">
-            <div className="relative z-10">
+        <CardContent className="p-6 pt-0">
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20 md:-mt-24">
+            <div className="relative z-10 flex-shrink-0">
               <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
                 <AvatarImage src={avatar} alt="User Avatar" />
                 <AvatarFallback>{firstName.charAt(0)}{lastName.charAt(0)}</AvatarFallback>
@@ -40,7 +39,7 @@ export default function ProfilePage() {
                 </Link>
               </Button>
             </div>
-            <div className="flex-1 space-y-1 text-center md:text-left">
+            <div className="flex-1 space-y-1 text-center md:text-left pt-4 md:pt-0">
               <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">{firstName} {lastName}</h1>
               <p className="text-muted-foreground">user@melodif.com</p>
             </div>
