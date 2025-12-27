@@ -1,3 +1,4 @@
+
 'use client';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -49,7 +50,7 @@ export default function UploadPage() {
     }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       <div>
         <h1 className="text-4xl font-bold tracking-tight text-foreground">
           Upload Music
