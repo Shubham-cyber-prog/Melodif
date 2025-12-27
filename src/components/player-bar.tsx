@@ -12,6 +12,7 @@ import {
   VolumeX,
   Shuffle,
   Repeat,
+  Loader2,
 } from 'lucide-react';
 import { songs } from '@/lib/data';
 import { getArtworkById } from '@/lib/data';
@@ -23,6 +24,7 @@ export function PlayerBar() {
   const [volume, setVolume] = useState(75);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const currentSong = songs[0];
@@ -80,6 +82,9 @@ export function PlayerBar() {
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleLoadedMetadata}
             onEnded={() => setIsPlaying(false)}
+            onWaiting={() => setIsLoading(true)}
+            onPlaying={() => setIsLoading(false)}
+            onCanPlay={() => setIsLoading(false)}
         />
       <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
@@ -115,8 +120,15 @@ export function PlayerBar() {
               size="icon"
               className="h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
               onClick={() => setIsPlaying(!isPlaying)}
+              disabled={isLoading}
             >
-              {isPlaying ? <Pause /> : <Play className="fill-current" />}
+              {isLoading ? (
+                <Loader2 className="animate-spin" />
+              ) : isPlaying ? (
+                <Pause />
+              ) : (
+                <Play className="fill-current" />
+              )}
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8">
               <SkipForward />
