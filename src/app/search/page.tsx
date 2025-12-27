@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
@@ -148,17 +149,17 @@ export default function SearchPage() {
                     const artwork = getArtworkById(genre.artworkId);
                     return (
                         <Link href="#" key={genre.name} className="group">
-                            <Card className={`relative overflow-hidden aspect-[3/4] ${genre.color}`}>
-                                 <h3 className="p-4 text-xl font-bold text-white text-shadow-lg">{genre.name}</h3>
+                            <Card className="relative overflow-hidden aspect-square">
                                 {artwork && (
                                      <Image 
                                         src={artwork.imageUrl}
                                         alt={genre.name}
-                                        width={100}
-                                        height={100}
-                                        className="absolute -bottom-4 -right-4 h-20 w-20 rotate-[25deg] transform-gpu transition-transform duration-300 group-hover:scale-110 object-cover rounded-md"
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                                      />
                                 )}
+                                <div className="absolute inset-0 bg-black/40" />
+                                 <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white text-shadow-lg">{genre.name}</h3>
                             </Card>
                         </Link>
                     )
