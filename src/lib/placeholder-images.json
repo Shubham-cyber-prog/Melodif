@@ -83,6 +83,12 @@
       "description": "An abstract representation of sound waves",
       "imageUrl": "https://images.unsplash.com/photo-1694009245674-9ad7f422d436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzb3VuZCUyMHdhdmVzfGVufDB8fHx8MTc2NjgwNTkyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "sound waves"
+    },
+    {
+      "id": "avatar",
+      "description": "User avatar",
+      "imageUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1c2VyJTIwYXZhdGFyfGVufDB8fHx8MTc2Njc3ODc4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "user avatar"
     }
   ]
 }

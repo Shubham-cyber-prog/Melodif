@@ -83,8 +83,10 @@ export function AppHeader() {
       </div>
 
       <div className="flex flex-1 items-center justify-end gap-2">
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110" asChild>
+          <Link href="/notifications">
             <Bell className="h-5 w-5" />
+          </Link>
         </Button>
         <UserMenu />
       </div>

@@ -20,6 +20,7 @@ import {
   UserPlus,
   Settings,
   BarChart,
+  Bell,
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -34,6 +35,7 @@ const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/search', label: 'Search', icon: Search },
   { href: '/library', label: 'Your Library', icon: Library },
+  { href: '/notifications', label: 'Notifications', icon: Bell },
   { href: '/upload', label: 'Upload Music', icon: UploadCloud },
   { href: '/analytics', label: 'Analytics', icon: BarChart },
 ];

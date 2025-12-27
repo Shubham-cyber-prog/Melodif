@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Home, Search, Library, UploadCloud, BarChart } from 'lucide-react';
+import { Home, Search, Library, UploadCloud, BarChart, Bell } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -10,8 +10,8 @@ import { cn } from '@/lib/utils';
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/search', label: 'Search', icon: Search },
-  { href: '/library', label: 'Your Library', icon: Library },
-  { href: '/analytics', label: 'Analytics', icon: BarChart },
+  { href: '/library', label: 'Library', icon: Library },
+  { href: '/notifications', label: 'Alerts', icon: Bell },
 ];
 
 export function MobileBottomNav() {
