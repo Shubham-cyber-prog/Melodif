@@ -37,12 +37,12 @@ export default function Home() {
             >
             <CarouselContent>
                 {featuredPlaylists.map((playlist) => (
-                <CarouselItem key={playlist.id} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={playlist.id}>
                     <AlbumArtwork
                         item={playlist}
                         className="w-full"
                         aspectRatio="portrait"
-                        width={300}
+                        width={1200}
                         height={400}
                     />
                 </CarouselItem>
@@ -75,34 +75,6 @@ export default function Home() {
             />
           ))}
         </div>
-      </div>
-
-      <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
-        <Carousel
-            plugins={[plugin.current]}
-            opts={{
-                align: 'start',
-                loop: true,
-            }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {madeForYouPlaylists.map((playlist) => (
-              <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
-                <AlbumArtwork
-                  item={playlist}
-                  className="w-full"
-                  aspectRatio="square"
-                  width={250}
-                  height={250}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
       </div>
 
       <div className="space-y-4">
