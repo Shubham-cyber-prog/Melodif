@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -17,6 +18,8 @@ import {
   Settings,
   Bell,
   Download,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
@@ -76,6 +79,23 @@ export function AppHeader() {
 
 function UserMenu() {
   const { firstName, lastName, avatar } = useProfile();
+  const [theme, setTheme] = useState('dark');
+
+  useEffect(() => {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    setTheme(isDarkMode ? 'dark' : 'light');
+  }, []);
+
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      document.documentElement.classList.remove('dark');
+      setTheme('light');
+    } else {
+      document.documentElement.classList.add('dark');
+      setTheme('dark');
+    }
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -122,6 +142,11 @@ function UserMenu() {
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
           </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={toggleTheme}>
+          {theme === 'dark' ? <Sun className="mr-2 h-4 w-4" /> : <Moon className="mr-2 h-4 w-4" />}
+          <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
