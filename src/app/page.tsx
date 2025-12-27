@@ -79,7 +79,7 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                <Carousel opts={{ align: 'start', dragFree: true }}>
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent className="-ml-4">
                         {recentlyPlayed.map((item, index) => (
                             <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
@@ -93,6 +93,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
+                    <CarouselPrevious className="left-4" />
+                    <CarouselNext className="right-4" />
                 </Carousel>
             </div>
         </section>
@@ -110,7 +112,7 @@ export default function Home() {
             </div>
              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {madeForYouPlaylists.slice(0, 6).map((playlist) => (
-                    <div key={playlist.id} className="group">
+                    <Link href={`/playlist/${playlist.id}`} key={playlist.id} className="group">
                         <Card className="flex items-center gap-4 overflow-hidden transition-colors hover:bg-accent">
                             <AlbumArtwork
                                 item={playlist}
@@ -118,10 +120,11 @@ export default function Home() {
                                 aspectRatio="square"
                                 width={80}
                                 height={80}
+                                isLink={false}
                             />
                             <p className="flex-1 font-semibold truncate pr-4">{playlist.name}</p>
                         </Card>
-                    </div>
+                    </Link>
                 ))}
             </div>
       </section>
@@ -135,7 +138,7 @@ export default function Home() {
                 </Button>
             </div>
             <div className="relative">
-                 <Carousel opts={{ align: 'start', dragFree: true }}>
+                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent className="-ml-4">
                         {playlists.map((playlist) => (
                             <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
@@ -149,6 +152,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
+                    <CarouselPrevious className="left-4" />
+                    <CarouselNext className="right-4" />
                 </Carousel>
             </div>
         </section>
