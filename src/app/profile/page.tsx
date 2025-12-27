@@ -83,7 +83,7 @@ export default function ProfilePage() {
                 className="object-cover"
                 data-ai-hint="nature forest"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
         </div>
         <CardContent className="p-6">
           <div className="flex flex-col items-center md:flex-row md:items-end gap-4 -mt-24 md:-mt-28">
@@ -288,6 +288,8 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
 
