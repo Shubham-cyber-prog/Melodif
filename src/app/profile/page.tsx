@@ -14,8 +14,8 @@ export default function ProfilePage() {
   const { firstName, lastName, avatar, banner } = useProfile();
   return (
     <div className="space-y-12 animate-fade-in">
-      <Card className="overflow-hidden">
-        <div className="relative h-36 md:h-48">
+      <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
+        <div className="relative h-28 md:h-36">
             <Image 
                 src={banner}
                 alt="Profile banner"
@@ -23,7 +23,7 @@ export default function ProfilePage() {
                 className="object-cover"
                 data-ai-hint="nature forest"
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/30" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
         <CardContent className="p-6">
