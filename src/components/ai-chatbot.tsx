@@ -65,7 +65,7 @@ export function AIChatbot() {
 
   return (
     <>
-      <div className="fixed bottom-32 right-8 z-50 md:bottom-12">
+      <div className="fixed bottom-52 right-8 z-50 md:bottom-28">
         <Button
           size="icon"
           className="h-12 w-12 rounded-full shadow-lg dark:bg-white/20 dark:hover:bg-white/30 dark:text-white"
@@ -77,8 +77,8 @@ export function AIChatbot() {
 
       {isOpen && (
         <Card className={cn(
-            "fixed bottom-48 right-8 z-50 flex flex-col shadow-2xl animate-fade-in md:bottom-28",
-            isMobile ? "w-[calc(100vw-4rem)] h-[70vh]" : "w-80 h-[28rem]"
+            "fixed bottom-64 right-8 z-50 flex flex-col shadow-2xl animate-fade-in md:bottom-44",
+            isMobile ? "w-[calc(100vw-4rem)] h-[60vh]" : "w-80 h-[28rem]"
         )}>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>AI Music Assistant</CardTitle>
