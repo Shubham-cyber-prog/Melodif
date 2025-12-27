@@ -1,3 +1,4 @@
+
 'use client';
 import { Button } from '@/components/ui/button';
 import {
@@ -18,6 +19,7 @@ import {
   Moon,
   LogIn,
   UserPlus,
+  Settings,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useSidebar } from './ui/sidebar';
@@ -126,6 +128,12 @@ function UserMenu() {
             <UserPlus className="mr-2 h-4 w-4" />
             <span>Sign Up</span>
           </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+            <Link href="/settings">
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+            </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
