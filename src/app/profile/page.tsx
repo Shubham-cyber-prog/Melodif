@@ -12,7 +12,7 @@ export default function ProfilePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       <Card className="overflow-hidden">
-        <div className="relative h-48 md:h-64">
+        <div className="relative h-36 md:h-48">
             <Image 
                 src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop"
                 alt="Profile banner"
@@ -24,7 +24,7 @@ export default function ProfilePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
         <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-24 md:-mt-28">
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20">
             <div className="relative z-10">
               <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
                 <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
