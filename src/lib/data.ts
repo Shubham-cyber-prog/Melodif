@@ -31,6 +31,16 @@ export const songs: Song[] = [
   { id: 28, title: "Silent City", artist: "Metropolis", album: "Urban Legends", duration: "4:30", artworkId: "artwork5", url: "#" },
   { id: 29, title: "Morning Mist", artist: "Veridia", album: "Verdant", duration: "3:55", artworkId: "artwork9", url: "#" },
   { id: 30, title: "Aurora", artist: " Borealis", album: "Northern Lights", duration: "4:50", artworkId: "artwork1", url: "#" },
+  { id: 31, title: "Solar Flare", artist: "Sunbeam", album: "Ecliptic", duration: "3:21", artworkId: "artwork6", url: "#" },
+  { id: 32, title: "Rainy Day", artist: "Petrichor", album: "Droplets", duration: "2:55", artworkId: "artwork5", url: "#" },
+  { id: 33, title: "Lost Temple", artist: "Explorer", album: "Ancient", duration: "4:18", artworkId: "artwork2", url: "#" },
+  { id: 34, title: "Quantum", artist: "Vertex", album: "Singularity", duration: "5:05", artworkId: "artwork7", url: "#" },
+  { id: 35, title: "Paper Dreams", artist: "Origami", album: "Folds", duration: "3:10", artworkId: "artwork1", url: "#" },
+  { id: 36, title: "Velvet Night", artist: "Nyx", album: "Shadows", duration: "4:00", artworkId: "artwork3", url: "#" },
+  { id: 37, title: "Clockwork", artist: "Tock", album: "Mechanisms", duration: "3:45", artworkId: "artwork4", url: "#" },
+  { id: 38, title: "Halcyon", artist: "Calm", album: "Serenity", duration: "4:30", artworkId: "artwork8", url: "#" },
+  { id: 39, title: "Glitch", artist: "Static", album: "Corrupt", duration: "1:58", artworkId: "artwork10", url: "#" },
+  { id: 40, title: "Pathfinder", artist: "Trail", album: "Maps", duration: "3:52", artworkId: "artwork9", url: "#" },
 ];
 
 export const playlists: Playlist[] = [
@@ -39,35 +49,56 @@ export const playlists: Playlist[] = [
     name: "Late Night Focus",
     description: "Chill beats to help you concentrate and study.",
     coverArtId: "artwork5",
-    songs: songs.filter(s => [1, 2, 9, 3, 12, 16, 28]),
+    songs: songs.filter(s => [1, 2, 9, 3, 12, 16, 28, 32, 36]),
   },
   {
     id: "playlist-2",
     name: "Road Trip Anthems",
     description: "Soundtrack for your next adventure.",
     coverArtId: "artwork6",
-    songs: songs.filter(s => [4, 6, 7, 20, 22, 26]),
+    songs: songs.filter(s => [4, 6, 7, 20, 22, 26, 31]),
   },
   {
     id: "playlist-3",
     name: "Retro Rewind",
     description: "Nostalgic tunes from the golden era.",
     coverArtId: "artwork4",
-    songs: songs.filter(s => [5, 14, 18, 23]),
+    songs: songs.filter(s => [5, 14, 18, 23, 37]),
   },
   {
     id: "playlist-4",
     name: "Cosmic Journey",
     description: "Explore the universe with these ethereal tracks.",
     coverArtId: "artwork7",
-    songs: songs.filter(s => [3, 10, 15, 19, 21, 24, 25, 30]),
+    songs: songs.filter(s => [3, 10, 15, 19, 21, 24, 25, 30, 34]),
   },
   {
     id: "playlist-5",
     name: "Nature Walk",
     description: "Peaceful tracks for a walk in the woods.",
     coverArtId: "artwork9",
-    songs: songs.filter(s => [8, 13, 17, 29]),
+    songs: songs.filter(s => [8, 13, 17, 29, 40]),
+  },
+  {
+    id: "playlist-6",
+    name: "Synthwave Dreams",
+    description: "Retro-futuristic soundscapes.",
+    coverArtId: "artwork10",
+    songs: songs.filter(s => [1, 9, 12, 27, 39]),
+  },
+  {
+    id: "playlist-7",
+    name: "Acoustic Afternoon",
+    description: "Unplugged and relaxed.",
+    coverArtId: "artwork2",
+    songs: songs.filter(s => [4, 8, 13, 17, 33, 35]),
+  },
+  {
+    id: "playlist-8",
+    name: "Ocean Breeze",
+    description: "Calm and soothing ocean vibes.",
+    coverArtId: "artwork8",
+    songs: songs.filter(s => [6, 11, 20, 38]),
   },
   {
     id: "yt-1",
@@ -81,7 +112,7 @@ export const playlists: Playlist[] = [
     name: 'Gaming Mix',
     description: 'High-energy tracks for gaming.',
     coverArtId: 'artwork12',
-    songs: songs.filter(s => [9, 27, 12]),
+    songs: songs.filter(s => [9, 27, 12, 39]),
   },
   {
     id: 'sp-1',
@@ -105,42 +136,42 @@ export const madeForYouPlaylists: Playlist[] = [
     name: 'Discover Weekly',
     description: 'Your weekly mixtape of fresh music. Enjoy new discoveries and deep cuts chosen just for you.',
     coverArtId: 'artwork1',
-    songs: songs.filter(s => [1, 4, 7, 11, 23, 28])
+    songs: songs.filter(s => [1, 4, 7, 11, 23, 28, 35])
   },
   {
     id: 'm-2',
     name: 'Daily Mix 1',
     description: 'A mix of your recent favorites and similar vibes.',
     coverArtId: 'artwork2',
-    songs: songs.filter(s => [2, 5, 8, 13, 18, 29])
+    songs: songs.filter(s => [2, 5, 8, 13, 18, 29, 33])
   },
   {
     id: 'm-3',
     name: 'Daily Mix 2',
     description: 'Upbeat and energetic tracks to power your day.',
     coverArtId: 'artwork3',
-    songs: songs.filter(s => [3, 6, 9, 12, 21, 27])
+    songs: songs.filter(s => [3, 6, 9, 12, 21, 27, 36])
   },
   {
     id: 'm-4',
     name: 'Release Radar',
     description: 'Catch all the latest music from artists you follow, plus new singles picked for you.',
     coverArtId: 'artwork10',
-    songs: songs.filter(s => [10, 4, 1, 15, 25, 30])
+    songs: songs.filter(s => [10, 4, 1, 15, 25, 30, 39])
   },
     {
     id: 'm-5',
     name: 'Chill Mix',
     description: 'Kick back with a personalized mix of slow-burners and relaxing tracks.',
     coverArtId: 'artwork9',
-    songs: songs.filter(s => [8, 5, 2, 17, 29, 11])
+    songs: songs.filter(s => [8, 5, 2, 17, 29, 11, 40])
   },
     {
     id: 'm-6',
     name: 'Workout Mix',
     description: 'Energy-boosting music to get you through your workout.',
     coverArtId: 'artwork6',
-    songs: songs.filter(s => [9, 6, 3, 22, 26, 27])
+    songs: songs.filter(s => [9, 6, 3, 22, 26, 27, 31])
   }
 ];
 
