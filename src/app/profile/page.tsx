@@ -6,15 +6,26 @@ import { playlists } from '@/lib/data';
 import { AlbumArtwork } from '@/components/album-artwork';
 import { BarChart, ListMusic, Users, Pen } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProfilePage() {
   return (
     <div className="space-y-12 animate-fade-in">
       <Card className="overflow-hidden">
-        <div className="bg-muted h-32 md:h-40" />
+        <div className="relative h-40 md:h-56">
+            <Image 
+                src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop"
+                alt="Profile banner"
+                layout="fill"
+                objectFit="cover"
+                className="object-cover"
+                data-ai-hint="abstract gradient"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+        </div>
         <CardContent className="p-6">
-          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-20">
-            <div className="relative">
+          <div className="flex flex-col md:flex-row items-center md:items-end gap-6 -mt-24 md:-mt-28">
+            <div className="relative z-10">
               <Avatar className="h-32 w-32 border-4 border-background ring-4 ring-primary">
                 <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
                 <AvatarFallback>M</AvatarFallback>
