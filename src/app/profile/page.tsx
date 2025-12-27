@@ -15,7 +15,7 @@ export default function ProfilePage() {
   return (
     <div className="space-y-8 animate-fade-in">
       <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-2xl">
-        <div className="relative h-32 md:h-36">
+        <div className="relative h-32 md:h-48">
             <Image 
                 src={banner}
                 alt="Profile banner"
@@ -23,7 +23,7 @@ export default function ProfilePage() {
                 className="object-cover"
                 data-ai-hint="nature forest"
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/50" />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
         <CardContent className="p-6">
@@ -41,7 +41,7 @@ export default function ProfilePage() {
               </Button>
             </div>
             <div className="flex-1 space-y-1 text-center md:text-left pt-4 md:pt-0">
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">{firstName} {lastName}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-shadow-lg">{firstName} {lastName}</h1>
               <p className="text-sm text-muted-foreground">user@melodif.com</p>
             </div>
              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
@@ -171,3 +171,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
