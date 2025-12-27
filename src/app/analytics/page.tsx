@@ -1,18 +1,8 @@
 
 'use client';
-import { Bar, BarChart, Line, LineChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
+import { Bar, BarChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-
-const weeklyActivityData = [
-  { day: 'Mon', hours: 2.5 },
-  { day: 'Tue', hours: 3 },
-  { day: 'Wed', hours: 4 },
-  { day: 'Thu', hours: 2 },
-  { day: 'Fri', hours: 5 },
-  { day: 'Sat', hours: 6 },
-  { day: 'Sun', hours: 3.5 },
-];
 
 const genreData = [
   { name: 'Pop', value: 400, fill: 'hsl(var(--chart-1))' },
@@ -43,25 +33,7 @@ export default function AnalyticsPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>Weekly Listening Activity</CardTitle>
-            <CardDescription>Hours listened per day this week.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={{}} className="h-64 w-full">
-                <LineChart data={weeklyActivityData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="day" />
-                    <YAxis />
-                    <Tooltip content={<ChartTooltipContent />} />
-                    <Line type="monotone" dataKey="hours" stroke="hsl(var(--primary))" strokeWidth={2} activeDot={{ r: 8 }} />
-                </LineChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
-
-        <Card>
+        <Card className="col-span-1 md:col-span-2">
           <CardHeader>
             <CardTitle>Top Genres</CardTitle>
             <CardDescription>Your most played music genres.</CardDescription>
