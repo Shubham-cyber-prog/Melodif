@@ -11,6 +11,7 @@ import { AppFooter } from '@/components/app-footer';
 import ClientOnly from '@/components/client-only';
 import { AIChatbot } from '@/components/ai-chatbot';
 import { ProfileProvider } from '@/contexts/ProfileContext';
+import { SplashScreen } from '@/components/splash-screen';
 
 export const metadata: Metadata = {
   title: 'Melodif',
@@ -34,6 +35,9 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <ProfileProvider>
+          <ClientOnly>
+            <SplashScreen />
+          </ClientOnly>
           <SidebarProvider>
             <div className="relative flex min-h-screen w-full">
               <AppSidebar />
