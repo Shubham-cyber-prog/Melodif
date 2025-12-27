@@ -48,8 +48,10 @@ export const songs: Song[] = [
   { id: 44, title: "Jai Ho", artist: "A. R. Rahman, Sukhwinder Singh", album: "Slumdog Millionaire", duration: "5:19", artworkId: "artwork-indian-4", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
   { id: 45, title: "Ghungroo", artist: "Arijit Singh, Shilpa Rao", album: "War", duration: "5:02", artworkId: "artwork-indian-5", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
   { id: 46, title: "Maa Tujhe Salaam", artist: "A. R. Rahman", album: "Vande Mataram", duration: "4:15", artworkId: "artwork-indian-6", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
-  { id: 47, title: "Apna Time Aayega", artist: "Ranveer Singh", album: "Gully Boy", duration: "2:20", artworkId: "artwork-indian-7", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 47, title: "Apna Time Aayega", artist: "Ranveer Singh, DIVINE", album: "Gully Boy", duration: "2:20", artworkId: "artwork-indian-7", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
   { id: 48, title: "Kesariya", artist: "Arijit Singh", album: "Brahmastra", duration: "4:28", artworkId: "artwork-indian-8", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 49, title: "Tere Bina", artist: "A. R. Rahman, Chinmayi", album: "Guru", duration: "5:09", artworkId: "artwork-indian-1", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
+  { id: 50, title: "Raabta", artist: "Arijit Singh", album: "Agent Vinod", duration: "4:03", artworkId: "artwork-indian-5", url: "https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3" },
 ];
 
 export const playlists: Playlist[] = [
@@ -162,7 +164,23 @@ export const playlists: Playlist[] = [
     name: 'Arijit Singh Essentials',
     description: 'The best of Arijit Singh.',
     coverArtId: 'artwork-indian-8',
-    songs: songs.filter(s => [41, 45, 48]),
+    songs: songs.filter(s => [41, 45, 48, 50]),
+    type: 'playlist'
+  },
+  {
+    id: 'indian-3',
+    name: '90s Bollywood Nostalgia',
+    description: 'Relive the golden era of Indian music.',
+    coverArtId: 'artwork-indian-2',
+    songs: songs.filter(s => [42, 46, 49]),
+    type: 'playlist'
+  },
+  {
+    id: 'indian-4',
+    name: 'Punjabi Party Hits',
+    description: 'Get the party started with these bangers.',
+    coverArtId: 'artwork-indian-7',
+    songs: songs.filter(s => [47, 45]),
     type: 'playlist'
   }
 ];
