@@ -19,6 +19,18 @@
 
 ---
 
+## 🗺️ Roadmap
+
+Here are some features planned for the future of Melodif:
+
+- **🎤 Live Lyrics**: Real-time synchronized lyrics for your favorite tracks.
+- **🎉 Social Listening**: Create collaborative playlists and host listening parties with friends.
+- **☁️ Enhanced Offline Mode**: Automatic caching of your most-played songs and playlists.
+- **🔗 More Integrations**: Connect with more of your favorite music services to import your library.
+- **💡 Advanced AI Features**: AI-powered concert recommendations and artist deep dives.
+
+---
+
 ## 🚀 Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/) (App Router)
@@ -71,4 +83,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ---
 
-Built with ❤️ by **[Your Name]** in Firebase Studio.
+Built with ❤️ by **Shubham Nayak** in Firebase Studio.
