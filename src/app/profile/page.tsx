@@ -40,8 +40,8 @@ export default function ProfilePage() {
                 className="object-cover"
                 data-ai-hint="nature forest"
             />
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         </div>
         <CardContent className="p-6">
           <div className="flex flex-col items-center md:flex-row md:items-end gap-4 -mt-20 md:-mt-24">
@@ -58,7 +58,7 @@ export default function ProfilePage() {
               </Button>
             </div>
             <div className="flex-1 space-y-1 text-center md:text-left pt-4 md:pt-0">
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-shadow-lg">{firstName} {lastName}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-white text-shadow-lg">{firstName} {lastName}</h1>
               <p className="text-sm text-muted-foreground">user@melodif.com</p>
                <p className="text-sm text-foreground max-w-prose">{bio}</p>
             </div>
