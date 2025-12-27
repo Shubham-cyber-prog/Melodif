@@ -15,6 +15,7 @@ import {
   } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { Youtube, Link as LinkIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -31,20 +32,27 @@ export default function Home() {
     const featuredPlaylists = [...playlists.slice(0, 2), ...madeForYouPlaylists.slice(0, 3)];
 
     const plugin = useRef(
-        Autoplay({ delay: 2000, stopOnInteraction: true })
+        Autoplay({ delay: 3000, stopOnInteraction: true })
     );
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-4">
+    <div className="space-y-12 animate-fade-in">
+        <header className="space-y-2">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground">
+            Listen Now
+            </h1>
+            <p className="text-lg text-muted-foreground">
+            Top picks for you. Updated daily.
+            </p>
+        </header>
+      
         <Carousel
             plugins={[plugin.current]}
-            opts={{
-                align: 'start',
-                loop: true,
-            }}
+            opts={{ align: 'start', loop: true }}
             className="w-full"
-            >
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+        >
             <CarouselContent>
                 {featuredPlaylists.map((playlist) => (
                 <CarouselItem key={playlist.id}>
@@ -58,94 +66,127 @@ export default function Home() {
                 </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-            </Carousel>
-      </div>
-      <div>
-        <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
-          Listen Now
-        </h1>
-        <p className="text-md md:text-lg text-muted-foreground">
-          Top picks for you. Updated daily.
-        </p>
-      </div>
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
+        </Carousel>
+      
+       <section className="space-y-4">
+            <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-semibold tracking-tight">Recently Played</h2>
+                <Button variant="link" asChild>
+                    <Link href="/library">View All</Link>
+                </Button>
+            </div>
+            <div className="relative">
+                <Carousel opts={{ align: 'start', dragFree: true }}>
+                    <CarouselContent className="-ml-4">
+                        {recentlyPlayed.map((item, index) => (
+                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
+                                <AlbumArtwork
+                                    item={item}
+                                    className="w-full"
+                                    aspectRatio="square"
+                                    width={250}
+                                    height={250}
+                                />
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                </Carousel>
+            </div>
+        </section>
 
-       <div className="space-y-4">
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Recently Played</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {recentlyPlayed.map((item) => (
-            <AlbumArtwork
-              key={item.id}
-              item={item}
-              className="w-full"
-              aspectRatio="square"
-              width={250}
-              height={250}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-4">
+      <section>
          <AIRecommendations />
-      </div>
+      </section>
 
-      <div className="space-y-4">
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Connect Your Accounts</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Card>
-                <CardHeader>
-                    <div className="flex items-center gap-4">
-                        <Youtube className="h-10 w-10 text-red-600" />
-                        <div>
-                            <CardTitle>YouTube</CardTitle>
-                            <CardDescription>Import your playlists and liked videos.</CardDescription>
-                        </div>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <Button className="w-full">
-                        <LinkIcon className="mr-2 h-4 w-4" />
-                        Connect YouTube
-                    </Button>
-                </CardContent>
-            </Card>
-            <Card>
-                <CardHeader>
-                    <div className="flex items-center gap-4">
-                        <SpotifyIcon className="h-10 w-10 text-green-500" />
-                        <div>
-                            <CardTitle>Spotify</CardTitle>
-                            <CardDescription>Bring in all your playlists and liked songs.</CardDescription>
-                        </div>
-                    </div>
-                </CardHeader>
-                <CardContent>
-                    <Button className="w-full">
-                        <LinkIcon className="mr-2 h-4 w-4" />
-                        Connect Spotify
-                    </Button>
-                </CardContent>
-            </Card>
-        </div>
-      </div>
+        <section className="space-y-4">
+            <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-semibold tracking-tight">Made For You</h2>
+                <Button variant="link" asChild>
+                    <Link href="/library">View All</Link>
+                </Button>
+            </div>
+             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
+                {madeForYouPlaylists.slice(0, 6).map((playlist) => (
+                    <Link href={`/playlist/${playlist.id}`} key={playlist.id} className="group">
+                        <Card className="flex items-center gap-4 overflow-hidden transition-colors hover:bg-accent">
+                            <AlbumArtwork
+                                item={playlist}
+                                className="w-20 flex-shrink-0"
+                                aspectRatio="square"
+                                width={80}
+                                height={80}
+                            />
+                            <p className="flex-1 font-semibold truncate pr-4">{playlist.name}</p>
+                        </Card>
+                    </Link>
+                ))}
+            </div>
+      </section>
 
-      <div className="space-y-4">
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Your Playlists</h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {playlists.map((playlist) => (
-            <AlbumArtwork
-              key={playlist.id}
-              item={playlist}
-              className="w-full"
-              aspectRatio="square"
-              width={250}
-              height={250}
-            />
-          ))}
-        </div>
-      </div>
+
+        <section className="space-y-4">
+            <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-semibold tracking-tight">Your Playlists</h2>
+                <Button variant="link" asChild>
+                    <Link href="/library">View All</Link>
+                </Button>
+            </div>
+            <div className="relative">
+                 <Carousel opts={{ align: 'start', dragFree: true }}>
+                    <CarouselContent className="-ml-4">
+                        {playlists.map((playlist) => (
+                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
+                                <AlbumArtwork
+                                    item={playlist}
+                                    className="w-full"
+                                    aspectRatio="square"
+                                    width={250}
+                                    height={250}
+                                />
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                </Carousel>
+            </div>
+        </section>
+
+         <section className="space-y-4">
+            <h2 className="text-2xl font-semibold tracking-tight">Connect Your Accounts</h2>
+             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Card className="bg-gradient-to-br from-red-500/10 to-transparent">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <Youtube className="h-10 w-10 text-red-600" />
+                            <div>
+                                <CardTitle>YouTube</CardTitle>
+                                <CardDescription className="text-foreground/80">Import your music library.</CardDescription>
+                            </div>
+                        </div>
+                        <Button>
+                            <LinkIcon className="mr-2 h-4 w-4" />
+                            Connect
+                        </Button>
+                    </CardHeader>
+                </Card>
+                <Card className="bg-gradient-to-br from-green-500/10 to-transparent">
+                     <CardHeader className="flex flex-row items-center justify-between">
+                        <div className="flex items-center gap-4">
+                            <SpotifyIcon className="h-10 w-10 text-green-500" />
+                            <div>
+                                <CardTitle>Spotify</CardTitle>
+                                <CardDescription className="text-foreground/80">Bring in your playlists.</CardDescription>
+                            </div>
+                        </div>
+                        <Button>
+                            <LinkIcon className="mr-2 h-4 w-4" />
+                            Connect
+                        </Button>
+                    </CardHeader>
+                </Card>
+            </div>
+        </section>
     </div>
   );
 }

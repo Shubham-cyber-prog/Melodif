@@ -26,14 +26,21 @@ export function AlbumArtwork({
   const imageHint = artwork?.imageHint || 'album cover';
   
   const isPlaylist = 'songs' in item;
-  const link = isPlaylist ? `/playlist/${item.id}` : '#';
+  let link = '#';
+  if (item.type === 'playlist' || isPlaylist) {
+    link = `/playlist/${item.id}`;
+  } else if (item.type === 'song') {
+    link = `/song/${item.id}`;
+  }
+
+
   const description = item.description || ('artist' in item ? item.artist : '');
   const isArtist = ('type' in item && item.type === 'artist') || (item.description === 'Artist');
 
   return (
-    <div className={cn('space-y-3', className)} {...props}>
-      <Link href={link} className="block group" style={{ perspective: '1000px' }}>
-        <div className="relative overflow-hidden rounded-lg transition-all duration-300 transform-style-3d group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:rotate-y-4">
+    <div className={cn('space-y-3 group/artwork', className)} {...props}>
+      <Link href={link} className="block group/artwork-cover" style={{ perspective: '1000px' }}>
+        <div className="relative overflow-hidden transition-all duration-300 transform-style-3d group-hover/artwork-cover:-translate-y-2 group-hover/artwork-cover:shadow-2xl group-hover/artwork-cover:rotate-y-4">
           {artworkUrl ? (
             <Image
               src={artworkUrl}
@@ -56,8 +63,8 @@ export function AlbumArtwork({
                 <Music className="h-10 w-10 text-muted-foreground" />
             </div>
           )}
-          <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity group-hover:opacity-100" />
-          <div className="absolute bottom-4 right-4 translate-y-4 transform-gpu opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity group-hover/artwork-cover:opacity-100" />
+          <div className="absolute bottom-4 right-4 translate-y-4 transform-gpu opacity-0 transition-all group-hover/artwork:translate-y-0 group-hover/artwork:opacity-100">
             <button className="flex h-12 w-12 items-center justify-center rounded-full bg-primary shadow-lg">
               <Play className="h-6 w-6 fill-primary-foreground text-primary-foreground" />
             </button>
