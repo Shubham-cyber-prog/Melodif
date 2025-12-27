@@ -130,16 +130,16 @@ export function PlayerBar() {
             </Button>
             <Button
               size="icon"
-              className="h-10 w-10 rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
+              className="h-12 w-12 rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105 hover:bg-primary/90"
               onClick={() => setIsPlaying(!isPlaying)}
               disabled={isLoading}
             >
               {isLoading ? (
                 <Loader2 className="animate-spin" />
               ) : isPlaying ? (
-                <Pause />
+                <Pause className="h-6 w-6" />
               ) : (
-                <Play className="fill-current" />
+                <Play className="h-6 w-6 fill-current" />
               )}
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8">
