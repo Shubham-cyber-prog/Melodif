@@ -1,8 +1,9 @@
 
 'use client';
-import { Bar, BarChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
+import { Bar, BarChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell, LineChart, Line } from 'recharts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { Activity, Music, Play, TrendingUp } from 'lucide-react';
 
 const genreData = [
   { name: 'Pop', value: 400, fill: 'hsl(var(--chart-1))' },
@@ -20,6 +21,17 @@ const topArtistsData = [
     { artist: 'Retrospect', plays: 65 },
 ]
 
+const listeningActivityData = [
+  { day: 'Mon', hours: 2.5 },
+  { day: 'Tue', hours: 3 },
+  { day: 'Wed', hours: 4 },
+  { day: 'Thu', hours: 3.5 },
+  { day: 'Fri', hours: 5 },
+  { day: 'Sat', hours: 6 },
+  { day: 'Sun', hours: 4.5 },
+];
+
+
 export default function AnalyticsPage() {
   return (
     <div className="space-y-8 animate-fade-in">
@@ -28,12 +40,62 @@ export default function AnalyticsPage() {
           Your Analytics
         </h1>
         <p className="text-lg text-muted-foreground">
-          Insights into your listening habits.
+          Deep dive into your listening habits.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <Card className="col-span-1 md:col-span-2">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">Total Listening Hours</CardTitle>
+                <Activity className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">142.5h</div>
+                <p className="text-xs text-muted-foreground">+12% from last month</p>
+            </CardContent>
+        </Card>
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">Total Plays</CardTitle>
+                <Play className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">2,350</div>
+                <p className="text-xs text-muted-foreground">+8.5% from last month</p>
+            </CardContent>
+        </Card>
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">Top Genre</CardTitle>
+                <Music className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">Pop</div>
+                <p className="text-xs text-muted-foreground">40% of your listening time</p>
+            </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+        <Card className="lg:col-span-3">
+            <CardHeader>
+                <CardTitle>Listening Activity</CardTitle>
+                <CardDescription>Your listening hours this week.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={{}} className="h-80 w-full">
+                    <LineChart data={listeningActivityData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="day" />
+                        <YAxis />
+                        <Tooltip content={<ChartTooltipContent indicator="dot" />} />
+                        <Line type="monotone" dataKey="hours" stroke="hsl(var(--primary))" strokeWidth={2} />
+                    </LineChart>
+                </ChartContainer>
+            </CardContent>
+        </Card>
+         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Top Genres</CardTitle>
             <CardDescription>Your most played music genres.</CardDescription>
@@ -47,7 +109,6 @@ export default function AnalyticsPage() {
                             <Cell key={`cell-${index}`} fill={entry.fill} />
                         ))}
                     </Pie>
-                    <Legend/>
                 </PieChart>
             </ChartContainer>
           </CardContent>
@@ -62,7 +123,7 @@ export default function AnalyticsPage() {
           <CardContent>
             <ChartContainer config={{}} className="h-80 w-full">
                 <BarChart data={topArtistsData} layout="vertical" margin={{ left: 10 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                     <XAxis type="number" />
                     <YAxis dataKey="artist" type="category" width={80} />
                     <Tooltip cursor={{fill: 'hsl(var(--muted))'}} content={<ChartTooltipContent />}/>
