@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { songs } from '@/lib/data';
 import type { Song } from '@/lib/types';
 import Image from 'next/image';
-import { getArtworkById } from '@/lib/data';
+import { getArtworkById } from '@/lib/placeholder-images';
 import { Music } from 'lucide-react';
 
 export default function SearchPage() {
@@ -77,7 +77,8 @@ export default function SearchPage() {
 }
 
 function SongResult({ song }: { song: Song }) {
-  const artworkUrl = getArtworkById(song.artworkId);
+  const artwork = getArtworkById(song.artworkId);
+  const artworkUrl = artwork?.imageUrl;
   return (
     <div className="flex items-center gap-4 rounded-md p-2 hover:bg-accent">
       {artworkUrl && (
@@ -87,7 +88,7 @@ function SongResult({ song }: { song: Song }) {
           width={40}
           height={40}
           className="rounded"
-          data-ai-hint="album cover"
+          data-ai-hint={artwork?.imageHint || 'album cover'}
         />
       )}
       <div className="flex-1">

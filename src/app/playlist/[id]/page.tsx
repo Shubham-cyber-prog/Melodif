@@ -1,4 +1,6 @@
-import { getPlaylistById, getArtworkById, songs as allSongs } from '@/lib/data';
+import { getPlaylistById } from '@/lib/data';
+import { getArtworkById } from '@/lib/placeholder-images';
+import { songs as allSongs } from '@/lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import {
@@ -19,7 +21,8 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  const artworkUrl = getArtworkById(playlist.coverArtId);
+  const artwork = getArtworkById(playlist.coverArtId);
+  const artworkUrl = artwork?.imageUrl;
 
   return (
     <div className="space-y-8">
@@ -32,7 +35,7 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                         width={250} 
                         height={250} 
                         className="rounded-lg shadow-lg"
-                        data-ai-hint="playlist cover"
+                        data-ai-hint={artwork?.imageHint || 'playlist cover'}
                     />
                 </div>
             )}
@@ -60,19 +63,21 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {playlist.songs.map((song, index) => (
+                {playlist.songs.map((song, index) => {
+                    const songArtwork = getArtworkById(song.artworkId);
+                    return (
                     <TableRow key={song.id} className="group">
                         <TableCell className="font-medium text-muted-foreground">{index + 1}</TableCell>
                         <TableCell>
                             <div className="flex items-center gap-4">
-                                {getArtworkById(song.artworkId) && 
+                                {songArtwork && 
                                     <Image 
-                                        src={getArtworkById(song.artworkId)!} 
+                                        src={songArtwork.imageUrl} 
                                         alt={song.album} 
                                         width={40} 
                                         height={40} 
                                         className="rounded"
-                                        data-ai-hint="album cover"
+                                        data-ai-hint={songArtwork.imageHint || 'album cover'}
                                     />
                                 }
                                 <div>
@@ -84,7 +89,7 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                         <TableCell className="text-muted-foreground">{song.album}</TableCell>
                         <TableCell className="text-right text-muted-foreground">{song.duration}</TableCell>
                     </TableRow>
-                ))}
+                )})}
             </TableBody>
         </Table>
     </div>
@@ -96,10 +101,9 @@ export async function generateStaticParams() {
     const playlistIds = [...new Set(playlists)];
     
     // In a real app, you would fetch all playlist IDs
-    const mockIds = ['playlist-1', 'playlist-2', 'playlist-3', 'playlist-4', 'm-1', 'm-2', 'm-3', 'm-4', 'm-5', 'm-6'];
+    const mockIds = ['playlist-1', 'playlist-2', 'playlist-3', 'playlist-4', 'm-1', 'm-2', 'm-3', 'm-4', 'm-5', 'm-6', 'yt-1', 'yt-2', 'sp-1', 'sp-2'];
    
     return mockIds.map((id) => ({
       id,
     }))
   }
-  

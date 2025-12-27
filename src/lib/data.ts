@@ -89,23 +89,40 @@ export const madeForYouPlaylists: Playlist[] = [
   }
 ];
 
-export const getPlaylistById = (id: string) => {
-    return [...playlists, ...madeForYouPlaylists].find(p => p.id === id);
-}
+export const youtubePlaylists: Playlist[] = [
+    {
+      id: 'yt-1',
+      name: 'YouTube Lo-Fi Gems',
+      description: 'The best lo-fi beats from YouTube creators.',
+      coverArtId: 'artwork11',
+      songs: songs.filter(s => [1, 5, 8])
+    },
+    {
+      id: 'yt-2',
+      name: 'YouTube Gaming Mix',
+      description: 'High-energy tracks for gaming sessions.',
+      coverArtId: 'artwork12',
+      songs: songs.filter(s => [9, 3, 6])
+    }
+  ];
+  
+  export const spotifyPlaylists: Playlist[] = [
+    {
+      id: 'sp-1',
+      name: 'Spotify Top Hits',
+      description: 'The most popular tracks on Spotify right now.',
+      coverArtId: 'artwork13',
+      songs: songs.filter(s => [10, 4, 2])
+    },
+    {
+      id: 'sp-2',
+      name: 'Spotify Viral 50',
+      description: 'The tracks that are currently going viral.',
+      coverArtId: 'artwork14',
+      songs: songs.filter(s => [7, 3, 1])
+    }
+  ];
 
-export const getArtworkById = (id: string) => {
-    // This is a placeholder, in a real app you would fetch this from placeholder-images.ts
-    const artworks = [
-        { id: "artwork1", url: "https://picsum.photos/seed/picsum1/400/400" },
-        { id: "artwork2", url: "https://picsum.photos/seed/picsum2/400/400" },
-        { id: "artwork3", url: "https://picsum.photos/seed/picsum3/400/400" },
-        { id: "artwork4", url: "https://picsum.photos/seed/picsum4/400/400" },
-        { id: "artwork5", url: "https://picsum.photos/seed/picsum5/400/400" },
-        { id: "artwork6", url: "https://picsum.photos/seed/picsum6/400/400" },
-        { id: "artwork7", url: "https://picsum.photos/seed/picsum7/400/400" },
-        { id: "artwork8", url: "https://picsum.photos/seed/picsum8/400/400" },
-        { id: "artwork9", url: "https://picsum.photos/seed/picsum9/400/400" },
-        { id: "artwork10", url: "https://picsum.photos/seed/picsum10/400/400" },
-    ];
-    return artworks.find(art => art.id === id)?.url;
+export const getPlaylistById = (id: string) => {
+    return [...playlists, ...madeForYouPlaylists, ...youtubePlaylists, ...spotifyPlaylists].find(p => p.id === id);
 }

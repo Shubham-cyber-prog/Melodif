@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 import type { Playlist } from '@/lib/types';
-import { getArtworkById } from '@/lib/data';
+import { getArtworkById } from '@/lib/placeholder-images';
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
   playlist: Playlist;
@@ -21,8 +21,9 @@ export function AlbumArtwork({
   className,
   ...props
 }: AlbumArtworkProps) {
-  const artworkUrl = getArtworkById(playlist.coverArtId);
-  const imageHint = 'album cover'; // Fallback hint
+  const artwork = getArtworkById(playlist.coverArtId);
+  const artworkUrl = artwork?.imageUrl;
+  const imageHint = artwork?.imageHint || 'album cover';
 
   return (
     <div className={cn('space-y-3', className)} {...props}>

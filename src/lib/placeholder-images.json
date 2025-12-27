@@ -59,6 +59,30 @@
       "description": "Neon lights in a city",
       "imageUrl": "https://images.unsplash.com/photo-1506994011460-5482746d30a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxuZW9uJTIwbGlnaHRzfGVufDB8fHx8MTc2NjgwOTI1Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "neon lights"
+    },
+    {
+      "id": "artwork11",
+      "description": "A person studying at a desk with a laptop",
+      "imageUrl": "https://images.unsplash.com/photo-1625297673112-06b459140555?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkZXNrJTIwbGFwdG9wfGVufDB8fHx8MTc2NjgxMDU2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "desk laptop"
+    },
+    {
+      "id": "artwork12",
+      "description": "A neon-lit gaming setup",
+      "imageUrl": "https://images.unsplash.com/photo-1603481588273-2f908a9a7a1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnYW1pbmclMjBzZXR1cHxlbnwwfHx8fDE3NjY3Mjc5MzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gaming setup"
+    },
+    {
+      "id": "artwork13",
+      "description": "A crowd at a music festival",
+      "imageUrl": "https://images.unsplash.com/photo-1619229725920-ac8b63b0631a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtdXNpYyUyMGZlc3RpdmFsfGVufDB8fHx8MTc2Njc2MzQwN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "music festival"
+    },
+    {
+      "id": "artwork14",
+      "description": "An abstract representation of sound waves",
+      "imageUrl": "https://images.unsplash.com/photo-1694009245674-9ad7f422d436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzb3VuZCUyMHdhdmVzfGVufDB8fHx8MTc2NjgwNTkyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sound waves"
     }
   ]
 }

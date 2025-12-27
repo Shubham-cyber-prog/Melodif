@@ -15,7 +15,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { songs } from '@/lib/data';
-import { getArtworkById } from '@/lib/data';
+import { getArtworkById } from '@/lib/placeholder-images';
 
 export function PlayerBar() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -28,7 +28,8 @@ export function PlayerBar() {
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const currentSong = songs[0];
-  const artworkUrl = getArtworkById(currentSong.artworkId);
+  const artwork = getArtworkById(currentSong.artworkId);
+  const artworkUrl = artwork?.imageUrl;
 
   useEffect(() => {
     if (audioRef.current) {
@@ -97,7 +98,7 @@ export function PlayerBar() {
                 width={56}
                 height={56}
                 className="rounded-md object-cover"
-                data-ai-hint="album cover"
+                data-ai-hint={artwork?.imageHint || 'album cover'}
               />
             </div>
           )}
