@@ -72,7 +72,7 @@ export function PlayerBar() {
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    return isNaN(minutes) || isNaN(seconds) ? '0:00' : `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
 
 
@@ -88,17 +88,7 @@ export function PlayerBar() {
             onPlaying={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
         />
-        <div className="absolute top-0 left-0 right-0 h-1">
-            <Slider 
-                value={[progress]}
-                onValueChange={handleProgressChange}
-                max={100}
-                step={0.1}
-                className="w-full h-1"
-                thumbClassName="h-3 w-3"
-                disabled={isLoading}
-            />
-        </div>
+        
       <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
         <div className="flex items-center gap-3">
