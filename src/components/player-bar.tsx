@@ -14,9 +14,11 @@ import {
   Shuffle,
   Repeat,
   Loader2,
+  X,
 } from 'lucide-react';
 import { songs } from '@/lib/data';
 import { getArtworkById } from '@/lib/placeholder-images';
+import { cn } from '@/lib/utils';
 
 export function PlayerBar() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -26,6 +28,7 @@ export function PlayerBar() {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const currentSong = songs[0];
@@ -80,10 +83,17 @@ export function PlayerBar() {
     const seconds = Math.floor(time % 60);
     return isNaN(minutes) || isNaN(seconds) ? '0:00' : `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
+  
+  if (!isVisible) {
+    return null;
+  }
 
 
   return (
-    <div className="fixed bottom-24 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm md:bottom-0">
+    <div className={cn(
+        "fixed bottom-24 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm md:bottom-0",
+        !isVisible && "hidden"
+      )}>
         <audio 
             ref={audioRef}
             onTimeUpdate={handleTimeUpdate}
@@ -98,9 +108,9 @@ export function PlayerBar() {
           Your browser does not support the audio element.
         </audio>
         
-      <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
+      <div className="grid h-full grid-cols-10 items-center px-4 md:px-8">
         {/* Song Info */}
-        <div className="flex items-center gap-3">
+        <div className="col-span-3 flex items-center gap-3">
           {artworkUrl && (
             <div className="relative h-14 w-14 flex-shrink-0">
               <Image
@@ -120,7 +130,7 @@ export function PlayerBar() {
         </div>
 
         {/* Player Controls */}
-        <div className="flex flex-col items-center justify-center gap-2">
+        <div className="col-span-4 flex flex-col items-center justify-center gap-2">
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="h-8 w-8">
               <Shuffle className="h-4 w-4" />
@@ -165,7 +175,7 @@ export function PlayerBar() {
         </div>
 
         {/* Volume Control */}
-        <div className="flex items-center justify-end gap-2">
+        <div className="col-span-3 flex items-center justify-end gap-2">
           <Button
             variant="ghost"
             size="icon"
@@ -189,6 +199,14 @@ export function PlayerBar() {
             className="w-24"
             thumbClassName="opacity-100"
           />
+           <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            onClick={() => setIsVisible(false)}
+          >
+            <X className="h-5 w-5" />
+          </Button>
         </div>
       </div>
     </div>
