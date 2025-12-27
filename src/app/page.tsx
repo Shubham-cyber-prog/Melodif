@@ -1,5 +1,4 @@
 
-
 'use client';
 import { useRef } from 'react';
 import { AlbumArtwork } from '@/components/album-artwork';
@@ -14,7 +13,6 @@ import {
     CarouselNext,
     CarouselPrevious,
   } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import { Youtube, Link as LinkIcon } from 'lucide-react';
 import Link from 'next/link';
 
@@ -29,13 +27,41 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
   );
 
-export default function Home() {
+  const HeroSection = () => {
     const featuredPlaylists = [...playlists.slice(0, 2), ...madeForYouPlaylists.slice(0, 3)];
-
-    const plugin = useRef(
-        Autoplay({ delay: 3000, stopOnInteraction: true })
+    const mainItem = featuredPlaylists[0];
+    const sideItems = featuredPlaylists.slice(1, 5);
+  
+    return (
+      <section className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="lg:col-span-2 md:col-span-2 rounded-lg overflow-hidden">
+            <AlbumArtwork
+              item={mainItem}
+              className="w-full h-full"
+              aspectRatio="square"
+              width={600}
+              height={600}
+            />
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-4">
+            {sideItems.map((playlist) => (
+              <AlbumArtwork
+                key={playlist.id}
+                item={playlist}
+                className="w-full"
+                aspectRatio="square"
+                width={300}
+                height={300}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
     );
+  };
 
+export default function Home() {
   return (
     <div className="space-y-12 animate-fade-in">
         <header className="space-y-2">
@@ -47,31 +73,7 @@ export default function Home() {
             </p>
         </header>
       
-        <div className="relative overflow-hidden">
-            <Carousel
-                plugins={[plugin.current]}
-                opts={{ align: 'start', loop: true }}
-                className="w-full"
-                onMouseEnter={plugin.current.stop}
-                onMouseLeave={plugin.current.reset}
-            >
-                <CarouselContent>
-                    {featuredPlaylists.map((playlist) => (
-                    <CarouselItem key={playlist.id}>
-                        <AlbumArtwork
-                            item={playlist}
-                            className="w-full"
-                            aspectRatio="portrait"
-                            width={1200}
-                            height={250}
-                        />
-                    </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
-            </Carousel>
-        </div>
+        <HeroSection />
       
        <section className="space-y-4">
             <div className="flex items-center justify-between">
@@ -80,11 +82,11 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative overflow-hidden">
+            <div className="relative">
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent className="-ml-4">
+                    <CarouselContent>
                         {recentlyPlayed.map((item, index) => (
-                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
+                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
                                 <AlbumArtwork
                                     item={item}
                                     className="w-full"
@@ -95,8 +97,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselPrevious className="absolute left-[-1rem] top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-[-1rem] top-1/2 -translate-y-1/2 z-10" />
                 </Carousel>
             </div>
         </section>
@@ -112,13 +114,13 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-             <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
+             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {madeForYouPlaylists.slice(0, 6).map((playlist) => (
                      <Card key={playlist.id} className="flex items-center gap-4 overflow-hidden transition-colors hover:bg-accent group">
                         <Link href={`/playlist/${playlist.id}`} className="flex items-center gap-4 w-full">
                             <AlbumArtwork
                                 item={playlist}
-                                className="w-20 flex-shrink-0"
+                                className="w-20 h-20 flex-shrink-0"
                                 aspectRatio="square"
                                 width={80}
                                 height={80}
@@ -139,11 +141,11 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative overflow-hidden">
+            <div className="relative">
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
-                    <CarouselContent className="-ml-4">
+                    <CarouselContent>
                         {playlists.map((playlist) => (
-                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
+                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
                                 <AlbumArtwork
                                     item={playlist}
                                     className="w-full"
@@ -154,8 +156,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselPrevious className="absolute left-[-1rem] top-1/2 -translate-y-1/2 z-10" />
+                    <CarouselNext className="absolute right-[-1rem] top-1/2 -translate-y-1/2 z-10" />
                 </Carousel>
             </div>
         </section>

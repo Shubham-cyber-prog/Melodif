@@ -43,7 +43,7 @@ export function AlbumArtwork({
   const isArtist = item.type === 'artist';
 
   const ArtworkContent = () => (
-    <div className="relative overflow-hidden transition-all duration-300 transform-style-3d group-hover/artwork-cover:-translate-y-2 group-hover/artwork-cover:shadow-2xl group-hover/artwork-cover:rotate-y-4">
+    <div className="relative overflow-hidden rounded-lg transition-all duration-300 group-hover/artwork-cover:shadow-2xl">
       {artworkUrl ? (
         <Image
           src={artworkUrl}
@@ -52,14 +52,14 @@ export function AlbumArtwork({
           height={height}
           data-ai-hint={imageHint}
           className={cn(
-            'h-auto w-full object-cover transition-all',
+            'h-auto w-full object-cover transition-transform duration-300 group-hover/artwork-cover:scale-105',
             aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
             isArtist ? 'rounded-full' : 'rounded-lg'
           )}
         />
       ) : (
         <div className={cn(
-            'flex items-center justify-center bg-muted',
+            'flex items-center justify-center bg-muted transition-transform duration-300 group-hover/artwork-cover:scale-105',
             aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
             isArtist ? 'rounded-full' : 'rounded-lg'
           )}>
@@ -77,7 +77,7 @@ export function AlbumArtwork({
 
   const MainContent = () => (
     <>
-      <div className="group/artwork-cover" style={{ perspective: '1000px' }}>
+      <div className="group/artwork-cover">
           <ArtworkContent />
       </div>
       <div className="space-y-1 text-sm">
