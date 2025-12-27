@@ -11,43 +11,18 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import {
-  Home,
   Search,
   User,
-  Sun,
-  Moon,
   LogIn,
   UserPlus,
   Settings,
   Bell,
+  Download,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-// A placeholder for a theme hook
-const useTheme = () => {
-  const [theme, setThemeState] = useState('light');
-  
-  useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    setThemeState(isDarkMode ? 'dark' : 'light');
-  }, []);
-  
-  const setTheme = (themeValue: 'light' | 'dark' | 'system') => {
-    if (themeValue === 'dark') {
-      document.documentElement.classList.add('dark');
-      setThemeState('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      setThemeState('light');
-    }
-  };
-  
-  return { theme, setTheme };
-};
-
+import { useProfile } from '@/contexts/ProfileContext';
 
 export function AppHeader() {
   const router = useRouter();
@@ -57,31 +32,45 @@ export function AppHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-8">
+    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between gap-4 border-b border-border/10 bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-2">
-        <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={() => router.push('/')}
-            >
-            <Home className="h-5 w-5" />
-        </Button>
+        <Link href="/" className="flex items-center gap-2">
+          <svg
+            className="h-8 w-8 text-primary"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 4.00098H8V16.001L12 12.001L16 16.001V4.00098H20V20.001H16V8.00098L12 12.001L8 8.00098V20.001H4V4.00098Z"
+              fill="currentColor"
+            />
+          </svg>
+           <span className="text-xl font-semibold text-primary hidden sm:inline">
+            Melodif
+          </span>
+        </Link>
       </div>
 
       <div className="flex flex-1 items-center justify-center">
-        <div className="relative w-full max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+        <div className="relative w-full max-w-lg">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
-            placeholder="Search music..."
-            className="h-10 w-full rounded-full bg-muted pl-10 transition-all duration-300 focus:w-[110%] focus:bg-background hover:bg-muted/90"
+            placeholder="What do you want to play?"
+            className="h-12 w-full rounded-full bg-muted/50 pl-12 text-base transition-all duration-300 hover:bg-muted/80 focus:bg-card focus:ring-2 focus:ring-primary/50"
             onFocus={handleSearchFocus}
           />
         </div>
       </div>
 
       <div className="flex flex-1 items-center justify-end gap-2">
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110" asChild>
+        <Button variant="ghost" className="hidden sm:inline-flex" asChild>
+            <Link href="/download">
+                <Download className="mr-2 h-4 w-4"/>
+                Install App
+            </Link>
+        </Button>
+        <Button variant="ghost" className="h-10 w-10 rounded-full" asChild>
           <Link href="/notifications">
             <Bell className="h-5 w-5" />
           </Link>
@@ -93,24 +82,23 @@ export function AppHeader() {
 }
 
 function UserMenu() {
-  const { theme, setTheme } = useTheme();
-  
+    const { firstName, lastName, avatar } = useProfile();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-9 w-9">
-            <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
-            <AvatarFallback>M</AvatarFallback>
+            <AvatarImage src={avatar} alt="User Avatar" />
+            <AvatarFallback>{firstName.charAt(0)}{lastName.charAt(0)}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Guest</p>
+            <p className="text-sm font-medium leading-none">{firstName} {lastName}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              Not logged in
+              user@melodif.com
             </p>
           </div>
         </DropdownMenuLabel>
@@ -138,11 +126,6 @@ function UserMenu() {
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
             </Link>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-          {theme === 'dark' ? <Sun className="mr-2 h-4 w-4" /> : <Moon className="mr-2 h-4 w-4" />}
-          <span>{theme === 'dark' ? 'Light' : 'Dark'} Mode</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
