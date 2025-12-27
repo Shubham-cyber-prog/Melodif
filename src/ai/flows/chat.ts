@@ -29,13 +29,15 @@ export async function chat(input: ChatInput): Promise<ChatOutput> {
 
 const prompt = ai.definePrompt({
   name: 'chatPrompt',
-  input: { schema: z.object({ conversation: z.string() }) },
+  input: { schema: ChatInputSchema },
   output: { schema: ChatOutputSchema },
   prompt: `You are a helpful and friendly music assistant for an app called Melodif. Your goal is to help users discover music, get recommendations, and answer questions about artists, albums, and songs.
 
   Keep your responses concise and conversational.
   
-  {{{conversation}}}
+  {{{history}}}
+  
+  User Message: {{{message}}}
   
   Your Response:`,
 });
@@ -47,8 +49,7 @@ const chatFlow = ai.defineFlow(
     outputSchema: ChatOutputSchema,
   },
   async (input) => {
-    const conversation = `${input.history}\nUser Message: ${input.message}`;
-    const { output } = await prompt({ conversation });
+    const { output } = await prompt(input);
     return output!;
   }
 );
