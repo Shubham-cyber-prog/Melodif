@@ -23,7 +23,7 @@ export function AlbumArtwork({
   isLink = true,
   ...props
 }: AlbumArtworkProps) {
-  const artwork = getArtworkById(item.coverArtId);
+  const artwork = getArtworkById(item.coverArtId || ('artworkId' in item && item.artworkId));
   const artworkUrl = artwork?.imageUrl;
   const imageHint = artwork?.imageHint || 'album cover';
   
@@ -45,28 +45,27 @@ export function AlbumArtwork({
 
   const ArtworkContent = () => (
     <div className="relative overflow-hidden rounded-lg transition-all duration-300 group-hover/artwork-cover:shadow-2xl">
-      {artworkUrl ? (
-        <Image
-          src={artworkUrl}
-          alt={name}
-          width={width}
-          height={height}
-          data-ai-hint={imageHint}
-          className={cn(
-            'h-auto w-full object-cover transition-transform duration-300 group-hover/artwork-cover:scale-105',
-            aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
-            isArtist ? 'rounded-full' : 'rounded-lg'
-          )}
-        />
-      ) : (
-        <div className={cn(
+      <div className={cn(
             'flex items-center justify-center bg-muted transition-transform duration-300 group-hover/artwork-cover:scale-105',
             aspectRatio === 'portrait' ? 'aspect-[3/1]' : 'aspect-square',
             isArtist ? 'rounded-full' : 'rounded-lg'
           )}>
+        {artworkUrl ? (
+            <Image
+                src={artworkUrl}
+                alt={name}
+                width={width}
+                height={height}
+                data-ai-hint={imageHint}
+                className={cn(
+                    'h-full w-full object-cover',
+                     isArtist ? 'rounded-full' : 'rounded-lg'
+                )}
+            />
+        ) : (
             <Music className="h-10 w-10 text-muted-foreground" />
-        </div>
-      )}
+        )}
+      </div>
       <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity group-hover/artwork-cover:opacity-100" />
       <div className="absolute bottom-4 right-4 translate-y-4 transform-gpu opacity-0 transition-all group-hover/artwork:translate-y-0 group-hover/artwork:opacity-100">
         <button className="flex h-12 w-12 items-center justify-center rounded-full bg-primary shadow-lg animate-button-press">
