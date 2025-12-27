@@ -29,20 +29,20 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
     <div className="space-y-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-end">
             {artworkUrl && (
-                <div className="flex-shrink-0">
+                <div className="flex-shrink-0 mx-auto md:mx-0">
                     <Image 
                         src={artworkUrl} 
                         alt={playlist.name} 
                         width={250} 
                         height={250} 
-                        className="rounded-lg shadow-lg"
+                        className="w-48 h-48 md:w-64 md:h-64 rounded-lg shadow-lg object-cover"
                         data-ai-hint={artwork?.imageHint || 'playlist cover'}
                     />
                 </div>
             )}
-            <div className="space-y-2">
+            <div className="space-y-2 text-center md:text-left">
                 <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">Playlist</p>
-                <h1 className="text-5xl font-extrabold tracking-tight lg:text-7xl">{playlist.name}</h1>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">{playlist.name}</h1>
                 <p className="text-muted-foreground">{playlist.description}</p>
                 <p className="text-sm text-muted-foreground">{playlist.songs.length} songs</p>
             </div>
@@ -57,7 +57,7 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                 <TableRow>
                 <TableHead className="w-[50px]">#</TableHead>
                 <TableHead>Title</TableHead>
-                <TableHead>Album</TableHead>
+                <TableHead className="hidden md:table-cell">Album</TableHead>
                 <TableHead className="text-right">
                     <Clock className="inline-block h-4 w-4" />
                 </TableHead>
@@ -87,7 +87,7 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                                 </div>
                             </Link>
                         </TableCell>
-                        <TableCell className="text-muted-foreground">{song.album}</TableCell>
+                        <TableCell className="text-muted-foreground hidden md:table-cell">{song.album}</TableCell>
                         <TableCell className="text-right text-muted-foreground">{song.duration}</TableCell>
                     </TableRow>
                 )})}
