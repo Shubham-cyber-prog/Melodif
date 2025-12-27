@@ -101,8 +101,9 @@ function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110">
           <Avatar className="h-9 w-9">
+            <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
             <AvatarFallback>M</AvatarFallback>
           </Avatar>
         </Button>
