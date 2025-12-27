@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { MessageSquare, X, Send, Loader2 } from 'lucide-react';
+import { MessageSquare, X, Send, Loader2, Bot } from 'lucide-react';
 import { chat } from '@/ai/flows/chat';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { cn } from '@/lib/utils';
@@ -65,19 +65,19 @@ export function AIChatbot() {
 
   return (
     <>
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed bottom-28 right-8 z-50 md:bottom-8">
         <Button
           size="icon"
-          className="h-16 w-16 rounded-full shadow-lg"
+          className="h-14 w-14 rounded-full shadow-lg"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X className="h-8 w-8" /> : <MessageSquare className="h-8 w-8" />}
+          {isOpen ? <X className="h-7 w-7" /> : <MessageSquare className="h-7 w-7" />}
         </Button>
       </div>
 
       {isOpen && (
         <Card className={cn(
-            "fixed bottom-28 right-8 z-50 flex flex-col shadow-2xl animate-fade-in",
+            "fixed bottom-44 right-8 z-50 flex flex-col shadow-2xl animate-fade-in md:bottom-28",
             isMobile ? "w-[calc(100vw-4rem)] h-[70vh]" : "w-80 h-[28rem]"
         )}>
           <CardHeader className="flex flex-row items-center justify-between">
@@ -96,7 +96,7 @@ export function AIChatbot() {
                   >
                     {message.sender === 'ai' && (
                        <Avatar className="h-8 w-8">
-                         <AvatarFallback>AI</AvatarFallback>
+                         <AvatarFallback><Bot className="h-5 w-5" /></AvatarFallback>
                        </Avatar>
                     )}
                      <div
@@ -114,7 +114,7 @@ export function AIChatbot() {
                 {isLoading && (
                     <div className="flex items-start gap-3 justify-start">
                          <Avatar className="h-8 w-8">
-                            <AvatarFallback>AI</AvatarFallback>
+                            <AvatarFallback><Bot className="h-5 w-5" /></AvatarFallback>
                         </Avatar>
                         <div className="bg-muted rounded-lg p-3">
                             <Loader2 className="h-5 w-5 animate-spin" />
