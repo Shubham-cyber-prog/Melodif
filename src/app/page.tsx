@@ -15,8 +15,35 @@ import {
 export default function Home() {
     const youtubePlaylist = getPlaylistById('yt-1');
     const spotifyPlaylist = getPlaylistById('sp-1');
+    const featuredPlaylists = [...playlists.slice(0, 2), ...madeForYouPlaylists.slice(0, 3)];
+
   return (
     <div className="space-y-8">
+      <div className="space-y-4">
+        <Carousel
+            opts={{
+                align: 'start',
+                loop: true,
+            }}
+            className="w-full"
+            >
+            <CarouselContent>
+                {featuredPlaylists.map((playlist) => (
+                <CarouselItem key={playlist.id} className="md:basis-1/2 lg:basis-1/3">
+                    <AlbumArtwork
+                        item={playlist}
+                        className="w-full"
+                        aspectRatio="portrait"
+                        width={400}
+                        height={400}
+                    />
+                </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+            </Carousel>
+      </div>
       <div>
         <h1 className="text-4xl font-bold tracking-tight text-foreground">
           Listen Now
