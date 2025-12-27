@@ -40,8 +40,8 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
               item={mainItem}
               className="w-full h-full"
               aspectRatio="square"
-              width={600}
-              height={600}
+              width={400}
+              height={400}
             />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-4">
@@ -51,8 +51,8 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
                 item={playlist}
                 className="w-full"
                 aspectRatio="square"
-                width={300}
-                height={300}
+                width={200}
+                height={200}
               />
             ))}
           </div>
@@ -82,8 +82,8 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative">
-                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full overflow-hidden">
+            <div className="relative overflow-hidden">
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent className="-ml-4">
                         {recentlyPlayed.map((item, index) => (
                             <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
@@ -141,8 +141,8 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative">
-                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full overflow-hidden">
+            <div className="relative overflow-hidden">
+                <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent className="-ml-4">
                         {playlists.map((playlist) => (
                             <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
