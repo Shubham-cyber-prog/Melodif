@@ -36,9 +36,7 @@ const prompt = ai.definePrompt({
   Keep your responses concise and conversational.
 
   Conversation History:
-  {{#if history}}
   {{{history}}}
-  {{/if}}
   
   User Message:
   {{{message}}}
