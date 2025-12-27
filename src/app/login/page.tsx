@@ -1,11 +1,12 @@
 
 'use client';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Github } from 'lucide-react';
+import { Github, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -22,6 +23,7 @@ const loginSchema = z.object({
 
 export default function LoginPage() {
     const { toast } = useToast();
+    const [showPassword, setShowPassword] = useState(false);
     const form = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -96,9 +98,20 @@ export default function LoginPage() {
                                     Forgot your password?
                                     </Link>
                                 </div>
-                                <FormControl>
-                                    <Input type="password" {...field} />
-                                </FormControl>
+                                <div className="relative">
+                                    <FormControl>
+                                        <Input type={showPassword ? "text" : "password"} {...field} />
+                                    </FormControl>
+                                    <Button 
+                                        type="button" 
+                                        variant="ghost" 
+                                        size="icon" 
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7 text-muted-foreground"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                                    </Button>
+                                </div>
                                 <FormMessage />
                             </FormItem>
                         )}
