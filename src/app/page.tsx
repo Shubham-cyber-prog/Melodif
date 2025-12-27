@@ -2,7 +2,7 @@
 'use client';
 import { useRef } from 'react';
 import { AlbumArtwork } from '@/components/album-artwork';
-import { playlists, madeForYouPlaylists, recentlyPlayed, getPlaylistById } from '@/lib/data';
+import { playlists, madeForYouPlaylists, recentlyPlayed } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AIRecommendations from '@/components/ai-recommendations';
 import { Button } from '@/components/ui/button';
@@ -28,8 +28,6 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
   );
 
 export default function Home() {
-    const youtubePlaylist = getPlaylistById('yt-1');
-    const spotifyPlaylist = getPlaylistById('sp-1');
     const featuredPlaylists = [...playlists.slice(0, 2), ...madeForYouPlaylists.slice(0, 3)];
 
     const plugin = useRef(
