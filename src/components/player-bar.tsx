@@ -84,12 +84,18 @@ export function PlayerBar() {
     const audioElement = audioRef.current;
     if (audioElement) {
       audioElement.src = currentSong.url;
-      audioElement.load();
+      audioElement.load(); // Explicitly load the new source
       if (isPlaying) {
-        audioElement.play().catch(e => console.error("Playback error:", e));
+        // The play() request was interrupted by a call to pause()
+        // This is a common browser behavior. We'll try to play again once the audio is ready.
+        audioElement.play().catch(e => {
+            if (e.name !== 'AbortError') {
+                console.error("Playback error:", e)
+            }
+        });
       }
     }
-  }, [currentSong, isPlaying]);
+  }, [currentSong]);
 
 
   useEffect(() => {
@@ -102,7 +108,7 @@ export function PlayerBar() {
   const handleTimeUpdate = () => {
     if (audioRef.current) {
         setCurrentTime(audioRef.current.currentTime);
-        if (audioRef.current.duration > 0) {
+        if (audioRef.current.duration > 0 && isFinite(audioRef.current.duration)) {
             setProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
         }
     }
@@ -139,7 +145,6 @@ export function PlayerBar() {
       )}>
         <audio 
             ref={audioRef}
-            src={currentSong.url}
             onTimeUpdate={handleTimeUpdate}
             onLoadedMetadata={handleLoadedMetadata}
             onEnded={handleSongEnd}
