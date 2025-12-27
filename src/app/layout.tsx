@@ -13,7 +13,7 @@ import { AIChatbot } from '@/components/ai-chatbot';
 import { ProfileProvider } from '@/contexts/ProfileContext';
 
 export const metadata: Metadata = {
-  title: 'Mia',
+  title: 'Melodif',
   description: 'Your next favorite music destination.',
 };
 

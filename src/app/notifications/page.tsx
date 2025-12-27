@@ -59,7 +59,7 @@ export default function NotificationsPage() {
           Notifications
         </h1>
         <p className="text-lg text-muted-foreground">
-          Your latest updates and alerts from Mia.
+          Your latest updates and alerts from Melodif.
         </p>
       </div>
 

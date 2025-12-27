@@ -56,7 +56,7 @@ export function AppHeader() {
                 />
             </svg>
             <span className="hidden text-xl font-semibold text-primary md:block">
-                Mia
+                Melodif
             </span>
         </Link>
       </div>
