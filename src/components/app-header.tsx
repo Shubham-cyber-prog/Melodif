@@ -79,16 +79,16 @@ export function AppHeader() {
         </Button>
       </div>
 
-      <div className="relative flex-1">
+      <div className="relative flex-1 max-w-md">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
         <Input
-          placeholder="Search for songs, artists, albums..."
+          placeholder="What do you want to play?"
           className="h-9 w-full rounded-full bg-secondary pl-10"
           onFocus={handleSearchFocus}
         />
       </div>
 
-      <div>
+      <div className="flex items-center gap-2">
         <UserMenu />
       </div>
     </header>
