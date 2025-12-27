@@ -37,7 +37,7 @@ export function AppHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between gap-4 border-b border-border/10 bg-background/80 px-4 backdrop-blur-sm md:px-6">
+    <header className="sticky top-0 z-10 flex h-16 w-full items-center gap-4 border-b border-border/10 bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-2">
         {isMobile && <SidebarTrigger />}
         <svg
@@ -52,13 +52,15 @@ export function AppHeader() {
           />
         </svg>
       </div>
-      <div className="relative flex-1 max-w-lg">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-        <Input
-          placeholder="What do you want to play?"
-          className="h-12 w-full rounded-full bg-muted/50 pl-12 text-base transition-all duration-300 hover:bg-muted/80 focus:bg-card focus:ring-2 focus:ring-primary/50"
-          onFocus={handleSearchFocus}
-        />
+      <div className="flex flex-1 justify-center lg:justify-center">
+        <div className="w-full max-w-lg relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Input
+            placeholder="What do you want to play?"
+            className="h-12 w-full rounded-full bg-muted/50 pl-12 text-base transition-all duration-300 hover:bg-muted/80 focus:bg-card focus:ring-2 focus:ring-primary/50"
+            onFocus={handleSearchFocus}
+            />
+        </div>
       </div>
 
       <div className="flex items-center justify-end gap-2">
