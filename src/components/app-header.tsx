@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -52,7 +53,7 @@ export function AppHeader() {
           />
         </svg>
       </div>
-      <div className="flex flex-1 justify-center lg:justify-center">
+      <div className="flex flex-1 items-center justify-center">
         <div className="w-full max-w-lg relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
@@ -64,11 +65,11 @@ export function AppHeader() {
       </div>
 
       <div className="flex items-center justify-end gap-2">
-        <Button variant="ghost" size="icon" className="rounded-full h-10 w-10">
+        <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 shrink-0">
           <Download className="h-5 w-5" />
           <span className="sr-only">Install App</span>
         </Button>
-        <Button variant="ghost" className="h-10 w-10 rounded-full" size="icon" asChild>
+        <Button variant="ghost" className="h-10 w-10 rounded-full shrink-0" size="icon" asChild>
           <Link href="/notifications">
             <Bell className="h-5 w-5" />
           </Link>
@@ -101,7 +102,7 @@ function UserMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full shrink-0">
           <Avatar className="h-9 w-9">
             <AvatarImage src={avatar} alt="User Avatar" />
             <AvatarFallback>
