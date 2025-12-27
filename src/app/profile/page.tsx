@@ -80,7 +80,7 @@ export default function ProfilePage() {
                 src={banner}
                 alt="Profile banner"
                 fill
-                className="object-cover"
+                className="object-cover rounded-lg shadow-[0_0_15px_5px_rgba(255,255,255,0.3)]"
                 data-ai-hint="nature forest"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
@@ -288,6 +288,8 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
 
