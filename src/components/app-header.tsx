@@ -71,6 +71,17 @@ export function AppHeader() {
         </Button>
       </div>
 
+      <div className="flex flex-1 items-center justify-center">
+        <div className="relative w-full max-w-md">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Input
+            placeholder="Search music..."
+            className="h-10 w-full rounded-full bg-muted pl-10"
+            onFocus={handleSearchFocus}
+          />
+        </div>
+      </div>
+
       <div className="flex flex-1 items-center justify-end gap-2">
         <Button variant="ghost" className="relative h-10 w-10 rounded-full transition-transform duration-200 hover:scale-110">
             <Bell className="h-5 w-5" />
