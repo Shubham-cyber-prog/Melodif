@@ -41,8 +41,8 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
               item={mainItem}
               className="w-full h-full"
               aspectRatio="square"
-              width={200}
-              height={200}
+              width={80}
+              height={80}
             />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-4">
@@ -52,8 +52,8 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
                 item={playlist}
                 className="w-full"
                 aspectRatio="square"
-                width={100}
-                height={100}
+                width={40}
+                height={40}
               />
             ))}
           </div>
