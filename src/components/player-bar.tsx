@@ -20,6 +20,7 @@ import { songs } from '@/lib/data';
 import { getArtworkById } from '@/lib/placeholder-images';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Progress } from '@/components/ui/progress';
 
 export function PlayerBar() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -94,7 +95,7 @@ export function PlayerBar() {
         });
       }
     }
-  }, [currentSong]);
+  }, [currentSong, isPlaying]);
 
 
   useEffect(() => {
@@ -153,6 +154,16 @@ export function PlayerBar() {
             onCanPlay={() => setIsLoading(false)}
             preload="metadata"
         />
+
+      <Slider
+        value={[progress]}
+        onValueChange={handleProgressChange}
+        max={100}
+        step={0.1}
+        className="absolute top-0 h-1 w-full md:hidden"
+        disabled={isLoading || duration === 0}
+        thumbClassName="h-3 w-3"
+      />
         
       <div className="h-full grid grid-cols-[1fr_auto_1fr] md:grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
@@ -214,7 +225,7 @@ export function PlayerBar() {
                     step={0.1}
                     className="w-full"
                     disabled={isLoading || duration === 0}
-                    thumbClassName={isPlaying ? 'opacity-100' : ''}
+                    thumbClassName="opacity-100"
                 />
                 <span className="min-w-[40px] text-muted-foreground">{formatTime(duration)}</span>
             </div>

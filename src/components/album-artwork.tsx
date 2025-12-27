@@ -3,11 +3,11 @@ import { Play, Music } from 'lucide-react';
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
-import type { Playlist, RecentlyPlayed, Album, Artist } from '@/lib/types';
+import type { Playlist, RecentlyPlayed, Album, Artist, Song } from '@/lib/types';
 import { getArtworkById } from '@/lib/placeholder-images';
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  item: (Playlist | RecentlyPlayed | Album | Artist) & { description?: string };
+  item: (Playlist | RecentlyPlayed | Album | Artist | Song) & { description?: string };
   aspectRatio?: 'portrait' | 'square';
   width?: number;
   height?: number;
@@ -41,13 +41,14 @@ export function AlbumArtwork({
 
   const description = item.description || ('artist' in item ? item.artist : '');
   const isArtist = item.type === 'artist';
+  const name = 'title' in item ? item.title : item.name;
 
   const ArtworkContent = () => (
     <div className="relative overflow-hidden rounded-lg transition-all duration-300 group-hover/artwork-cover:shadow-2xl">
       {artworkUrl ? (
         <Image
           src={artworkUrl}
-          alt={item.name}
+          alt={name}
           width={width}
           height={height}
           data-ai-hint={imageHint}
@@ -81,7 +82,7 @@ export function AlbumArtwork({
           <ArtworkContent />
       </div>
       <div className="space-y-1 text-sm">
-        <h3 className="font-medium leading-none truncate">{item.name}</h3>
+        <h3 className="font-medium leading-none truncate">{name}</h3>
         <p className="text-xs text-muted-foreground truncate">{description}</p>
       </div>
     </>
