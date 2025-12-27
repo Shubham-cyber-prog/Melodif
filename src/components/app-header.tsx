@@ -33,15 +33,12 @@ export function AppHeader() {
 
   return (
     <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between gap-4 border-b border-border/10 bg-background/80 px-4 backdrop-blur-sm md:px-6">
-      <div className="flex items-center gap-2">
-        <Button variant="ghost" size="icon" asChild>
+      <div className="flex flex-1 items-center gap-4">
+        <Button variant="ghost" size="icon" className="hidden md:inline-flex" asChild>
             <Link href="/">
                 <Home className="h-6 w-6"/>
             </Link>
         </Button>
-      </div>
-
-      <div className="flex flex-1 items-center justify-center">
         <div className="relative w-full max-w-lg">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
