@@ -7,7 +7,6 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarFooter,
 } from '@/components/ui/sidebar';
 import {
   Home,
@@ -28,9 +27,7 @@ import { playlists } from '@/lib/data';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { CreatePlaylistDialog } from '@/components/create-playlist-dialog';
 import { Button } from '@/components/ui/button';
-import { useIsMobile } from '@/hooks/use-mobile';
 import ClientOnly from './client-only';
-
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
@@ -49,12 +46,6 @@ const authLinks = [
 
 export function AppSidebar() {
   const pathname = usePathname();
-  const isMobile = useIsMobile();
-
-  if (isMobile) {
-    return null;
-  }
-
 
   return (
     <Sidebar variant="sidebar" collapsible="icon">

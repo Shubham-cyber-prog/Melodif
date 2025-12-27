@@ -34,7 +34,7 @@ import { cn } from '@/lib/utils';
 export function AppHeader() {
   const router = useRouter();
   const isMobile = useIsMobile();
-  const { state: sidebarState } = useSidebar();
+  const { state: sidebarState, setOpenMobile } = useSidebar();
 
   const handleSearchFocus = () => {
     router.push('/search');
@@ -43,7 +43,7 @@ export function AppHeader() {
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full shrink-0 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
       <div className="flex items-center gap-2">
-        {isMobile && <SidebarTrigger />}
+        {isMobile && <SidebarTrigger onClick={() => setOpenMobile(true)} />}
         <Button variant="ghost" size="icon" className="h-10 w-10 shrink-0" asChild>
             <Link href="/">
                 <Home className="h-5 w-5" />
@@ -69,13 +69,16 @@ export function AppHeader() {
       </div>
 
       <div className="flex shrink-0 items-center justify-end gap-2">
-        <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 shrink-0">
-          <Download className="h-5 w-5" />
-          <span className="sr-only">Install App</span>
+        <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 shrink-0" asChild>
+          <Link href="/download">
+            <Download className="h-5 w-5" />
+            <span className="sr-only">Download</span>
+          </Link>
         </Button>
         <Button variant="ghost" className="h-10 w-10 rounded-full shrink-0" size="icon" asChild>
           <Link href="/notifications">
             <Bell className="h-5 w-5" />
+            <span className="sr-only">Notifications</span>
           </Link>
         </Button>
         <UserMenu />

@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Home, Search, Library, Download, BarChart, Bell } from 'lucide-react';
+import { Home, Search, Library, Download, BarChart } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useIsMobile } from '@/hooks/use-mobile';
