@@ -67,7 +67,7 @@ export default function PlaylistPage({ params }: { params: { id: string } }) {
                 {playlist.songs.map((song, index) => {
                     const songArtwork = getArtworkById(song.artworkId);
                     return (
-                    <TableRow key={song.id} className="group">
+                    <TableRow key={song.id} className="group animate-button-press">
                         <TableCell className="font-medium text-muted-foreground">{index + 1}</TableCell>
                         <TableCell>
                             <Link href={`/song/${song.id}`} className="flex items-center gap-4">

@@ -148,7 +148,7 @@ export default function SearchPage() {
                 {genres.map(genre => {
                     const artwork = getArtworkById(genre.artworkId);
                     return (
-                        <Link href="#" key={genre.name} className="group">
+                        <Link href="#" key={genre.name} className="group animate-button-press">
                             <Card className="relative overflow-hidden aspect-square">
                                 {artwork && (
                                      <Image 
@@ -174,7 +174,7 @@ export default function SearchPage() {
 function SongResult({ song }: { song: Song }) {
   const artwork = getArtworkById(song.artworkId);
   return (
-    <div className="flex items-center gap-4 rounded-md p-2 -mx-2 hover:bg-accent transition-colors">
+    <div className="flex items-center gap-4 rounded-md p-2 -mx-2 hover:bg-accent transition-colors animate-button-press">
       <Image
         src={artwork?.imageUrl ?? `https://picsum.photos/seed/${song.id}/40/40`}
         alt={song.album}
@@ -197,7 +197,7 @@ function TopResultCard({ item }: { item: (Song | Album | Artist | Playlist) & {t
     const isArtist = item.type === 'artist';
 
     return (
-         <Card className="p-4 bg-secondary/50 hover:bg-secondary transition-all group">
+         <Card className="p-4 bg-secondary/50 hover:bg-secondary transition-all group animate-button-press">
             <div className="space-y-4">
                  <Image 
                     src={artwork?.imageUrl ?? `https://picsum.photos/seed/${item.id}/200/200`}
@@ -224,7 +224,7 @@ function TopResultCard({ item }: { item: (Song | Album | Artist | Playlist) & {t
 function AlbumCard({ album }: { album: Album }) {
     const artwork = getArtworkById(album.coverArtId);
     return (
-        <Card className="p-4 bg-secondary/30 hover:bg-secondary transition-all group">
+        <Card className="p-4 bg-secondary/30 hover:bg-secondary transition-all group animate-button-press">
             <div className="space-y-2">
                 <Image
                     src={artwork?.imageUrl ?? `https://picsum.photos/seed/${album.id}/150/150`}
@@ -245,7 +245,7 @@ function AlbumCard({ album }: { album: Album }) {
 function PlaylistCard({ playlist }: { playlist: Playlist }) {
     const artwork = getArtworkById(playlist.coverArtId);
     return (
-         <Card className="p-4 bg-secondary/30 hover:bg-secondary transition-all group">
+         <Card className="p-4 bg-secondary/30 hover:bg-secondary transition-all group animate-button-press">
             <div className="space-y-2">
                  <Image
                     src={artwork?.imageUrl ?? `https://picsum.photos/seed/${playlist.id}/150/150`}
@@ -266,7 +266,7 @@ function PlaylistCard({ playlist }: { playlist: Playlist }) {
 function ArtistCard({ artist }: { artist: Artist }) {
     const artwork = getArtworkById(artist.coverArtId);
     return (
-         <Card className="p-4 bg-secondary/30 hover:bg-secondary transition-all group flex flex-col items-center text-center">
+         <Card className="p-4 bg-secondary/30 hover:bg-secondary transition-all group flex flex-col items-center text-center animate-button-press">
             <div className="space-y-2">
                  <Image
                     src={artwork?.imageUrl ?? `https://picsum.photos/seed/${artist.id}/150/150`}

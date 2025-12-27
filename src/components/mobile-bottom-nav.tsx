@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Home, Search, Library, Download, BarChart, Bell } from 'lucide-react';
@@ -31,7 +32,7 @@ export function MobileBottomNav() {
             <Link
               href={link.href}
               key={link.href}
-              className="flex flex-col items-center justify-center gap-1 text-muted-foreground"
+              className="flex flex-col items-center justify-center gap-1 text-muted-foreground animate-button-press"
             >
               <link.icon
                 className={cn('h-6 w-6', isActive && 'text-primary')}

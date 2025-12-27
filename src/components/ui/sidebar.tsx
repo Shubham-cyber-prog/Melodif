@@ -558,6 +558,7 @@ const SidebarMenuButton = React.forwardRef<
         className={cn(
             sidebarMenuButtonVariants({ variant, size }), 
             state === 'collapsed' && 'md:w-10 md:h-10 md:p-2 md:justify-center',
+            "animate-button-press",
             className
         )}
         {...props}

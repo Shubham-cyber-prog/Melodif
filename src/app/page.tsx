@@ -130,7 +130,7 @@ export default function Home() {
             </div>
              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {madeForYouPlaylists.slice(0, 6).map((playlist) => (
-                     <Card key={playlist.id} className="flex items-center gap-4 overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-white/5 bg-card group">
+                     <Card key={playlist.id} className="flex items-center gap-4 overflow-hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-white/5 bg-card group animate-button-press">
                         <Link href={`/playlist/${playlist.id}`} className="flex items-center gap-4 w-full">
                             <AlbumArtwork
                                 item={playlist}

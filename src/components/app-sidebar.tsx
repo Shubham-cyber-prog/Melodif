@@ -133,7 +133,7 @@ export function AppSidebar() {
             <ScrollArea className="flex-1 group-data-[collapsible=icon]:hidden">
                 <div className="space-y-1 p-4 pt-0">
                 {playlists.map((playlist) => (
-                    <Link href={`/playlist/${playlist.id}`} key={playlist.id}>
+                    <Link href={`/playlist/${playlist.id}`} key={playlist.id} className="block animate-button-press">
                         <div className="rounded-md p-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground truncate">
                             {playlist.name}
                         </div>
