@@ -30,7 +30,7 @@ export function PlayerBar() {
   const [volume, setVolume] = useState(75);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [isShuffling, setIsShuffling] = useState(false);
@@ -152,7 +152,8 @@ export function PlayerBar() {
             onWaiting={() => setIsLoading(true)}
             onPlaying={() => setIsLoading(false)}
             onCanPlay={() => setIsLoading(false)}
-            preload="metadata"
+            preload="auto"
+            src={currentSong.url}
         />
 
       <Slider
