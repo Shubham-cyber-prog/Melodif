@@ -16,7 +16,7 @@ interface ProfileState {
 const ProfileContext = createContext<ProfileState | undefined>(undefined);
 
 export const ProfileProvider = ({ children }: { children: ReactNode }) => {
-  const [firstName, setFirstName] = useState('Melodif');
+  const [firstName, setFirstName] = useState('Mia');
   const [lastName, setLastName] = useState('User');
   const [avatar, setAvatar] = useState('https://picsum.photos/seed/avatar/200');
   const [banner, setBanner] = useState('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?q=80&w=2070&auto=format&fit=crop');

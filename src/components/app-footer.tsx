@@ -20,7 +20,7 @@ export function AppFooter() {
                     fill="currentColor"
                     />
                 </svg>
-                <h3 className="text-lg font-semibold text-foreground">Melodif</h3>
+                <h3 className="text-lg font-semibold text-foreground">Mia</h3>
             </div>
             <p className="text-muted-foreground">Your next favorite music destination.</p>
           </div>
@@ -66,7 +66,7 @@ export function AppFooter() {
 
         <div className="mt-12 border-t pt-8">
             <div className="flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
-                 <p>&copy; {new Date().getFullYear()} Melodif. All rights reserved.</p>
+                 <p>&copy; {new Date().getFullYear()} Mia. All rights reserved.</p>
                  <div className="flex gap-4">
                     <Link href="#" className="hover:text-foreground">Legal</Link>
                     <Link href="#" className="hover:text-foreground">Privacy Center</Link>

@@ -56,7 +56,7 @@ export function AppHeader() {
                 />
             </svg>
             <span className="hidden text-xl font-semibold text-primary md:block">
-                Melodif
+                Mia
             </span>
         </Link>
       </div>
@@ -77,7 +77,7 @@ export function AppHeader() {
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-2">
+      <div className="flex shrink-0 items-center justify-end gap-2">
         <Button variant="ghost" size="icon" className="rounded-full h-10 w-10 shrink-0">
           <Download className="h-5 w-5" />
           <span className="sr-only">Install App</span>

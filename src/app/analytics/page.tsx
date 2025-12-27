@@ -199,7 +199,7 @@ export default function AnalyticsPage() {
          <Card className="lg:col-span-2">
             <CardHeader>
                 <CardTitle>Recent Milestones</CardTitle>
-                <CardDescription>Your latest achievements on Melodif.</CardDescription>
+                <CardDescription>Your latest achievements on Mia.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="flex items-center gap-4">
