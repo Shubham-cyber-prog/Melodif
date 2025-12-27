@@ -35,25 +35,25 @@ const SpotifyIcon = (props: React.SVGProps<SVGSVGElement>) => (
   
     return (
       <section className="w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           <div className="lg:col-span-2 md:col-span-2 rounded-lg overflow-hidden">
             <AlbumArtwork
               item={mainItem}
               className="w-full h-full"
               aspectRatio="square"
-              width={80}
-              height={80}
+              width={60}
+              height={60}
             />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:col-span-2 gap-2">
             {sideItems.map((playlist) => (
               <AlbumArtwork
                 key={playlist.id}
                 item={playlist}
                 className="w-full"
                 aspectRatio="square"
-                width={40}
-                height={40}
+                width={30}
+                height={30}
               />
             ))}
           </div>
@@ -87,13 +87,13 @@ export default function Home() {
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent className="-ml-4">
                         {recentlyPlayed.map((item, index) => (
-                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
+                            <CarouselItem key={`${item.id}-${index}`} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6 xl:basis-[14%] pl-4">
                                 <AlbumArtwork
                                     item={item}
                                     className="w-full"
                                     aspectRatio="square"
-                                    width={150}
-                                    height={150}
+                                    width={120}
+                                    height={120}
                                 />
                             </CarouselItem>
                         ))}
@@ -146,13 +146,13 @@ export default function Home() {
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent className="-ml-4">
                         {playlists.map((playlist) => (
-                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 pl-4">
+                            <CarouselItem key={playlist.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/6 xl:basis-[14%] pl-4">
                                 <AlbumArtwork
                                     item={playlist}
                                     className="w-full"
                                     aspectRatio="square"
-                                    width={150}
-                                    height={150}
+                                    width={120}
+                                    height={120}
                                 />
                             </CarouselItem>
                         ))}
