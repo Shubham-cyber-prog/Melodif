@@ -1,3 +1,4 @@
+
 import { AlbumArtwork } from '@/components/album-artwork';
 import { playlists, madeForYouPlaylists, recentlyPlayed, getPlaylistById } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -111,7 +112,7 @@ export default function Home() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold tracking-tight">Your Playlists</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {playlists.slice(0, 6).map((playlist) => (
+          {playlists.map((playlist) => (
             <AlbumArtwork
               key={playlist.id}
               item={playlist}
