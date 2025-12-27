@@ -78,7 +78,7 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden">
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent>
                         {recentlyPlayed.map((item, index) => (
@@ -93,8 +93,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
+                    <CarouselPrevious className="-left-0" />
+                    <CarouselNext className="-right-0" />
                 </Carousel>
             </div>
         </section>
@@ -137,7 +137,7 @@ export default function Home() {
                     <Link href="/library">View All</Link>
                 </Button>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden">
                 <Carousel opts={{ align: 'start', dragFree: true }} className="w-full">
                     <CarouselContent>
                         {playlists.map((playlist) => (
@@ -152,8 +152,8 @@ export default function Home() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="left-4" />
-                    <CarouselNext className="right-4" />
+                    <CarouselPrevious className="-left-0" />
+                    <CarouselNext className="-right-0" />
                 </Carousel>
             </div>
         </section>
