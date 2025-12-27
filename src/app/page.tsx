@@ -1,4 +1,6 @@
 
+'use client';
+import { useRef } from 'react';
 import { AlbumArtwork } from '@/components/album-artwork';
 import { playlists, madeForYouPlaylists, recentlyPlayed, getPlaylistById } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,16 +13,22 @@ import {
     CarouselNext,
     CarouselPrevious,
   } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 export default function Home() {
     const youtubePlaylist = getPlaylistById('yt-1');
     const spotifyPlaylist = getPlaylistById('sp-1');
     const featuredPlaylists = [...playlists.slice(0, 2), ...madeForYouPlaylists.slice(0, 3)];
 
+    const plugin = useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: true })
+    );
+
   return (
     <div className="space-y-8">
       <div className="space-y-4">
         <Carousel
+            plugins={[plugin.current]}
             opts={{
                 align: 'start',
                 loop: true,
@@ -72,10 +80,11 @@ export default function Home() {
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
         <Carousel
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
+            plugins={[plugin.current]}
+            opts={{
+                align: 'start',
+                loop: true,
+            }}
           className="w-full"
         >
           <CarouselContent>
