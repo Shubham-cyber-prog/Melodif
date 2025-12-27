@@ -10,6 +10,7 @@ import { MessageSquare, X, Send, Loader2 } from 'lucide-react';
 import { chat } from '@/ai/flows/chat';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface Message {
   sender: 'user' | 'ai';
@@ -22,6 +23,7 @@ export function AIChatbot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (scrollAreaRef.current) {
@@ -74,7 +76,10 @@ export function AIChatbot() {
       </div>
 
       {isOpen && (
-        <Card className="fixed bottom-28 right-8 z-50 w-80 h-[28rem] flex flex-col shadow-2xl animate-fade-in">
+        <Card className={cn(
+            "fixed bottom-28 right-8 z-50 flex flex-col shadow-2xl animate-fade-in",
+            isMobile ? "w-[calc(100vw-4rem)] h-[70vh]" : "w-80 h-[28rem]"
+        )}>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>AI Music Assistant</CardTitle>
           </CardHeader>

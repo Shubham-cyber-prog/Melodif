@@ -1,3 +1,4 @@
+
 import { AlbumArtwork } from '@/components/album-artwork';
 import { playlists, madeForYouPlaylists } from '@/lib/data';
 
@@ -6,10 +7,10 @@ export default function LibraryPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground">
+        <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
           Your Library
         </h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-md md:text-lg text-muted-foreground">
           All your favorite playlists in one place.
         </p>
       </div>

@@ -63,16 +63,16 @@ export default function Home() {
             </Carousel>
       </div>
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground">
+        <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground">
           Listen Now
         </h1>
-        <p className="text-lg text-muted-foreground">
+        <p className="text-md md:text-lg text-muted-foreground">
           Top picks for you. Updated daily.
         </p>
       </div>
 
        <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">Recently Played</h2>
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Recently Played</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {recentlyPlayed.map((item) => (
             <AlbumArtwork
@@ -92,7 +92,7 @@ export default function Home() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">Connect Your Accounts</h2>
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Connect Your Accounts</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Card>
                 <CardHeader>
@@ -132,7 +132,7 @@ export default function Home() {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-semibold tracking-tight">Your Playlists</h2>
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight">Your Playlists</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {playlists.map((playlist) => (
             <AlbumArtwork

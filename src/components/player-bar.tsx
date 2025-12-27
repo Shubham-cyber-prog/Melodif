@@ -154,14 +154,11 @@ export function PlayerBar() {
             preload="metadata"
         />
         
-      <div className={cn(
-          "grid h-full items-center px-4 md:px-8",
-          isMobile ? "grid-cols-3" : "grid-cols-10"
-        )}>
+      <div className="h-full grid grid-cols-[1fr_auto_1fr] md:grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
-        <div className="col-span-1 flex items-center gap-3 md:col-span-3">
+        <div className="flex items-center gap-3">
           {artworkUrl && (
-            <div className="relative h-14 w-14 flex-shrink-0">
+            <div className="relative h-12 w-12 md:h-14 md:w-14 flex-shrink-0">
               <Image
                 src={artworkUrl}
                 alt={currentSong.album}
@@ -173,14 +170,14 @@ export function PlayerBar() {
             </div>
           )}
           <div className="hidden md:block">
-            <p className="font-semibold">{currentSong.title}</p>
-            <p className="text-sm text-muted-foreground">{currentSong.artist}</p>
+            <p className="font-semibold truncate">{currentSong.title}</p>
+            <p className="text-sm text-muted-foreground truncate">{currentSong.artist}</p>
           </div>
         </div>
 
         {/* Player Controls */}
-        <div className="col-span-1 flex flex-col items-center justify-center gap-2 md:col-span-4">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center gap-1 md:gap-2">
             <Button variant="ghost" size="icon" className={cn("hidden h-8 w-8 md:flex", isShuffling && "text-primary")} onClick={() => setIsShuffling(!isShuffling)}>
               <Shuffle className="h-4 w-4" />
             </Button>
@@ -224,7 +221,7 @@ export function PlayerBar() {
         </div>
 
         {/* Volume Control & Close */}
-        <div className="col-span-1 flex items-center justify-end gap-2 md:col-span-3">
+        <div className="flex items-center justify-end gap-2">
           <div className="hidden items-center md:flex">
             <Button
               variant="ghost"
@@ -263,5 +260,3 @@ export function PlayerBar() {
     </div>
   );
 }
-
-    
