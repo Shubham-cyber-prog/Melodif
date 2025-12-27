@@ -1,4 +1,5 @@
 
+
 'use client';
 import { useRef } from 'react';
 import { AlbumArtwork } from '@/components/album-artwork';
@@ -109,7 +110,7 @@ export default function Home() {
             </div>
              <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {madeForYouPlaylists.slice(0, 6).map((playlist) => (
-                    <Link href={`/playlist/${playlist.id}`} key={playlist.id} className="group">
+                    <div key={playlist.id} className="group">
                         <Card className="flex items-center gap-4 overflow-hidden transition-colors hover:bg-accent">
                             <AlbumArtwork
                                 item={playlist}
@@ -120,7 +121,7 @@ export default function Home() {
                             />
                             <p className="flex-1 font-semibold truncate pr-4">{playlist.name}</p>
                         </Card>
-                    </Link>
+                    </div>
                 ))}
             </div>
       </section>
