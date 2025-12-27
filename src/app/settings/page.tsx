@@ -26,23 +26,25 @@ export default function SettingsPage() {
           <CardDescription>Update your personal information and avatar.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-            <div className="flex items-center gap-6">
-              <div className="relative">
-                <Avatar className="h-24 w-24">
+            <div className="flex flex-col items-center gap-6 md:flex-row">
+              <div className="relative group">
+                <Avatar className="h-32 w-32 border-4 border-primary group-hover:border-primary/80 transition-colors">
                   <AvatarImage src="https://picsum.photos/seed/avatar/200" alt="User Avatar" />
                   <AvatarFallback>M</AvatarFallback>
                 </Avatar>
-                <Button variant="outline" size="icon" className="absolute bottom-0 right-0 rounded-full">
-                  <Camera className="h-4 w-4"/>
-                  <span className="sr-only">Change Avatar</span>
-                </Button>
+                <Label htmlFor="avatar-file" className="absolute inset-0 flex cursor-pointer items-center justify-center rounded-full bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
+                    <Camera className="h-8 w-8 text-white" />
+                    <span className="sr-only">Change Avatar</span>
+                </Label>
+                <Input id="avatar-file" type="file" className="sr-only" />
               </div>
-              <div className="space-y-2">
-                  <Label htmlFor="avatar-file">Upload Avatar</Label>
-                  <Input id="avatar-file" type="file" className="max-w-sm" />
-                  <p className="text-xs text-muted-foreground">Recommended size: 200x200px</p>
+              <div className="text-center md:text-left">
+                  <h2 className="text-2xl font-bold">Melodif User</h2>
+                  <p className="text-muted-foreground">user@melodif.com</p>
               </div>
             </div>
+
+            <Separator />
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
@@ -56,13 +58,12 @@ export default function SettingsPage() {
             </div>
             <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" defaultValue="user@melodif.com" />
+                <Input id="email" type="email" defaultValue="user@melodif.com" disabled />
+                 <p className="text-xs text-muted-foreground">You can't change your email address.</p>
             </div>
             <Button>Update Profile</Button>
         </CardContent>
       </Card>
-
-      <Separator />
 
       <Card>
         <CardHeader>
@@ -70,10 +71,10 @@ export default function SettingsPage() {
             <CardDescription>Customize the look and feel of the app.</CardDescription>
         </CardHeader>
         <CardContent>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between rounded-lg border p-4">
                 <div>
-                    <Label htmlFor="dark-mode">Dark Mode</Label>
-                    <p className="text-sm text-muted-foreground">Enable or disable dark mode.</p>
+                    <Label htmlFor="dark-mode" className="text-base">Dark Mode</Label>
+                    <p className="text-sm text-muted-foreground">Enable or disable dark mode for a different visual experience.</p>
                 </div>
                 <Switch id="dark-mode" />
             </div>
