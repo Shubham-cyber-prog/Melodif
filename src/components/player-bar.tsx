@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -19,14 +19,68 @@ import { getArtworkById } from '@/lib/data';
 export function PlayerBar() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [progress, setProgress] = useState(30);
+  const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(75);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
+  const audioRef = useRef<HTMLAudioElement>(null);
   const currentSong = songs[0];
   const artworkUrl = getArtworkById(currentSong.artworkId);
 
+  useEffect(() => {
+    if (audioRef.current) {
+        if (isPlaying) {
+            audioRef.current.play().catch(e => console.error("Playback error:", e));
+        } else {
+            audioRef.current.pause();
+        }
+    }
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+        audioRef.current.volume = isMuted ? 0 : volume / 100;
+    }
+  }, [volume, isMuted]);
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current) {
+        setCurrentTime(audioRef.current.currentTime);
+        setProgress((audioRef.current.currentTime / audioRef.current.duration) * 100);
+    }
+  };
+
+  const handleLoadedMetadata = () => {
+    if (audioRef.current) {
+        setDuration(audioRef.current.duration);
+    }
+  };
+
+  const handleProgressChange = (value: number[]) => {
+    if (audioRef.current) {
+        const newTime = (value[0] / 100) * duration;
+        audioRef.current.currentTime = newTime;
+        setProgress(value[0]);
+    }
+  }
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-20 h-24 border-t bg-background/95 backdrop-blur-sm">
+        <audio 
+            ref={audioRef}
+            src="https://storage.googleapis.com/studioprod-5a21a.appspot.com/assets/sample.mp3"
+            onTimeUpdate={handleTimeUpdate}
+            onLoadedMetadata={handleLoadedMetadata}
+            onEnded={() => setIsPlaying(false)}
+        />
       <div className="grid h-full grid-cols-3 items-center px-4 md:px-8">
         {/* Song Info */}
         <div className="flex items-center gap-3">
@@ -72,15 +126,15 @@ export function PlayerBar() {
             </Button>
           </div>
           <div className="flex w-full max-w-sm items-center gap-2 text-xs">
-            <span>1:20</span>
+            <span>{formatTime(currentTime)}</span>
             <Slider
               value={[progress]}
-              onValueChange={(value) => setProgress(value[0])}
+              onValueChange={handleProgressChange}
               max={100}
               step={1}
               className="w-full"
             />
-            <span>{currentSong.duration}</span>
+            <span>{formatTime(duration)}</span>
           </div>
         </div>
 
@@ -99,12 +153,14 @@ export function PlayerBar() {
             )}
           </Button>
           <Slider
-            value={[volume]}
-            onValueChange={(value) => setVolume(value[0])}
+            value={isMuted ? [0] : [volume]}
+            onValueChange={(value) => {
+                setVolume(value[0]);
+                if (isMuted) setIsMuted(false);
+            }}
             max={100}
             step={1}
             className="w-24"
-            disabled={isMuted}
           />
         </div>
       </div>
