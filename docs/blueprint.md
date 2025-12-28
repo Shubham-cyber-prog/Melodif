@@ -1,4 +1,4 @@
-# **App Name**: Melody Muse
+# **App Name**: Melodif
 
 ## Core Features:
 
