@@ -1,6 +1,6 @@
 # 🎵 Melodif - Your Next Favorite Music Destination
+<img width="1895" height="940" alt="image" src="https://github.com/user-attachments/assets/ea95f5af-fd5a-4ac4-8121-077300dfc75b" />
 
-![Melodif Banner](https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop)
 
 **Melodif** is a modern, AI-powered music streaming application designed to help you discover, organize, and enjoy music like never before. Built with a cutting-edge tech stack, it offers a seamless and beautiful user experience.
 
